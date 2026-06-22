@@ -4,53 +4,62 @@ import { BlufBox, ActionTable, RelatedGuides, TipBox, WarningBox, GuideH2, Guide
 import { FAQSection } from "@/components/guide/FAQSection";
 
 const faqs = [
-  { question: "How does the Blind find the right button without seeing?", answer: "The Blind uses the 'anchor and sweep' technique: place the non-dominant hand on the top-left corner of the module as a fixed reference, then sweep the dominant hand across rows and columns, counting by touch. The Deaf confirms visually: \"Row 2, Column 3 — that's the one. Press it.\"" },
-  { question: "What's the difference between Press and Hold?", answer: "Press means push and immediately release. Hold means push and keep your finger down until the Deaf says \"Release now.\" Hold durations vary by module — the Deaf counts down from the timer display. Releasing too early or too late can trigger a strike." },
-  { question: "Are all button modules grid-based?", answer: "Most are arranged in 2×2, 3×3, or 4×3 grids. However, some advanced modules use irregular layouts (e.g., a circular arrangement or scattered buttons). The Deaf must describe the layout to the Blind before giving instructions." },
-  { question: "How do we handle Simon Says button modules?", answer: "The module flashes a pattern of buttons that gets longer each round. The Deaf calls each button by grid position as it lights up. The Blind repeats the pattern from memory. This module heavily tests the Deaf's observation skills and the Blind's memory." },
+  { question: "Is the Button Module about speed?", answer: "No. It is mostly about correct decision-making under pressure. The instinct to press immediately is exactly what this module is designed to punish." },
+  { question: "Why do button puzzles cause so many mistakes?", answer: "Because players assume they can act immediately instead of reading first. A button looks simple, so people press it before they understand it." },
+  { question: "Should beginners rush button modules?", answer: "No. Button modules reward calm inspection and clear confirmation. One extra second of verification is worth much more than a strike." },
+  { question: "What is the safest way to handle a button puzzle?", answer: "Read the button, decide the action, confirm the plan with the team, then execute. Never press before the team has agreed." },
 ];
 
 const actionRows = [
-  { step: "1", doThis: "Deaf: \"Button module — 3×3 grid\"", why: "The Blind needs to know the grid size to mentally map the space before touching." },
-  { step: "2", doThis: "Blind places anchor hand on top-left corner", why: "A fixed reference prevents spatial drift as the Blind moves between buttons." },
-  { step: "3", doThis: "Mute gestures solution: row number, then column number", why: "Breaking the target into two numbers (row, column) is clearer than one complex gesture." },
-  { step: "4", doThis: "Deaf: \"Row 2, Column 1 — press\"", why: "Always give row first, then column. Consistent order prevents confusion under pressure." },
-  { step: "5", doThis: "Blind counts to target: \"Row two... column one... pressing\"", why: "Vocalizing the count lets the Deaf verify position before the action." },
-  { step: "6", doThis: "Deaf confirms visually, Blind presses", why: "The Deaf watches the Blind's finger approach and can call \"Stop\" if the trajectory is wrong." },
+  { step: "1. Stop", doThis: "Do not press the button as soon as you see it. Read the full module and confirm what kind of puzzle it appears to be.", why: "This first pause saves far more time than a rushed strike does." },
+  { step: "2. Decide", doThis: "Figure out whether the module wants a normal press, a hold, or another interaction path.", why: "If the clue suggests a secondary step, do not ignore it. Hold and press are not interchangeable." },
+  { step: "3. Confirm", doThis: "Repeat the exact plan out loud: What color? What label? Press or hold? Who is executing?", why: "The best teams describe the button and the action together before anyone touches anything." },
+  { step: "4. Execute", doThis: "Once the plan is clear, the Blind performs the action. If the module changes state, check that state before moving on.", why: "Button modules can have follow-up behavior. Do not assume success after the first input." },
 ];
 
 const relatedGuides = [
-  { title: "Wire Module Guide", description: "Master wire cutting sequences and color communication strategies.", href: "/modules/wire-module" },
-  { title: "Symbols Module Guide", description: "Learn to describe abstract glyphs and match them to manual entries.", href: "/modules/symbols-module" },
-  { title: "Team Callouts Reference", description: "Standardized phrases for precise, fast communication.", href: "/communication/team-callouts" },
-  { title: "Deaf Monkey Role Guide", description: "The communication bridge — see everything, hear nothing.", href: "/roles/deaf-monkey" },
+  { title: "Wire Module", description: "The best first module to learn — count, confirm, cut.", href: "/modules/wire-module" },
+  { title: "Switch Module", description: "Track the board state and flip in the correct order.", href: "/modules/switch-module" },
+  { title: "Symbols Module", description: "Match glyphs with consistent team language.", href: "/modules/symbols-module" },
+  { title: "Communication Chain", description: "Understand the information flow between roles.", href: "/communication/communication-chain" },
 ];
 
 export default function ButtonModulePage() {
   return (
     <>
-      <PageHero src="/images/screenshots/ss_3ecd09d511a5ac97a7342505ec47766554d702a3.thumb.jpg" alt="BOMBANANA! Button Module Grid" />
-      <BlufBox title="At a Glance"><strong>Button modules require navigating a grid by touch.</strong> Buttons may have colors, labels, or both — all invisible to the Blind. The Deaf describes target buttons by grid coordinates (row, column). <strong>The most common error is the Blind miscounting rows or columns under time pressure.</strong> Always use the anchor-and-sweep technique.</BlufBox>
+      <PageHero src="/images/screenshots/ss_3ecd09d511a5ac97a7342505ec47766554d702a3.thumb.jpg" alt="BOMBANANA! Button Module — Press, Hold, Decide" />
+      <BlufBox title="At a Glance"><strong>The Button Module is not a speed test. It is a decision test.</strong> The hardest part is resisting the instinct to press immediately just because the object looks simple. In a game built on communication, the best move is often to stop for one beat and verify the rule together. If the team reads the clue properly before touching the button, this module becomes much easier to control.</BlufBox>
 
-      <GuideH2>Button Grid Navigation by Touch</GuideH2>
-      <GuideP>Button modules present a grid — typically 2×2, 3×3, or 4×3. Each button may have a unique color, label, or both. The Blind cannot see any of this. Navigation relies entirely on the Deaf's verbal grid coordinates and the Blind's systematic touch-counting.</GuideP>
+      <GuideH2>How the Button Module Works</GuideH2>
+      <GuideP>Button modules combine a visible button with a rule that decides what to do next. The button's color, label, or state can matter, and the correct answer may change depending on the module's internal conditions. The team should always treat the button as a decision point: What does it look like? What action does the module want? Is this a press or a hold? Has the team confirmed before execution?</GuideP>
 
-      <ArticleImage src="/images/screenshots/ss_0345ddc6d194e6528b764cf488ca5ead157b7995.thumb.jpg" alt="Button module close-up" caption="A 3×3 button grid: 9 possible targets, only one correct answer per step." />
+      <ArticleImage src="/images/screenshots/ss_0345ddc6d194e6528b764cf488ca5ead157b7995.thumb.jpg" alt="Button module grid" caption="Look at the button before anyone presses it. Color, label, and state determine the correct action." />
 
-      <GuideH2>Action Types</GuideH2>
-      <GuideList items={[
-        "<strong>Press:</strong> Push and immediately release. The most common action.",
-        "<strong>Hold:</strong> Press and keep holding. The Deaf counts down from the timer. Release only when told.",
-        "<strong>Release:</strong> Lift your finger from a held button. Timing-critical — release at the exact moment the Deaf says \"now.\"",
-        "<strong>Tap Sequence:</strong> Quick successive presses on different buttons (e.g., \"top-left, bottom-right, top-left\").",
-        "<strong>Long Press:</strong> Hold for a variable duration specified in the manual — could be 3, 5, or 8 seconds.",
-      ]} />
+      <GuideH2>How to Recognize It</GuideH2>
+      <GuideP>Look at the button before anyone presses it. The important details are color, text, and any other clue or state the module displays. Some button puzzles may look almost identical at a glance, but the correct interaction can change completely depending on a small visual difference. That is why "just press it" is the wrong mindset. BOMBANANA! wants the team to inspect first and act second.</GuideP>
 
       <ActionTable rows={actionRows} />
 
-      <WarningBox title="The Row/Column Confusion">Some teams confuse row vs. column under pressure. Before starting, agree: <strong>"Row = horizontal (side to side). Column = vertical (up and down)."</strong> Say it out loud at the start of each session. One confused axis = one wrong button = one strike.</WarningBox>
+      <GuideH2>Common Mistakes</GuideH2>
+      <WarningBox title="Pressing too early"><strong>This is the classic mistake.</strong> A button looks simple, so people press it before they understand it. That is exactly the behavior this module is designed to punish.</WarningBox>
+      <GuideList items={[
+        "<strong>Ignoring the follow-up state:</strong> Sometimes the first input is only part of the solution. If the team stops paying attention after the press, they can miss the real result.",
+        "<strong>Confusing hold with press:</strong> A hold instruction and a press instruction are not interchangeable. If the team does not verify the intended action, the module fails immediately.",
+        "<strong>Weak callouts:</strong> 'Press it' is not enough. Good teams always describe the button and the action together: color, label, action type, executor.",
+      ]} />
 
-      <TipBox title="Pro Tip: Anchor and Sweep">The Blind keeps one hand on the module corner at all times. The other hand sweeps across rows systematically — top row first, then middle, then bottom. This prevents spatial disorientation between button presses.</TipBox>
+      <GuideH2>Team Callout Example</GuideH2>
+      <GuideP>A strong Button Module callout should sound like this:</GuideP>
+      <div className="my-4 p-4 rounded-lg bg-[var(--color-whisper-gray)] font-mono text-sm text-[var(--color-forest-ink)]/80">
+        <p>"Button is red."</p>
+        <p>"Text is visible."</p>
+        <p>"Looks like a hold action."</p>
+        <p>"Confirming hold."</p>
+        <p>"Blind executes now."</p>
+      </div>
+      <GuideP>That format protects the team from acting on impulse.</GuideP>
+
+      <TipBox title="Pro Tip: Say Less, Verify More">If the module feels ambiguous, say less and verify more. One extra second of confirmation is usually worth much more than a strike. Assign one player to read the button and another to confirm the action before the Blind touches it.</TipBox>
 
       <FAQSection faqs={faqs} />
       <RelatedGuides guides={relatedGuides} />

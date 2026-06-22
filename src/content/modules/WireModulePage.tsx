@@ -4,74 +4,69 @@ import { BlufBox, ActionTable, RelatedGuides, TipBox, WarningBox, GuideH2, Guide
 import { FAQSection } from "@/components/guide/FAQSection";
 
 const faqs = [
-  { question: "How does the Blind Monkey cut the right wire if they can't see colors?", answer: "The Blind relies on the Deaf's verbal instructions using position (\"third wire from the left\"). The team pre-agrees on a spatial vocabulary. The Blind counts wires by touch from a fixed reference point, and the Deaf visually confirms position before saying \"cut.\"" },
-  { question: "What happens if I cut the wrong wire?", answer: "The bomb registers a strike. Most bombs allow 2-3 strikes before detonation. After a strike, the module resets and you must start that module over. If you exceed the strike limit, the bomb explodes immediately." },
-  { question: "How do I communicate colors without speaking? (For Mute)", answer: "The Mute uses pre-agreed gestures: number mapping (1 finger = red, 2 = blue, 3 = yellow, 4 = green), color-coded cards held up for the Deaf to see, or pointing to colored objects. The key is agreeing on the system before the bomb starts." },
-  { question: "Are there always the same number of wires per module?", answer: "No. Wire modules can have 3-8 wires depending on difficulty. Early campaign levels typically have 3-5 wires. Higher difficulty levels and Free Mode custom bombs can have up to 8 wires with multi-color striped variants." },
-  { question: "How do I know if a wire is the right one before cutting?", answer: "Always use the confirmation loop: Deaf instructs → Blind repeats back → Deaf says 'Confirmed' → Blind cuts. Never cut without verbal confirmation. This 1-second loop prevents the most common defusal mistake." },
+  { question: "Is Wire the easiest module?", answer: "Usually yes, but it only stays easy if the team does not rush or guess. The Wire Module looks simple, so teams treat it like a warmup — that is exactly when they make the dumbest mistakes." },
+  { question: "Who should handle wire callouts?", answer: "It helps to let one player own the wire callouts consistently so the team does not keep changing language between runs. Usually the Deaf player reads the wires left to right, the Mute confirms the rule, and the Blind executes." },
+  { question: "What is the biggest Wire Module mistake?", answer: "Cutting too early, or using color instead of the actual rule. 'Cut the blue one' is dangerous when there are multiple blue wires. Always use position: 'Cut wire two, the third from the left.'" },
+  { question: "Should Wire be solved first?", answer: "Often yes — especially if it helps the team settle into a rhythm. A clean Wire solve sets the tone for the rest of the bomb." },
 ];
 
 const actionRows = [
-  { step: "1", doThis: "Deaf identifies the module: \"Wire module — 5 wires\"", why: "The Mute needs the module type to find the correct manual section. Clear identification prevents wrong-solution errors." },
-  { step: "2", doThis: "Mute locates the wire module section in the defusal manual", why: "Each module type has a dedicated section with decision trees. Fast manual navigation comes with practice." },
-  { step: "3", doThis: "Mute gestures the solution: color reference first, then wire position", why: "Information must flow in order: which wire → where it is. Gesturing position first causes the Deaf to look at wires before knowing what to look for." },
-  { step: "4", doThis: "Deaf interprets gesture → finds the target wire on the bomb → instructs Blind: \"Third wire from left — cut it\"", why: "The Deaf must visually confirm the correct wire before passing the instruction. Never guess." },
-  { step: "5", doThis: "Blind repeats: \"Third wire from left, cutting now?\"", why: "This confirmation catches miscounts. If the Blind is on the wrong wire, the Deaf sees it and says \"Stop — one wire to your right.\"" },
-  { step: "6", doThis: "Deaf confirms: \"Confirmed — cut\"", why: "Only after visual verification does the Deaf authorize the cut. This is the final safety check." },
-  { step: "7", doThis: "Blind cuts. Deaf checks module light.", why: "Green = module complete. Red = strike. After a strike, reset and restart the module." },
+  { step: "1. Count", doThis: "Count every wire on the module. Do not cut, hover, or guess while counting.", why: "Many mistakes happen when players skip the count and jump straight to the color they think looks right." },
+  { step: "2. Read", doThis: "Read the rule source or module clue that tells you how to choose the safe wire.", why: "The Mute player is critical here if they hold the rule knowledge. Never guess the rule from memory." },
+  { step: "3. Confirm", doThis: "Say the position: 'Cut wire two' or 'Cut the leftmost wire.' The whole team repeats the target.", why: "Never say 'cut the blue one' if there is any possibility of confusion. Position language prevents ambiguity." },
+  { step: "4. Cut", doThis: "After the team has agreed, the Blind executes the cut. No mid-action changes.", why: "If the callout was wrong, stop and re-read rather than trying to improvise after the cut." },
 ];
 
 const relatedGuides = [
-  { title: "Button Module Guide", description: "Master button grids, press/hold sequences, and Simon Says patterns.", href: "/modules/button-module" },
-  { title: "Switch Module Guide", description: "Toggle switch configurations and state communication strategies.", href: "/modules/switch-module" },
-  { title: "Communication Chain Guide", description: "Understand how information flows through the three monkeys.", href: "/communication/communication-chain" },
-  { title: "Blind Monkey Role Guide", description: "Complete strategy for the only monkey who touches the bomb.", href: "/roles/blind-monkey" },
+  { title: "Button Module", description: "Master decision-based puzzles — press, hold, confirm.", href: "/modules/button-module" },
+  { title: "Switch Module", description: "Track board state and flip in the correct order.", href: "/modules/switch-module" },
+  { title: "Symbols Module", description: "Match glyphs and standardize your team's visual language.", href: "/modules/symbols-module" },
+  { title: "Team Callouts", description: "Standardized phrases for every in-game situation.", href: "/communication/team-callouts" },
 ];
 
 export default function WireModulePage() {
   return (
     <>
-      <PageHero src="/images/screenshots/ss_2c952b65fc5734ce79f252df9f55af35b590be4a.thumb.jpg" alt="BOMBANANA! Wire Module — The Blind Monkey's grayscale view of colored wires" />
+      <PageHero src="/images/screenshots/ss_2c952b65fc5734ce79f252df9f55af35b590be4a.thumb.jpg" alt="BOMBANANA! Wire Module — Read, Confirm, Cut" />
+      <BlufBox title="At a Glance"><strong>Wire modules are a counting-and-logic puzzle.</strong> The exact answer depends on what the module shows, and the safest approach is always to identify the full layout before anyone touches the bomb. For new players, this is the best first module to learn — it teaches the entire team the basic rhythm of clue reading and confirmation.</BlufBox>
 
-      <BlufBox title="At a Glance">
-        Wire modules are the most common bomb puzzle in <strong>BOMBANANA!</strong>. The Blind Monkey cannot see wire colors — everything appears gray. The team must communicate wire position precisely. <strong>The #1 mistake is cutting without verbal confirmation.</strong> Always use the 3-step loop: instruct → repeat → confirm → cut.
-      </BlufBox>
+      <GuideH2>How the Wire Module Works</GuideH2>
+      <GuideP>The wire puzzle is built around visible clues: wire count, wire color, wire position, and any additional indicator that changes the correct answer. A player should not guess based on color alone. In BOMBANANA!, a correct solution comes from combining the visual cue with the rule, then verifying the exact target before cutting. The best Wire Module playstyle is slow at the start and clean at the end.</GuideP>
 
-      <GuideH2>How Wire Modules Work</GuideH2>
-      <GuideP>A wire module presents 3-8 colored wires arranged in a row or bundle. The defusal manual specifies exactly which wire to cut based on color, position, and sometimes the bomb's serial number parity. The challenge is bridging the gap between the manual (Mute), visual identification (Deaf), and physical execution (Blind).</GuideP>
+      <ArticleImage src="/images/screenshots/ss_68f3c44625be8227496c6c017bfe847ed3c83e3d.thumb.jpg" alt="Wire module close-up" caption="Before anyone gives a command, the team must answer: How many wires? What are the colors left to right? Which wire is the target?" />
 
-      <ArticleImage src="/images/screenshots/ss_68f3c44625be8227496c6c017bfe847ed3c83e3d.thumb.jpg" alt="Wire cutting interface" caption="The Blind Monkey's view: every wire appears gray. Only shape and position remain distinguishable." />
-
-      <GuideH2>Color Communication: 3 Methods</GuideH2>
-      <GuideP>Since the Blind cannot see colors, the team must bridge this gap using one of three communication methods. Pick one method and stick with it across all bombs for consistency.</GuideP>
-
-      <GuideH3>Method 1: Position-Based (Recommended for Beginners)</GuideH3>
-      <GuideList items={["Deaf translates color → position: \"Cut the third wire from the left\"", "Blind counts by touch from left to right", "No special gestures or equipment needed", "Works best when wires are in a clear, well-spaced row"]} />
-
-      <GuideH3>Method 2: Color-Coded Cards</GuideH3>
-      <GuideList items={["Mute holds up a colored card matching the target wire (red, blue, yellow, green)", "Deaf sees the card color, identifies the matching wire on the bomb", "Fast and reliable — but requires preparing cards beforehand", "Ideal for teams that play regularly together"]} />
-
-      <GuideH3>Method 3: Gesture Encoding (Advanced)</GuideH3>
-      <GuideList items={["Pre-agree: 1 finger = red, 2 fingers = blue, 3 = yellow, 4 = green", "Mute holds up the number → Deaf interprets color → locates wire → instructs Blind", "No props required — works in all scenarios", "Requires memorization but fastest once mastered"]} />
-
-      <ArticleImage src="/images/screenshots/ss_3ecd09d511a5ac97a7342505ec47766554d702a3.thumb.jpg" alt="Module detail view" caption="The Deaf Monkey's full-color view: the manual, timer, and module status lights are all visible." />
-
-      <GuideH2>Wire Module Variants</GuideH2>
+      <GuideH2>How to Recognize It</GuideH2>
+      <GuideP>The Wire Module presents one or more wires in a compact bomb panel. The important thing is not just what color the wires are, but how many there are and where each one sits in the sequence. Before anyone gives a command, the team should answer:</GuideP>
       <GuideList items={[
-        "<strong>Simple Cut:</strong> One wire to cut. Identify color → cut. Fastest module type.",
-        "<strong>Cut Sequence:</strong> Multiple wires in a specific order. Mute gestures the entire sequence; Deaf calls each step one at a time.",
-        "<strong>Conditional Cut:</strong> Which wire depends on the bomb's serial number. Mute MUST check the serial rule in the manual before gesturing.",
-        "<strong>Do Not Cut:</strong> Some wires are traps. Cutting them triggers an instant strike. Deaf must visually identify and mark forbidden wires.",
-        "<strong>Multi-Color Striped:</strong> Wires have two or more colors in bands. More complex identification — use descriptive language: \"red with a blue stripe.\"",
+        "How many wires are visible?",
+        "What are the colors from left to right?",
+        "Is there any clue that changes the rule?",
+        "Which wire position is the final target?",
       ]} />
+      <GuideP>If the team cannot answer those questions clearly, the module has not been read properly yet.</GuideP>
 
       <ActionTable rows={actionRows} />
 
-      <WarningBox title="Most Common Wire Mistake">The Blind cuts the wrong wire due to miscounting. Prevention: Blind counts out loud while physically touching each wire. Deaf watches the Blind's hand position and says \"Stop — one wire to the left\" if the count is off. Never say \"cut\" until you visually see the Blind's finger on the correct wire.</WarningBox>
+      <GuideH2>Common Mistakes</GuideH2>
+      <WarningBox title="Cutting by color only"><strong>This fails when more than one wire shares the same color</strong> or when color is not the deciding factor. Color should support the solution, not replace it. 'The second blue one' is safer than 'the blue one.'</WarningBox>
+      <GuideList items={[
+        "<strong>Forgetting wire order:</strong> Position matters. Left-to-right order, count, and relative placement can all change the answer.",
+        "<strong>Moving too fast:</strong> The Wire Module looks easy, so teams treat it like a warmup. That is exactly when they make the dumbest mistakes. Go slow for two seconds and save ten seconds of recovery time.",
+        "<strong>Vague callouts:</strong> 'Cut that one' is not a real instruction. Good teams use numbered positions and repeat them before execution.",
+      ]} />
 
-      <TipBox title="Pro Tip: The Anchored Count">Blind: Run your finger along wires from the anchored end (where they connect to the panel). Counting from the fixed connection point prevents confusion when wires cross or overlap. Practice this technique in Free Mode before campaign levels.</TipBox>
+      <GuideH2>Team Callout Example</GuideH2>
+      <GuideP>A clean Wire Module callout sequence should sound like this:</GuideP>
+      <div className="my-4 p-4 rounded-lg bg-[var(--color-whisper-gray)] font-mono text-sm text-[var(--color-forest-ink)]/80">
+        <p>"There are four wires."</p>
+        <p>"Left to right: yellow, green, blue, red."</p>
+        <p>"Rule says cut position two."</p>
+        <p>"Confirm?" — "Confirmed."</p>
+        <p>"Cutting now."</p>
+      </div>
+      <GuideP>That format removes ambiguity before the Blind player commits.</GuideP>
 
-      <TipBox title="Pro Tip: Condition First">Mute: For conditional wires, gesture the condition FIRST (e.g., point to an imaginary serial number → show \"even\"), then gesture the wire position. This prevents the Deaf from acting on an incomplete instruction that might be wrong after the condition is applied.</TipBox>
+      <TipBox title="Pro Tip: Speed Up the Read, Not the Cut">If your team wants to get faster, do not speed up the cut. Speed up the reading process by using a fixed order every time: count → clue → position → confirm → act. Let one player always own wire callouts so the language stays consistent.</TipBox>
 
       <FAQSection faqs={faqs} />
       <RelatedGuides guides={relatedGuides} />

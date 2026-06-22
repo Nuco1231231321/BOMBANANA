@@ -34,18 +34,13 @@ export const metadata: Metadata = {
     "Steam game guide",
   ],
   openGraph: {
-    title: "BOMBANANA! Guide — The Ultimate Bomb Defusal Strategy Site",
-    description:
-      "Master every monkey role, bomb module, and defusal strategy in BOMBANANA!",
     type: "website",
     locale: "en_US",
     siteName: "BOMBANANA! Guide",
   },
   twitter: {
     card: "summary_large_image",
-    title: "BOMBANANA! Guide",
-    description:
-      "Master every monkey role, bomb module, and defusal strategy in BOMBANANA!",
+    creator: "@bombananaguide",
   },
   robots: {
     index: true,

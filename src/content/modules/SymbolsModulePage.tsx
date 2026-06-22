@@ -4,63 +4,63 @@ import { BlufBox, RelatedGuides, TipBox, WarningBox, GuideH2, GuideH3, GuideP, G
 import { FAQSection } from "@/components/guide/FAQSection";
 
 const faqs = [
-  { question: "How does the Deaf describe symbols accurately?", answer: "Use a structured framework: basic shape first (\"it's a circle\"), then features (\"with a cross inside\"), then comparisons (\"looks like a target symbol\"). Avoid vague descriptions like 'weird shape.' Be specific about orientation: \"The triangle points to the right, not up.\"" },
-  { question: "What if the Mute can't find the symbol in the manual?", answer: "The Mute signals 'not found' (both palms up, shrug). The Deaf must re-describe the symbol using different words or a different comparison. If still stuck after two attempts, describe the symbol feature by feature while the Mute scans the manual's reference images visually." },
-  { question: "How are symbols modules different from other puzzles?", answer: "Unlike wire or button modules that use position-based instructions, symbols modules rely entirely on the Deaf's ability to describe abstract visual information and the Mute's ability to match descriptions to images. There is no position-based fallback — description accuracy is everything." },
-  { question: "Are symbols always the same across all bombs?", answer: "The full game will include a library of symbols. Some appear frequently across bombs; others are rare. Practice in Free Mode to build recognition of the most common 10-15 symbols. The Demo includes a subset of the full symbol library." },
+  { question: "Why is Symbols hard in co-op?", answer: "Because the puzzle depends on shared visual language, not just personal recognition. One player says 'the star thing,' another says 'the fork,' and the team wastes time reconciling words. The difficulty is linguistic, not just visual." },
+  { question: "What is the best way to describe symbols?", answer: "Use position, shape, and a stable nickname that your team already understands. Build a shared symbol dictionary and stick to it. If a symbol has a nickname, everyone must agree on it before the round starts." },
+  { question: "Can one player own symbol callouts?", answer: "Yes, and that often makes the module easier. When one consistent voice names the symbols, the team avoids the confusion of multiple naming systems colliding." },
+  { question: "What is the biggest Symbols mistake?", answer: "Changing the name of a symbol mid-run. 'Loop' becomes 'circle' becomes 'ring' — even if they mean the same thing, the shift in language wastes time and creates doubt." },
 ];
 
 const relatedGuides = [
-  { title: "Wire Module Guide", description: "Master wire cutting with color communication.", href: "/modules/wire-module" },
-  { title: "Button Module Guide", description: "Grid navigation and timed button actions.", href: "/modules/button-module" },
-  { title: "Team Callouts Reference", description: "Standardized phrases for every situation.", href: "/communication/team-callouts" },
-  { title: "Mute Monkey Role Guide", description: "Hold the manual. Find the answers. Gesture through chaos.", href: "/roles/mute-monkey" },
+  { title: "Wire Module", description: "The best first module — count, confirm, cut.", href: "/modules/wire-module" },
+  { title: "Button Module", description: "Decide before you press. Never rush a button.", href: "/modules/button-module" },
+  { title: "Switch Module", description: "Track the board state and flip in order.", href: "/modules/switch-module" },
+  { title: "Team Callouts", description: "Standardized phrases for clear communication.", href: "/communication/team-callouts" },
 ];
 
 export default function SymbolsModulePage() {
   return (
     <>
-      <PageHero src="/images/screenshots/ss_71217070b739545c452accf9e600c6ca72832e64.thumb.jpg" alt="BOMBANANA! Symbols Module Display" />
-      <BlufBox title="At a Glance"><strong>Symbols modules are the hardest puzzle in BOMBANANA!</strong> Abstract glyphs appear on screen. The Deaf must describe each one in words. The Mute matches the description to a lookup table in the manual, then gestures the corresponding action. <strong>Vague descriptions are the #1 cause of failure on this module.</strong> Every symbol description must be precise and specific.</BlufBox>
+      <PageHero src="/images/screenshots/ss_71217070b739545c452accf9e600c6ca72832e64.thumb.jpg" alt="BOMBANANA! Symbols Module — Match Glyphs, Clean Callouts" />
+      <BlufBox title="At a Glance"><strong>Symbols modules are visual matching puzzles.</strong> The challenge comes from identifying similar-looking glyphs, remembering their order, and describing them in a way your teammates instantly understand. In BOMBANANA!, this makes Symbols one of the most communication-heavy puzzle types. A good symbol callout system saves more time than raw memory ever will.</BlufBox>
 
-      <GuideH2>How Symbols Modules Work</GuideH2>
-      <GuideP>A symbols module displays 1-4 abstract glyphs on its screen. The manual contains a lookup table — each symbol maps to a specific action (cut a wire, press a button, flip a switch). The Deaf describes the symbol in words; the Mute finds the matching entry. This is the only module type where the communication bottleneck is purely descriptive language, not spatial positioning.</GuideP>
+      <GuideH2>How the Symbols Module Works</GuideH2>
+      <GuideP>The module presents several glyphs or icon-like shapes that must be matched, interpreted, or selected in the correct order. Because many symbols can look similar, the team needs a stable naming system before the round becomes chaotic. The difficulty is not just visual — it is linguistic. If one player says "the star thing," another says "the fork," and a third says "the top-left one," the team is already losing time.</GuideP>
 
-      <ArticleImage src="/images/screenshots/ss_353f30e2c12b406ab6f48642e6c21b2c5ffe1d72.thumb.jpg" alt="Symbol description in progress" caption="The Deaf describes what they see. The Mute searches the manual for a match. Precision matters more than speed." />
+      <ArticleImage src="/images/screenshots/ss_353f30e2c12b406ab6f48642e6c21b2c5ffe1d72.thumb.jpg" alt="Symbols module glyph display" caption="Symbols often share a shape language but differ in small details. Standardized naming prevents confusion." />
 
-      <GuideH2>The Symbol Description Framework</GuideH2>
-      <GuideP>Use this 4-step approach when describing any symbol:</GuideP>
+      <GuideH2>How to Recognize It</GuideH2>
+      <GuideP>Symbols are usually easy to spot because they look different from wires, buttons, or switches. The real challenge is telling apart symbols that share a shape language but differ in small details. Before solving, the team should decide:</GuideP>
+      <GuideList items={["What does each symbol look like?", "What team name are we using for it?", "Are we calling it by shape, position, or a shared nickname?", "Can everyone repeat the same label without confusion?"]} />
+
+      <GuideH2>How to Solve It</GuideH2>
+      <GuideH3>Step 1: Name the symbol clearly</GuideH3>
+      <GuideP>The team should agree on one label for each glyph. That label should be easy to repeat and should not change halfway through the run.</GuideP>
+      <GuideH3>Step 2: Match the rule or order</GuideH3>
+      <GuideP>Once the symbol is identified, the team must apply the correct order or mapping rule. Do not guess from memory if the pattern is not obvious.</GuideP>
+      <GuideH3>Step 3: Confirm the exact glyph</GuideH3>
+      <GuideP>Before anyone acts, repeat the symbol name and position aloud. This prevents the most common mistake: two players believing they are talking about the same symbol when they are not.</GuideP>
+      <GuideH3>Step 4: Execute carefully</GuideH3>
+      <GuideP>If the module has multiple symbols or multiple steps, solve them one at a time. Symbols get harder when the team tries to treat them like a speed test.</GuideP>
+
+      <GuideH2>Common Mistakes</GuideH2>
+      <WarningBox title="Inconsistent language"><strong>One player says 'loop,' another says 'circle,' another says 'ring.'</strong> Even if they mean the same thing, the team wastes time reconciling words. Pick one name per symbol and enforce it.</WarningBox>
       <GuideList items={[
-        "<strong>1. Basic Shape:</strong> \"It's a circle\" / \"It's a triangle\" — start with the fundamental form.",
-        "<strong>2. Features:</strong> \"...with a vertical line through the center\" — add what's inside or attached to it.",
-        "<strong>3. Comparisons:</strong> \"Looks like a WiFi icon\" — familiar analogies help the Mute instantly recognize the symbol.",
-        "<strong>4. Orientation:</strong> \"The arrow points right\" / \"It's rotated 45 degrees\" — direction matters.",
+        "<strong>Vague descriptions:</strong> 'That weird symbol' is not a callout. The team needs names that are repeatable and clear.",
+        "<strong>Guessing from memory:</strong> Symbols often look familiar, which makes people overconfident. A familiar shape is not the same as a confirmed shape.",
+        "<strong>Rushing through similar glyphs:</strong> The more similar two symbols are, the more dangerous a fast guess becomes. Pause and standardize the description.",
       ]} />
 
-      <GuideH2>Symbol Vocabulary Reference</GuideH2>
-      <GuideList items={[
-        "<strong>Circle-based:</strong> dot, ring, target (concentric circles), filled circle, empty circle, circle with cross",
-        "<strong>Line-based:</strong> vertical line, horizontal line, diagonal, cross/X, parallel lines, zigzag",
-        "<strong>Triangle-based:</strong> pointing up/down/left/right, pyramid (triangle + base line), two triangles overlapping",
-        "<strong>Square-based:</strong> square, rectangle, diamond (rotated square), checkerboard pattern",
-        "<strong>Curves:</strong> wave (sine wave), spiral, hook, crescent moon, arch/rainbow shape",
-        "<strong>Combined:</strong> circle with line through it, square with X inside, triangle inside circle, arrow (line + triangle)",
-      ]} />
+      <GuideH2>Team Callout Example</GuideH2>
+      <GuideP>A strong Symbols Module callout might sound like this:</GuideP>
+      <div className="my-4 p-4 rounded-lg bg-[var(--color-whisper-gray)] font-mono text-sm text-[var(--color-forest-ink)]/80">
+        <p>"Top-left is the loop-cross."</p>
+        <p>"Bottom-right is the fork shape."</p>
+        <p>"Use the same names as last round."</p>
+        <p>"Confirmed. Proceed."</p>
+      </div>
+      <GuideP>This kind of language keeps the whole team synchronized.</GuideP>
 
-      <GuideH3>Module Variants</GuideH3>
-      <GuideList items={[
-        "<strong>Single Symbol:</strong> One glyph → one action. Fastest variant — but the description must be perfect on the first try.",
-        "<strong>Pair Match:</strong> Two symbols displayed; the manual shows them as a matching pair. Find the pair → execute combined action.",
-        "<strong>Sequence:</strong> 3-4 symbols form an action sequence. Document each symbol-action mapping as you progress through the sequence.",
-        "<strong>Exclusion:</strong> \"Which of these symbols is NOT in the manual?\" — the Mute must check every listed symbol against every displayed one.",
-        "<strong>Rotated:</strong> Symbols may appear rotated, flipped, or mirrored. The Deaf MUST specify orientation: \"It's the crown symbol, but rotated 90 degrees clockwise.\"",
-      ]} />
-
-      <WarningBox title="Vague Descriptions Kill Runs">\"Circle with a line\" could match 5+ different symbols in the manual. Be painfully specific: \"Circle with a vertical line that extends below the circle only — not above.\" The Mute cannot guess. If there are two possible matches in the manual, ask the Deaf to re-describe with more detail.</WarningBox>
-
-      <TipBox title="Pro Tip: Practice Symbol Recognition">Before a session, spend 5 minutes in Free Mode practicing symbol description. Have one person show the Deaf random shapes and describe each in 10 words or fewer. Speed and precision come from practice — not from memorizing the manual.</TipBox>
-
-      <TipBox title="Pro Tip: Memorize Common Symbols">The Mute should memorize the 10-15 most frequent symbols by sight. Recognizing \"target\" or \"crown\" instantly from the Deaf's description saves 5-10 seconds per lookup — critical time in a 3-minute bomb window.</TipBox>
+      <TipBox title="Pro Tip: Build a Shared Symbol Dictionary">Create a shared symbol dictionary with your team and stick to it. If a symbol has a nickname, make sure everyone agrees on the nickname before the round starts. When a symbol feels ambiguous, it is better to pause and standardize the description than to guess and create confusion.</TipBox>
 
       <FAQSection faqs={faqs} />
       <RelatedGuides guides={relatedGuides} />

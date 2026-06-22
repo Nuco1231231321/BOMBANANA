@@ -6,7 +6,7 @@ export const bombanana = {
   id: "bombanana",
   name: "BOMBANANA!",
   description:
-    "A chaotic 3-player asymmetric co-op bomb defusal game. Three monkeys — blind, deaf, and mute — must communicate under extreme limitations to defuse a ticking banana bomb.",
+    "A chaotic 3-player asymmetric co-op bomb defusal game. Three monkeys - blind, deaf, and mute - must communicate under extreme limitations to defuse a ticking banana bomb.",
   developer: "Lefto Studio",
   publisher: "Lefto Studio",
   releaseDate: "2026-08",

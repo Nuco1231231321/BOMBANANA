@@ -1,5 +1,5 @@
 ---
-title: "BOMBANANA! Troubleshooting — Fix Common Issues"
+title: "BOMBANANA! Troubleshooting Guide"
 description: "Fix common BOMBANANA! issues: connection problems, voice chat not working, lobby errors, demo issues, and technical troubleshooting guide."
 date: "2026-06-22"
 category: "support"

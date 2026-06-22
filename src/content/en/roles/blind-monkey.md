@@ -1,5 +1,5 @@
 ---
-title: "Blind Monkey Guide — Complete Role Strategy"
+title: "BOMBANANA! Blind Monkey Guide"
 description: "Master the Blind Monkey role in BOMBANANA! Learn how to defuse bombs without seeing colors or text. Complete strategy guide with tips."
 date: "2026-06-22"
 category: "roles"

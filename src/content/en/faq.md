@@ -1,5 +1,5 @@
 ---
-title: "BOMBANANA! FAQ — Multiplayer, Co-op & Common Questions"
+title: "BOMBANANA! FAQ - Co-op Questions"
 description: "Complete BOMBANANA! FAQ. Multiplayer requirements, co-op setup, voice chat, demo vs full game, crossplay, and all your most-asked questions answered."
 date: "2026-06-22"
 category: "faq"

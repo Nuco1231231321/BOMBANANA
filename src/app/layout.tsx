@@ -18,16 +18,17 @@ const robotoMono = Roboto_Mono({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://bombanana.online"),
   title: {
-    default: "BOMBANANA! Guide — The Ultimate Bomb Defusal Strategy Site",
-    template: "%s | BOMBANANA! Guide",
+    default: "BOMBANANA! Guide - Bomb Defusal Strategy",
+    template: "%s",
   },
   description:
-    "The complete guide to BOMBANANA! — master every monkey role, bomb module, and defusal strategy. 3-player co-op chaos explained.",
+    "The complete BOMBANANA! guide for monkey roles, bomb modules, communication, and 3-player co-op defusal strategy.",
   keywords: [
     "BOMBANANA",
     "BOMBANANA guide",
-    "BOMBANANA攻略",
+    "BOMBANANA walkthrough",
     "bomb defusal game",
     "co-op game guide",
     "Lefto Studio",

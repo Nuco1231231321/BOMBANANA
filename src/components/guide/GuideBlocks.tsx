@@ -167,7 +167,7 @@ export function WarningBox({ children, title = "Warning" }: { children: ReactNod
    Guide Section Heading
    ═══════════════════════════════════════ */
 export function GuideH2({ children }: { children: ReactNode }) {
-  return <h2 className="font-[family-name:var(--font-bricolage-grotesque)] font-extrabold text-[clamp(1.5rem,3vw,2rem)] leading-[1.1] tracking-[0.03em] text-[var(--color-forest-ink)] mt-10 mb-4">{children}</h2>;
+  return <h2 className="text-2xl font-bold leading-tight text-[var(--color-forest-ink)] mt-10 mb-4">{children}</h2>;
 }
 
 export function GuideH3({ children }: { children: ReactNode }) {

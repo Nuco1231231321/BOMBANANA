@@ -1,5 +1,5 @@
 ---
-title: "Communication Guide — Master the Gesture System"
+title: "BOMBANANA! Communication Guide"
 description: "Complete BOMBANANA! communication guide. Design effective gesture systems, standardize your team's vocabulary, and defuse bombs faster."
 date: "2026-06-22"
 category: "guide"

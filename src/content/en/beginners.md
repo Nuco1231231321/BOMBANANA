@@ -1,5 +1,5 @@
 ---
-title: "Beginner's Guide — How to Play BOMBANANA!"
+title: "BOMBANANA! Beginner Guide"
 description: "New to BOMBANANA!? This quick-start guide covers everything: how to set up, choose your role, communicate, and defuse your first bomb."
 date: "2026-06-22"
 category: "guide"

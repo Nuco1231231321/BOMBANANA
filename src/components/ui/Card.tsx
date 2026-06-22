@@ -81,7 +81,7 @@ export function LinkCard({
             )}
             <ArrowRight className="mt-1 h-5 w-5 flex-shrink-0 -translate-x-2 text-[var(--color-forest-ink)] opacity-0 transition-all duration-300 group-hover:translate-x-0 group-hover:opacity-100" />
           </div>
-          <h3 className="font-[family-name:var(--font-bricolage-grotesque)] text-[clamp(1.25rem,2vw,1.5rem)] font-extrabold leading-tight text-[var(--color-forest-ink)]">
+          <h3 className="text-xl font-bold leading-tight text-[var(--color-forest-ink)]">
             {title}
           </h3>
           {description && (

@@ -4,7 +4,7 @@ import { getContentEntry } from "@/lib/content";
 import { notFound } from "next/navigation";
 
 export const metadata = {
-  title: "Beginner's Guide — How to Play BOMBANANA!",
+  title: "BOMBANANA! Beginner Guide",
   description:
     "New to BOMBANANA!? Complete beginner's guide: setup, role selection, communication basics, and your first bomb defusal walkthrough.",
 };

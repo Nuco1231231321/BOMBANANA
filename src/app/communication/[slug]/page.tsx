@@ -6,9 +6,9 @@ import type { Metadata } from "next";
 interface Props { params: Promise<{ slug: string }>; }
 
 const META: Record<string, { title: string; description: string }> = {
-  "team-callouts": { title: "Team Callouts — Standard Phrases for BOMBANANA!", description: "Pre-agreed communication phrases that make defusal faster and clearer." },
-  "voice-chat-settings": { title: "Voice Chat Settings — BOMBANANA! Audio Guide", description: "Configure in-game voice chat: role restrictions, Steam setup, troubleshooting." },
-  "communication-chain": { title: "Communication Chain — How Information Flows", description: "Deep dive into the BOMBANANA! communication chain. Where it breaks and how to fix it." },
+  "team-callouts": { title: "BOMBANANA! Team Callouts", description: "Pre-agreed communication phrases that make defusal faster and clearer." },
+  "voice-chat-settings": { title: "BOMBANANA! Voice Chat Settings", description: "Configure in-game voice chat: role restrictions, Steam setup, troubleshooting." },
+  "communication-chain": { title: "BOMBANANA! Communication Chain", description: "Deep dive into the BOMBANANA! communication chain. Where it breaks and how to fix it." },
 };
 
 export async function generateStaticParams() {

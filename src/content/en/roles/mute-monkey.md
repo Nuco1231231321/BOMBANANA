@@ -1,5 +1,5 @@
 ---
-title: "Mute Monkey Guide — Complete Role Strategy"
+title: "BOMBANANA! Mute Monkey Guide"
 description: "Master the Mute Monkey role in BOMBANANA! Hold the defusal manual and communicate through gestures. Complete strategy for effective non-verbal communication."
 date: "2026-06-22"
 category: "roles"

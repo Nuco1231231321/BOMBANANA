@@ -6,11 +6,11 @@ import type { Metadata } from "next";
 interface Props { params: Promise<{ slug: string }>; }
 
 const META: Record<string, { title: string; description: string }> = {
-  overview: { title: "Bomb Modules Overview — Complete Catalog", description: "Complete overview of all bomb modules in BOMBANANA! Rules, panic effects, and strategies." },
-  "wire-module": { title: "Wire Module Guide — BOMBANANA! Strategy", description: "Master wire cutting: color communication, sequences, conditional cuts. Complete guide." },
-  "button-module": { title: "Button Module Guide — BOMBANANA! Strategy", description: "Master button grids, press/hold timing, Simon Says patterns. Complete guide." },
-  "switch-module": { title: "Switch Module Guide — BOMBANANA! Strategy", description: "Master toggle switches: state communication, pattern matching, timed flips." },
-  "symbols-module": { title: "Symbols Module Guide — BOMBANANA! Strategy", description: "Master abstract symbols: description frameworks, glyph matching, lookup strategies." },
+  overview: { title: "BOMBANANA! Module Overview", description: "Complete overview of all bomb modules in BOMBANANA! Rules, panic effects, and strategies." },
+  "wire-module": { title: "BOMBANANA! Wire Module Guide", description: "Master wire cutting: color communication, sequences, conditional cuts. Complete guide." },
+  "button-module": { title: "BOMBANANA! Button Module Guide", description: "Master button grids, press/hold timing, Simon Says patterns. Complete guide." },
+  "switch-module": { title: "BOMBANANA! Switch Module Guide", description: "Master toggle switches: state communication, pattern matching, timed flips." },
+  "symbols-module": { title: "BOMBANANA! Symbols Module Guide", description: "Master abstract symbols: description frameworks, glyph matching, lookup strategies." },
 };
 
 export async function generateStaticParams() {

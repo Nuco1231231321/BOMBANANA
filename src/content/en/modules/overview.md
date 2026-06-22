@@ -1,5 +1,5 @@
 ---
-title: "Bomb Modules Overview — Complete Catalog"
+title: "BOMBANANA! Module Overview"
 description: "Complete overview of all bomb modules in BOMBANANA! Learn the rules, panic effects, and strategies for every module type."
 date: "2026-06-22"
 category: "modules"

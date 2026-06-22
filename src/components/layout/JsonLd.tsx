@@ -72,7 +72,7 @@ export function SiteJsonLd() {
     "@type": "WebSite",
     name: "BOMBANANA! Guide",
     url: "https://bombanana.online",
-    description: "The ultimate strategy guide for BOMBANANA! — the chaotic 3-player co-op bomb defusal game.",
+    description: "The ultimate strategy guide for BOMBANANA!, the chaotic 3-player co-op bomb defusal game.",
     potentialAction: {
       "@type": "SearchAction",
       target: "https://bombanana.online/search?q={search_term_string}",

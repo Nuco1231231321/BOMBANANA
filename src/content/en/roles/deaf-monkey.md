@@ -1,5 +1,5 @@
 ---
-title: "Deaf Monkey Guide — Complete Role Strategy"
+title: "BOMBANANA! Deaf Monkey Guide"
 description: "Master the Deaf Monkey role in BOMBANANA! Learn to interpret gestures and relay instructions accurately. The critical communication bridge."
 date: "2026-06-22"
 category: "roles"

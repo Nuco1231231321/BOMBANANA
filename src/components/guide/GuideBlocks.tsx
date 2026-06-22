@@ -178,10 +178,15 @@ export function GuideP({ children }: { children: ReactNode }) {
   return <p className="text-[var(--color-forest-ink)]/70 leading-relaxed mb-4">{children}</p>;
 }
 
-export function GuideList({ items }: { items: string[] }) {
+export function GuideList({ items }: { items: (string | ReactNode)[] }) {
   return (
     <ul className="space-y-2 text-[var(--color-forest-ink)]/70 leading-relaxed mb-6">
-      {items.map((item, i) => <li key={i} className="flex items-start gap-2"><span className="mt-1.5 w-1.5 h-1.5 rounded-full bg-[var(--color-forest-ink)]/30 flex-shrink-0" />{item}</li>)}
+      {items.map((item, i) => (
+        <li key={i} className="flex items-start gap-2">
+          <span className="mt-1.5 w-1.5 h-1.5 rounded-full bg-[var(--color-forest-ink)]/30 flex-shrink-0" />
+          {typeof item === "string" ? <span dangerouslySetInnerHTML={{ __html: item }} /> : item}
+        </li>
+      ))}
     </ul>
   );
 }

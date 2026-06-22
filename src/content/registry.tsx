@@ -16,6 +16,11 @@ import HowToPlayPage from "./beginners/HowToPlayPage";
 import FirstSessionChecklistPage from "./beginners/FirstSessionChecklistPage";
 import BeginnerMistakesPage from "./beginners/BeginnerMistakesPage";
 
+/* ── Role pages ── */
+import BlindMonkeyPage from "./roles/BlindMonkeyPage";
+import DeafMonkeyPage from "./roles/DeafMonkeyPage";
+import MuteMonkeyPage from "./roles/MuteMonkeyPage";
+
 /* ── Communication sub-pages ── */
 import TeamCalloutsPage from "./communication/TeamCalloutsPage";
 import VoiceChatSettingsPage from "./communication/VoiceChatSettingsPage";
@@ -35,6 +40,11 @@ export const CONTENT_REGISTRY: RegistryMap = {
     "how-to-play": HowToPlayPage,
     "first-session-checklist": FirstSessionChecklistPage,
     "beginner-mistakes": BeginnerMistakesPage,
+  },
+  roles: {
+    "blind-monkey": BlindMonkeyPage,
+    "deaf-monkey": DeafMonkeyPage,
+    "mute-monkey": MuteMonkeyPage,
   },
   communication: {
     "team-callouts": TeamCalloutsPage,

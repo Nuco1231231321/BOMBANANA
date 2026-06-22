@@ -1,38 +1,32 @@
 import { notFound } from "next/navigation";
 import ContentLayout from "@/components/layout/ContentLayout";
-import MdxRenderer from "@/components/layout/MdxRenderer";
-import { getContentEntries, getContentEntry } from "@/lib/content";
+import { getContentComponent, getRegistrySlugs } from "@/content/registry";
 import type { Metadata } from "next";
 
-interface Props {
-  params: Promise<{ slug: string }>;
-}
+interface Props { params: Promise<{ slug: string }>; }
+
+const META: Record<string, { title: string; description: string }> = {
+  "blind-monkey": { title: "Blind Monkey Guide — Complete Role Strategy", description: "Master the Blind Monkey role. Touch the bomb, follow voice commands, defuse without seeing colors or text." },
+  "deaf-monkey": { title: "Deaf Monkey Guide — Complete Role Strategy", description: "Master the Deaf Monkey role. Interpret gestures, give clear instructions, bridge the communication gap." },
+  "mute-monkey": { title: "Mute Monkey Guide — Complete Role Strategy", description: "Master the Mute Monkey role. Hold the defusal manual, communicate through gestures, guide your team silently." },
+};
 
 export async function generateStaticParams() {
-  const entries = getContentEntries("en", "roles");
-  return entries.map((entry) => ({ slug: entry.slug }));
+  return getRegistrySlugs("roles").map((slug) => ({ slug }));
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
-  const entry = getContentEntry("en", "roles", slug);
-  if (!entry) return { title: "Not Found" };
-
-  return {
-    title: entry.meta.title,
-    description: entry.meta.description,
-  };
+  return META[slug] ?? { title: "Role Guide" };
 }
 
 export default async function RolePage({ params }: Props) {
   const { slug } = await params;
-  const entry = getContentEntry("en", "roles", slug);
-
-  if (!entry) notFound();
-
+  const Component = getContentComponent("roles", slug);
+  if (!Component) notFound();
   return (
-    <ContentLayout>
-      <MdxRenderer entry={entry} />
+    <ContentLayout prose={false} contentClassName="max-w-[860px]">
+      <Component />
     </ContentLayout>
   );
 }

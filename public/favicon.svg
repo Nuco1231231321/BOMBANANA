@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-labelledby="title desc">
+  <title id="title">BOMBANANA! Guide icon</title>
+  <desc id="desc">A hand-drawn banana bomb on cream paper.</desc>
+  <rect width="512" height="512" rx="96" fill="#fcfaf5"/>
+  <rect x="28" y="28" width="456" height="456" rx="78" fill="none" stroke="#1a3300" stroke-width="18"/>
+  <path d="M356 116c-14 63-46 117-94 160-45 40-94 61-147 62 21 52 72 82 133 72 84-14 152-86 166-173 8-50-12-98-58-121Z" fill="#ffe95c" stroke="#1a3300" stroke-width="18" stroke-linejoin="round"/>
+  <path d="M126 338c46-3 90-22 132-58 44-39 74-87 89-145" fill="none" stroke="#fcfaf5" stroke-width="30" stroke-linecap="round"/>
+  <path d="M342 117c10-22 31-35 55-34" fill="none" stroke="#1a3300" stroke-width="18" stroke-linecap="round"/>
+  <path d="M391 86c22-28 50-42 83-42" fill="none" stroke="#1a3300" stroke-width="14" stroke-linecap="round"/>
+  <path d="M447 48l11-25M466 72l25-6M438 78l-19 20" fill="none" stroke="#cb5521" stroke-width="12" stroke-linecap="round"/>
+  <circle cx="347" cy="302" r="12" fill="#1a3300"/>
+  <path d="M226 371c26 14 56 14 86 0" fill="none" stroke="#1a3300" stroke-width="14" stroke-linecap="round"/>
+</svg>

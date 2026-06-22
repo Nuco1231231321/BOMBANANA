@@ -51,7 +51,7 @@ export const NAV_TRANSLATIONS: Record<
     freeMode: "Free Mode",
     beginners: "Beginner's Guide",
     faq: "FAQ",
-    troubleshooting: "Help",
+    troubleshooting: "Troubleshooting",
     news: "Updates",
   },
   zh: {

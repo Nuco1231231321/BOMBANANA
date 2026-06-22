@@ -1,6 +1,5 @@
 import ContentLayout from "@/components/layout/ContentLayout";
 import { TaglineBadge } from "@/components/ui/TaglineBadge";
-import { getContentEntries } from "@/lib/content";
 import { ArrowRight, EyeOff, MessageSquareOff, VolumeOff, Banana } from "lucide-react";
 import Link from "next/link";
 
@@ -16,42 +15,38 @@ export const metadata = {
     "BOMBANANA! role guides for Blind Monkey, Deaf Monkey, and Mute Monkey. Learn each co-op bomb defusal role, communication flow, and team strategy.",
 };
 
-const roleCards: Record<
-  string,
+const roleCards = [
   {
-    title: string;
-    emoji: string;
-    roleLabel: string;
-    description: string;
-    job: string;
-    accent: "blush" | "teal" | "mint";
-  }
-> = {
-  "blind-monkey": {
+    slug: "blind-monkey",
+    role: "blind",
     title: "Blind Monkey 🙈",
     emoji: "🙈",
     roleLabel: "Hands on the bomb",
     description: "Defuse the bomb by touch while teammates guide every move.",
     job: "Repeat the command, confirm the target, then act.",
-    accent: "blush",
+    accent: "blush" as const,
   },
-  "deaf-monkey": {
+  {
+    slug: "deaf-monkey",
+    role: "deaf",
     title: "Deaf Monkey 🙉",
     emoji: "🙉",
     roleLabel: "Voice relay",
     description: "Read the bomb state and relay clear instructions to the team.",
     job: "Watch the Mute, speak to the Blind, keep the tempo calm.",
-    accent: "teal",
+    accent: "teal" as const,
   },
-  "mute-monkey": {
+  {
+    slug: "mute-monkey",
+    role: "mute",
     title: "Mute Monkey 🙊",
     emoji: "🙊",
     roleLabel: "Manual reader",
     description: "Use the manual and gestures to turn rules into safe actions.",
     job: "Find the rule, gesture the answer, verify the relay.",
-    accent: "mint",
+    accent: "mint" as const,
   },
-};
+] as const;
 
 const accentStyles = {
   blush: "bg-[var(--color-sticky-note-blush)]",
@@ -60,8 +55,6 @@ const accentStyles = {
 } as const;
 
 export default function RolesPage() {
-  const roles = getContentEntries("en", "roles");
-
   return (
     <ContentLayout prose={false} contentClassName="max-w-[980px]">
       <header className="mb-12 border-b border-[var(--color-pencil-gray)] pb-10">
@@ -99,21 +92,18 @@ export default function RolesPage() {
       </header>
 
       <div className="grid grid-cols-1 gap-5 md:grid-cols-3">
-        {roles.map((role) => {
-          const Icon =
-            roleIcons[role.meta.role as keyof typeof roleIcons] || Banana;
-          const card = roleCards[role.slug];
-          const accent = card?.accent ?? "mint";
+        {roleCards.map((card) => {
+          const Icon = roleIcons[card.role] || Banana;
 
           return (
             <Link
-              key={role.slug}
-              href={`/roles/${role.slug}`}
+              key={card.slug}
+              href={`/roles/${card.slug}`}
               className={[
                 "group relative flex min-h-[300px] flex-col overflow-hidden rounded-xl p-5 no-underline",
                 "border border-[var(--color-forest-ink)]/20 transition-all duration-200",
                 "hover:-translate-y-1 hover:border-[var(--color-forest-ink)] hover:shadow-[var(--shadow-subtle)]",
-                accentStyles[accent],
+                accentStyles[card.accent],
               ].join(" ")}
             >
               <div className="mb-8 flex items-start justify-between gap-4">
@@ -121,24 +111,24 @@ export default function RolesPage() {
                   <Icon className="h-6 w-6" />
                 </span>
                 <span className="text-5xl leading-none" aria-hidden="true">
-                  {card?.emoji ?? "🍌"}
+                  {card.emoji}
                 </span>
               </div>
 
               <p className="mb-3 w-fit rounded-md bg-[var(--color-cream-paper)] px-2 py-1 font-[family-name:var(--font-roboto-mono)] text-xs font-bold uppercase tracking-[0.1em] text-[var(--color-forest-ink)]/65">
-                {card?.roleLabel ?? "Team role"}
+                {card.roleLabel}
               </p>
 
               <h2 className="text-2xl font-bold leading-tight text-[var(--color-forest-ink)]">
-                {card?.title ?? role.meta.title}
+                {card.title}
               </h2>
               <p className="mt-3 text-sm leading-[1.65] text-[var(--color-forest-ink)] opacity-70">
-                {card?.description ?? role.meta.description}
+                {card.description}
               </p>
 
               <div className="mt-auto pt-6">
                 <p className="border-t border-[var(--color-forest-ink)]/20 pt-4 text-xs font-semibold leading-[1.55] text-[var(--color-forest-ink)] opacity-70">
-                  {card?.job}
+                  {card.job}
                 </p>
                 <span className="mt-4 inline-flex items-center gap-2 text-sm font-bold text-[var(--color-forest-ink)]">
                   Open role guide

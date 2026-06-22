@@ -107,11 +107,8 @@ export default function MediaGallery({
               "group relative overflow-hidden rounded-xl border border-[var(--color-pencil-gray)]",
               "bg-[var(--color-cream-paper)]",
               "hover:shadow-[var(--shadow-card)] hover:-translate-y-0.5",
-              "transition-all duration-300 text-left",
-              "focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--color-banana-yellow)]",
-              item.type === "video" && "lg:col-span-1",
-              // First video gets double width on large screens
-              index === 0 && item.type === "video" && "lg:col-span-2 lg:row-span-1"
+              "transition-all duration-300 text-left cursor-pointer",
+              "focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--color-banana-yellow)]"
             )}
           >
             {/* Thumbnail */}
@@ -170,7 +167,7 @@ export default function MediaGallery({
           {/* Close button */}
           <button
             onClick={closeLightbox}
-            className="absolute top-4 right-4 z-10 flex items-center justify-center w-10 h-10 rounded-full bg-white/10 text-white hover:bg-white/20 transition-colors"
+            className="absolute top-4 right-4 z-10 flex items-center justify-center w-10 h-10 rounded-full bg-white/10 text-white hover:bg-white/20 transition-colors cursor-pointer"
             aria-label="Close lightbox"
           >
             <X className="w-5 h-5" />
@@ -184,7 +181,7 @@ export default function MediaGallery({
           {/* Prev button */}
           <button
             onClick={(e) => { e.stopPropagation(); goPrev(); }}
-            className="absolute left-4 z-10 flex items-center justify-center w-12 h-12 rounded-full bg-white/10 text-white hover:bg-white/20 transition-colors"
+            className="absolute left-4 z-10 flex items-center justify-center w-12 h-12 rounded-full bg-white/10 text-white hover:bg-white/20 transition-colors cursor-pointer"
             aria-label="Previous"
           >
             <ChevronLeft className="w-6 h-6" />
@@ -193,7 +190,7 @@ export default function MediaGallery({
           {/* Next button */}
           <button
             onClick={(e) => { e.stopPropagation(); goNext(); }}
-            className="absolute right-4 z-10 flex items-center justify-center w-12 h-12 rounded-full bg-white/10 text-white hover:bg-white/20 transition-colors"
+            className="absolute right-4 z-10 flex items-center justify-center w-12 h-12 rounded-full bg-white/10 text-white hover:bg-white/20 transition-colors cursor-pointer"
             aria-label="Next"
           >
             <ChevronRight className="w-6 h-6" />

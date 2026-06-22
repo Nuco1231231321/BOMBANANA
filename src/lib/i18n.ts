@@ -37,6 +37,8 @@ export const NAV_TRANSLATIONS: Record<
     communication: string;
     freeMode: string;
     beginners: string;
+    faq: string;
+    troubleshooting: string;
     news: string;
   }
 > = {
@@ -48,7 +50,9 @@ export const NAV_TRANSLATIONS: Record<
     communication: "Communication",
     freeMode: "Free Mode",
     beginners: "Beginner's Guide",
-    news: "News",
+    faq: "FAQ",
+    troubleshooting: "Help",
+    news: "Updates",
   },
   zh: {
     home: "首页",
@@ -58,7 +62,9 @@ export const NAV_TRANSLATIONS: Record<
     communication: "沟通技巧",
     freeMode: "自由模式",
     beginners: "新手指南",
-    news: "最新动态",
+    faq: "常见问题",
+    troubleshooting: "故障排除",
+    news: "更新日志",
   },
   ja: {
     home: "ホーム",
@@ -68,7 +74,9 @@ export const NAV_TRANSLATIONS: Record<
     communication: "コミュニケーション",
     freeMode: "フリーモード",
     beginners: "初心者ガイド",
-    news: "ニュース",
+    faq: "よくある質問",
+    troubleshooting: "ヘルプ",
+    news: "アップデート",
   },
 };
 

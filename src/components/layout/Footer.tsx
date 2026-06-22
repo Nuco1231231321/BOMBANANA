@@ -6,7 +6,7 @@ interface FooterProps {
   locale?: Locale;
 }
 
-type NavKey = "roles" | "modules" | "levels" | "beginners" | "communication" | "freeMode" | "news";
+type NavKey = "roles" | "modules" | "levels" | "beginners" | "communication" | "freeMode" | "news" | "faq" | "troubleshooting";
 
 interface FooterLinkItem {
   href: string;
@@ -40,7 +40,8 @@ const FOOTER_LINKS: Record<string, FooterSection> = {
     items: [
       { href: "/communication", key: "communication" },
       { href: "/free-mode", key: "freeMode" },
-      { href: "/news", key: "news" },
+      { href: "/faq", key: "faq" },
+      { href: "/troubleshooting", key: "troubleshooting" },
     ],
   },
   resources: {

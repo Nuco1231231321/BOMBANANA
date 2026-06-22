@@ -13,10 +13,12 @@ interface HeaderProps {
 const NAV_ITEMS = [
   { href: "/roles", key: "roles" as const },
   { href: "/modules", key: "modules" as const },
-  { href: "/levels", key: "levels" as const },
+  { href: "/beginners", key: "beginners" as const },
   { href: "/communication", key: "communication" as const },
   { href: "/free-mode", key: "freeMode" as const },
-  { href: "/beginners", key: "beginners" as const },
+  { href: "/levels", key: "levels" as const },
+  { href: "/faq", key: "faq" as const },
+  { href: "/troubleshooting", key: "troubleshooting" as const },
 ];
 
 export default function Header({ locale = "en" }: HeaderProps) {

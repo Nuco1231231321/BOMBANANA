@@ -9,19 +9,19 @@ interface RoleOverviewProps {
 
 const roles = [
   {
-    key: "blind",
+    key: "blind-monkey",
     icon: EyeOff,
     emoji: "🙈",
     color: "blush" as const,
   },
   {
-    key: "deaf",
+    key: "deaf-monkey",
     icon: VolumeOff,
     emoji: "🙉",
     color: "teal" as const,
   },
   {
-    key: "mute",
+    key: "mute-monkey",
     icon: MessageSquareOff,
     emoji: "🙊",
     color: "mint" as const,
@@ -33,17 +33,17 @@ const content = {
     heading: "Meet Your Crew",
     subheading:
       "Three monkeys, three disabilities. Chaos is guaranteed — success is optional.",
-    blind: {
+    "blind-monkey": {
       title: "The Blind Monkey",
       desc: "The only one who can touch the bomb. Sees nothing but grainy outlines — no colors, no text. Follows verbal commands from the Deaf.",
       traits: ["Touches the bomb", "Can hear & speak", "Cannot see colors or text"],
     },
-    deaf: {
+    "deaf-monkey": {
       title: "The Deaf Monkey",
       desc: "Sees the bomb clearly and speaks instructions, but hears nothing. The critical relay between the Mute's gestures and the Blind's hands.",
       traits: ["Sees everything", "Can speak", "Cannot hear anything"],
     },
-    mute: {
+    "mute-monkey": {
       title: "The Mute Monkey",
       desc: "Holds the defusal manual with all the answers. Can't speak a word — only frantic gestures and body language to communicate.",
       traits: ["Has the manual", "Can see & hear", "Cannot speak"],
@@ -53,17 +53,17 @@ const content = {
   zh: {
     heading: "认识你的队友",
     subheading: "三只猴子，三重障碍。混乱是必然的 — 成功是额外的。",
-    blind: {
+    "blind-monkey": {
       title: "盲猴 🙈",
       desc: "唯一能触碰炸弹的猴子。只能看到模糊轮廓——看不到颜色和文字。完全依赖聋猴的口头指令操作。",
       traits: ["触碰炸弹", "能听能说", "看不见颜色和文字"],
     },
-    deaf: {
+    "deaf-monkey": {
       title: "聋猴 🙉",
       desc: "能清楚看到炸弹并口述指令，但什么都听不见。是哑猴手势和盲猴操作之间的关键桥梁。",
       traits: [ "能看到一切", "能说话", "什么都听不见"],
     },
-    mute: {
+    "mute-monkey": {
       title: "哑猴 🙊",
       desc: "持有拆弹手册，知道所有答案。但一个字也说不出来——只能靠疯狂的手势和肢体语言沟通。",
       traits: ["持有手册", "能看到能听见", "不能说话"],
@@ -73,17 +73,17 @@ const content = {
   ja: {
     heading: "仲間を知ろう",
     subheading: "3匹の猿、3つの障がい。混沌は確実 — 成功はおまけ。",
-    blind: {
+    "blind-monkey": {
       title: "見ざる 🙈",
       desc: "唯一爆弾に触れられる猿。色も文字も見えず、ぼんやりとした輪郭だけ。聴猿の口頭指示に従う。",
       traits: ["爆弾に触れる", "聞こえる・話せる", "色と文字が見えない"],
     },
-    deaf: {
+    "deaf-monkey": {
       title: "聞かざる 🙉",
       desc: "爆弾をはっきり見て指示を出せるが、何も聞こえない。言猿のジェスチャーを見猿の手に伝える重要な中継役。",
       traits: ["すべて見える", "話せる", "何も聞こえない"],
     },
-    mute: {
+    "mute-monkey": {
       title: "言わざる 🙊",
       desc: "解除マニュアルを持ち、全ての答えを知っている。しかし一言も話せない—身振り手振りだけで伝えるしかない。",
       traits: ["マニュアル所持", "見える・聞こえる", "話せない"],

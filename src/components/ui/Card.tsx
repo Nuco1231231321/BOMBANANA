@@ -64,32 +64,35 @@ export function LinkCard({
     <Link
       href={href}
       className={cn(
-        "group block rounded-xl p-6 transition-all duration-300",
+        "guide-card group relative block min-h-[184px] overflow-hidden rounded-lg p-5 no-underline transition-all duration-300 sm:p-6",
         "hover:-translate-y-1 hover:shadow-[var(--shadow-card)]",
         accentStyles[accent],
         borderedStyles(accent),
         className
       )}
     >
-      <div className="flex items-start justify-between gap-4">
-        <div className="flex-1 min-w-0">
-          <div className="flex items-center gap-3 mb-2">
+      <div className="flex h-full flex-col justify-between gap-5">
+        <div className="min-w-0">
+          <div className="mb-4 flex items-start justify-between gap-4">
             {icon && (
-              <span className="flex-shrink-0 flex items-center justify-center w-10 h-10 rounded-lg bg-[var(--color-cream-paper)] text-[var(--color-forest-ink)]">
+              <span className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-md bg-[var(--color-cream-paper)] text-[var(--color-forest-ink)] shadow-[var(--shadow-subtle)]">
                 {icon}
               </span>
             )}
-            <h3 className="font-semibold text-[18px] text-[var(--color-forest-ink)] leading-snug">
-              {title}
-            </h3>
+            <ArrowRight className="mt-1 h-5 w-5 flex-shrink-0 -translate-x-2 text-[var(--color-forest-ink)] opacity-0 transition-all duration-300 group-hover:translate-x-0 group-hover:opacity-100" />
           </div>
+          <h3 className="font-[family-name:var(--font-bricolage-grotesque)] text-[clamp(1.25rem,2vw,1.5rem)] font-extrabold leading-tight text-[var(--color-forest-ink)]">
+            {title}
+          </h3>
           {description && (
-            <p className="text-sm text-[var(--color-forest-ink)] opacity-70 leading-relaxed mt-1">
+            <p className="guide-card-description mt-3 text-sm leading-relaxed text-[var(--color-forest-ink)] opacity-70">
               {description}
             </p>
           )}
         </div>
-        <ArrowRight className="w-5 h-5 text-[var(--color-forest-ink)] opacity-0 group-hover:opacity-100 -translate-x-2 group-hover:translate-x-0 transition-all duration-300 flex-shrink-0 mt-1" />
+        <span className="text-xs font-bold uppercase tracking-[0.08em] text-[var(--color-forest-ink)] opacity-60">
+          Open guide
+        </span>
       </div>
     </Link>
   );

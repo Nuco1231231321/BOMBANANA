@@ -17,14 +17,14 @@ const levels = [
 
 export default function LevelsPage() {
   return (
-    <ContentLayout>
-      <header className="mb-10">
+    <ContentLayout prose={false} contentClassName="max-w-[980px]">
+      <header className="mb-10 max-w-[740px]">
         <TaglineBadge icon={<Trophy className="w-3 h-3" />}>CAMPAIGN WALKTHROUGHS</TaglineBadge>
         <h1 className="font-[family-name:var(--font-bricolage-grotesque)] font-extrabold text-[clamp(2rem,4vw,3.4375rem)] leading-[1.05] tracking-[0.04em] text-[var(--color-forest-ink)] mt-4 mb-4">
           Campaign{" "}
           <span className="bg-[var(--color-banana-yellow)] px-2 py-0.5 rounded-sm">Walkthroughs</span>
         </h1>
-        <p className="text-lg text-[var(--color-forest-ink)] opacity-60 leading-relaxed max-w-[600px]">
+        <p className="text-lg text-[var(--color-forest-ink)] opacity-60 leading-relaxed max-w-[640px]">
           Step-by-step strategies for every campaign level. Module configurations, recommended role assignments, and proven defusal patterns for each difficulty tier.
         </p>
       </header>

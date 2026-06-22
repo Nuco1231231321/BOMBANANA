@@ -11,7 +11,7 @@ interface MdxRendererProps {
  * Renders a content entry with metadata header and MD body.
  * For now renders raw markdown; MDX compilation happens at build time.
  */
-export default function MdxRenderer({ entry }: MdxRendererProps) {
+export function ContentEntryHeader({ entry }: MdxRendererProps) {
   const { meta, content } = entry;
   const readTime = readingTime(content);
 
@@ -76,7 +76,17 @@ export default function MdxRenderer({ entry }: MdxRendererProps) {
         )}
       </header>
 
-      {/* ── Article Body ── */}
+    </>
+  );
+}
+
+export default function MdxRenderer({ entry }: MdxRendererProps) {
+  const { content } = entry;
+
+  return (
+    <>
+      <ContentEntryHeader entry={entry} />
+
       <div
         className="prose-content"
         dangerouslySetInnerHTML={{ __html: renderMarkdown(content) }}

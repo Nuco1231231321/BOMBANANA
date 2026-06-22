@@ -28,7 +28,7 @@ export default function ContentLayout({
     <>
       {jsonLd}
       <Header locale={locale} />
-      <main className="pt-24 pb-16 md:pt-28 md:pb-24">
+      <main className="pt-[7rem] pb-16 md:pt-[7.5rem] md:pb-24">
         <div className="container-page">
           {breadcrumbs && <Breadcrumbs items={breadcrumbs} />}
           <article

@@ -1,44 +1,45 @@
-import { ImageBlock, TipBox, WarningBox, SuccessBox, SectionHeading, SubHeading, Para, BulletList, NumberedList } from "@/components/content/ContentBlocks";
+import { PageHero } from "@/components/guide/PageHero";
+import { BlufBox, ActionTable, RelatedGuides, WarningBox, TipBox, GuideH2 } from "@/components/guide/GuideBlocks";
+
+const actionRows = [
+  { step: "Manual → Mute", doThis: "Mute finds the correct manual section and reads the solution.", why: "This is the SOURCE of all correct information. Wrong section = wrong solution for the entire chain." },
+  { step: "Mute → Deaf", doThis: "Mute gestures the solution. Deaf interprets the gestures into words.", why: "The highest-failure step. Gestures are inherently ambiguous. Pre-agreed vocabulary is essential." },
+  { step: "Deaf → Blind", doThis: "Deaf speaks the instruction. Blind repeats it back for confirmation.", why: "The Blind cannot see what they are doing. Voice is the only guidance. Confirmation catches errors." },
+  { step: "Blind → Bomb", doThis: "Blind executes the physical action (cut, press, flip, rotate).", why: "Fine motor control under time pressure. Slow is smooth, smooth is fast." },
+  { step: "Result → Feedback", doThis: "Blind reports result. Deaf announces status. Mute sees and prepares next step.", why: "The feedback loop allows correction. If the Blind did something wrong, the chain reverses to fix it." },
+];
+
+const relatedGuides = [
+  { title: "Team Callouts", description: "Standardized phrases for every role and situation.", href: "/communication/team-callouts" },
+  { title: "Voice Chat Settings", description: "Configure in-game voice for optimal communication.", href: "/communication/voice-chat-settings" },
+  { title: "Mute Monkey Guide", description: "Hold the manual. Know the answers. Cannot speak.", href: "/roles/mute-monkey" },
+  { title: "Deaf Monkey Guide", description: "The communication bridge — see everything, hear nothing.", href: "/roles/deaf-monkey" },
+];
 
 export default function CommunicationChainPage() {
   return (
     <>
-      <SectionHeading>The Communication Chain</SectionHeading>
-      <Para>The communication chain is the backbone of BOMBANANA!. Information must travel through three monkeys — each with a different disability — before reaching the bomb. Understanding where this chain breaks is the key to consistent defusals.</Para>
+      <PageHero src="/images/screenshots/ss_71217070b739545c452accf9e600c6ca72832e64.thumb.jpg" alt="BOMBANANA! Communication Chain" />
+      <BlufBox title="At a Glance"><strong>Information must travel through three monkeys — each with a different disability — before reaching the bomb.</strong> Every arrow in the chain is a potential failure point. Your goal: minimize information loss at each transfer. <strong>The Mute→Deaf gesture step is the #1 cause of failed defusals.</strong> Pre-agreed gesture vocabulary is the single most effective improvement any team can make.</BlufBox>
 
-      <ImageBlock src="/images/screenshots/ss_71217070b739545c452accf9e600c6ca72832e64.thumb.jpg" alt="BOMBANANA! Communication Chain" caption="Every arrow is a potential failure point. Your goal: minimize information loss at each transfer."/>
-
-      <div className="my-8 p-6 rounded-xl bg-[var(--color-surface-dark)] text-[var(--color-cream-paper)] font-mono text-sm text-center">
-        MANUAL → 🙊 MUTE (reads, can't speak) → 🙉 DEAF (interprets, can't hear) → 🙈 BLIND (executes, can't see) → 💣 BOMB
+      <div className="my-8 p-6 rounded-xl bg-[var(--color-surface-dark)] text-[var(--color-cream-paper)] font-mono text-sm text-center tracking-wider">
+        📖 MANUAL → 🙊 MUTE (reads, can't speak) → 🙉 DEAF (interprets, can't hear) → 🙈 BLIND (executes, can't see) → 💣 BOMB
       </div>
 
-      <SubHeading>Stage 1: Manual → Mute Monkey</SubHeading>
-      <Para><strong>Challenge:</strong> Under time pressure, the Mute must find the correct manual section and parse complex instructions quickly.</Para>
-      <WarningBox title="Most Common Failure">Mute opens the wrong manual section → gestures wrong solution → entire chain executes the wrong thing.</WarningBox>
-      <SuccessBox title="Prevention"><BulletList items={["Deaf clearly announces module type: \"WIRE MODULE — 5 wires\" before Mute opens manual", "Mute confirms by pointing to module → manual section → thumbs up", "Practice manual navigation outside of live bombs"]} /></SuccessBox>
+      <GuideH2>The Four Stages</GuideH2>
+      <ActionTable rows={actionRows} />
 
-      <SubHeading>Stage 2: Mute → Deaf Monkey</SubHeading>
-      <Para><strong>Challenge:</strong> Gestures are inherently ambiguous. No words. No text. Pure body language. This is the #1 cause of failed defusals.</Para>
-      <WarningBox title="Most Common Failure">Deaf misinterprets a gesture → gives wrong instruction → Blind executes wrong action → strike.</WarningBox>
-      <SuccessBox title="Prevention"><BulletList items={["Pre-agreed gesture vocabulary — every gesture has ONE meaning", "Mute waits for Deaf's thumbs-up before next gesture", "Deaf shakes head if unclear → Mute repeats gesture differently"]} /></SuccessBox>
+      <GuideH2>Where the Chain Breaks (and How to Fix It)</GuideH2>
 
-      <SubHeading>Stage 3: Deaf → Blind Monkey</SubHeading>
-      <Para><strong>Challenge:</strong> The Blind cannot see what they are doing. Every action is guided purely by voice. One misheard word = one wrong action.</Para>
-      <SuccessBox title="Prevention"><BulletList items={["Standardized position language: numbered left→right, top→bottom", "Blind ALWAYS repeats the instruction before executing", "Deaf ALWAYS confirms visually before saying \"go\"", "Blind narrates touch feedback: \"Third wire feels thicker than others\""]} /></SuccessBox>
+      <WarningBox title="Break Point #1: Mute→Deaf (Gesture Misinterpretation)"><strong>Most common failure.</strong> The Deaf misinterprets the Mute's gesture and gives wrong instructions. Prevention: pre-agreed one-to-one gesture mapping. Every gesture means exactly one thing. The Mute waits for the Deaf's thumbs-up before the next gesture. If unclear, the Deaf shakes their head and the Mute repeats the gesture differently.</WarningBox>
 
-      <SubHeading>The Feedback Loop</SubHeading>
-      <Para>Communication is NOT one-way. After each action, feedback flows backward:</Para>
-      <NumberedList items={[
-        "Blind reports result: \"Done — what's the light?\" or \"ERROR — hands off\"",
-        "Deaf announces: \"Green! Module complete. Next: Keypad\" or \"Strike. 2 remaining.\"",
-        "Mute sees the result and prepares the next solution or corrects the current one",
-      ]} />
+      <WarningBox title="Break Point #2: Deaf→Blind (Miscounting)"><strong>Second most common.</strong> The Blind miscounts wires or buttons and acts on the wrong target. Prevention: Blind counts out loud while touching each item. Deaf watches the Blind's hand position and confirms visually before authorizing the action.</WarningBox>
 
-      <ImageBlock src="/images/screenshots/ss_3ecd09d511a5ac97a7342505ec47766554d702a3.thumb.jpg" alt="BOMBANANA! Feedback Loop in Action" caption="The correction loop — Mute sees Blind doing wrong thing → thumbs down → repeats gesture → Deaf corrects instruction."/>
+      <WarningBox title="Break Point #3: Manual→Mute (Wrong Section)"><strong>Information source error.</strong> The Mute opens the wrong manual page. Prevention: Deaf clearly announces the module type BEFORE the Mute opens the manual. Mute confirms by pointing module → manual section → thumbs up.</WarningBox>
 
-      <TipBox title="When the Chain Breaks"><BulletList items={["Identify the break point: gesture? miscounting? wrong manual section?", "Reset that stage — don't push through", "Switch communication method if one isn't working", "Stay calm — frustration amplifies breakdown"]} /></TipBox>
+      <TipBox title="Golden Rule: Hardest Module First">Start with the most complex module when the communication chain is freshest and strikes are zero. Time pressure degrades communication quality — use your best minutes for the hardest puzzles.</TipBox>
 
-      <TipBox title="Golden Rule">Start with the hardest module first — when the communication chain is freshest and strikes are zero. Time pressure degrades communication quality.</TipBox>
+      <RelatedGuides guides={relatedGuides} />
     </>
   );
 }

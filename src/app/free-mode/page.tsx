@@ -1,105 +1,224 @@
 import ContentLayout from "@/components/layout/ContentLayout";
 import { TaglineBadge } from "@/components/ui/TaglineBadge";
-import { Card } from "@/components/ui/Card";
-import { Wrench, Share2, Lightbulb, Puzzle, Zap, Star } from "lucide-react";
+import {
+  AlertTriangle,
+  CheckCircle2,
+  Clock3,
+  Puzzle,
+  Share2,
+  SlidersHorizontal,
+  TestTube2,
+  Wrench,
+  Zap,
+} from "lucide-react";
 
 export const metadata = {
-  title: "Free Mode — Design Your Own Bombs | BOMBANANA! Guide",
-  description: "BOMBANANA! Free Mode guide. Learn to design custom bombs, create challenging puzzles, and share with the community.",
+  title: "BOMBANANA! Free Mode Guide - Custom Bomb Builder",
+  description:
+    "BOMBANANA! Free Mode guide for custom bomb setup, module combinations, timers, strikes, panic effects, testing, and sharing preparation.",
 };
+
+const setupRows = [
+  {
+    label: "Modules",
+    value: "Start with 2-3 modules. Add more only after the core idea is easy to explain.",
+    icon: Puzzle,
+  },
+  {
+    label: "Timer",
+    value: "Give new teams 5-8 minutes. Lower time only after the solution path is proven.",
+    icon: Clock3,
+  },
+  {
+    label: "Strikes",
+    value: "Use three strikes for practice bombs. Use fewer strikes only for expert pressure.",
+    icon: SlidersHorizontal,
+  },
+  {
+    label: "Panic effects",
+    value: "Add one effect at a time. If the failure reason becomes unclear, remove it.",
+    icon: Zap,
+  },
+];
+
+const buildSteps = [
+  "Pick one main idea for the bomb: wires, buttons, switches, symbols, or a specific communication test.",
+  "Choose the smallest module set that proves that idea.",
+  "Set timer and strikes so the first run tests communication, not raw speed.",
+  "Run a dry test and write down where the team hesitates.",
+  "Remove unfair rules, unclear effects, or duplicate pressure before sharing.",
+];
+
+const difficultyRows = [
+  ["Beginner", "2-3 modules", "5-8 min", "3 strikes", "Teach one mechanic clearly."],
+  ["Intermediate", "4-5 modules", "4-6 min", "3 strikes", "Combine two module types."],
+  ["Advanced", "5-6 modules", "3-5 min", "2 strikes", "Add time pressure or one panic effect."],
+  ["Expert", "6+ modules", "2-4 min", "1-2 strikes", "Use only after repeated testing."],
+];
 
 export default function FreeModePage() {
   return (
-    <ContentLayout>
+    <ContentLayout prose={false} contentClassName="max-w-[860px]">
       <header className="mb-10">
-        <TaglineBadge icon={<Wrench className="w-3 h-3" />}>FREE MODE</TaglineBadge>
-        <h1 className="font-[family-name:var(--font-bricolage-grotesque)] font-extrabold text-[clamp(2rem,4vw,3.4375rem)] leading-[1.05] tracking-[0.04em] text-[var(--color-forest-ink)] mt-4 mb-4">
-          Design Your Own{" "}
-          <span className="bg-[var(--color-banana-yellow)] px-2 py-0.5 rounded-sm">Bombs</span>
+        <TaglineBadge icon={<Wrench className="h-3 w-3" />}>
+          FREE MODE
+        </TaglineBadge>
+        <h1 className="mt-4 font-[family-name:var(--font-bricolage-grotesque)] text-[clamp(2.25rem,5vw,3.75rem)] font-extrabold leading-[1] tracking-[0.03em] text-[var(--color-forest-ink)]">
+          BOMBANANA!{" "}
+          <span className="inline-block rounded-sm bg-[var(--color-banana-yellow)] px-2 py-1">
+            Free Mode Guide
+          </span>
         </h1>
-        <p className="text-lg text-[var(--color-forest-ink)] opacity-60 leading-relaxed max-w-[600px]">
-          BOMBANANA! Free Mode unleashes your creativity. Design custom bomb puzzles with any combination of modules, set your own rules, and share your creations with friends or the entire community.
+        <p className="mt-5 max-w-[680px] text-lg leading-relaxed text-[var(--color-forest-ink)] opacity-65">
+          Use Free Mode to build custom bombs, test module combinations, and
+          tune difficulty without turning the page into a wall of rules.
         </p>
       </header>
 
-      {/* eslint-disable-next-line @next/next/no-img-element */}
-      <img
-        src="/images/screenshots/ss_24c16a36e29f2309b796e7b2b284386c43948e69.thumb.jpg"
-        alt="BOMBANANA! Free Mode Design Interface"
-        className="w-full rounded-xl mb-10 border border-[var(--color-pencil-gray)]"
-      />
-
-      <h2 className="font-[family-name:var(--font-bricolage-grotesque)] font-extrabold text-[clamp(1.5rem,3vw,2rem)] leading-[1.1] tracking-[0.03em] text-[var(--color-forest-ink)] mb-4">What Is Free Mode?</h2>
-      <p className="text-[var(--color-forest-ink)] opacity-70 leading-relaxed mb-4">
-        Free Mode is BOMBANANA!&apos;s sandbox editor. Unlike the campaign where bombs are pre-designed, Free Mode gives you complete control over every aspect of a bomb: which modules to include, the time limit, the number of allowed strikes, and panic effects.
-      </p>
-      <p className="text-[var(--color-forest-ink)] opacity-70 leading-relaxed mb-6">
-        Save your designs, share them via Steam, and challenge other teams to beat your creation. The community is already building a library of custom bombs from beginner-friendly tutorials to expert-level challenges.
-      </p>
-
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 mb-10">
-        <Card accent="mint">
-          <Lightbulb className="w-8 h-8 text-[var(--color-forest-ink)] mb-3" />
-          <h3 className="font-bold text-lg text-[var(--color-forest-ink)] mb-2">Design Principles</h3>
-          <ul className="space-y-2 text-sm text-[var(--color-forest-ink)] opacity-70">
-            <li>• Every module must be solvable with information available to all three roles</li>
-            <li>• Start with 2-3 modules for beginner bombs; 6-8 for expert challenges</li>
-            <li>• Include at least one module that tests each role&apos;s unique skill</li>
-            <li>• Allow enough time — 5 min for 3 modules, 8+ min for 6+ modules</li>
-            <li>• Test your bomb with a different team before sharing it publicly</li>
-          </ul>
-        </Card>
-        <Card accent="teal">
-          <Puzzle className="w-8 h-8 text-[var(--color-forest-ink)] mb-3" />
-          <h3 className="font-bold text-lg text-[var(--color-forest-ink)] mb-2">Module Combinations</h3>
-          <ul className="space-y-2 text-sm text-[var(--color-forest-ink)] opacity-70">
-            <li>• <strong>Wire + Button</strong>: Classic combo of physical dexterity + precision</li>
-            <li>• <strong>Sequence + Memory</strong>: Forces teams to track state across modules</li>
-            <li>• <strong>Timer + Communication Test</strong>: Maximum pressure on the Deaf Monkey</li>
-            <li>• <strong>Gesture Puzzle + Keypad</strong>: Tests the Mute→Deaf gesture vocabulary</li>
-          </ul>
-        </Card>
-        <Card accent="blush">
-          <Zap className="w-8 h-8 text-[var(--color-forest-ink)] mb-3" />
-          <h3 className="font-bold text-lg text-[var(--color-forest-ink)] mb-2">Panic Effect Design</h3>
-          <ul className="space-y-2 text-sm text-[var(--color-forest-ink)] opacity-70">
-            <li>• <strong>Screen static</strong> — Reduces visibility for Deaf and Mute</li>
-            <li>• <strong>Timer speed-up</strong> — Doubles countdown rate for 10 seconds</li>
-            <li>• <strong>Control inversion</strong> — Flips left/right for the Blind</li>
-            <li>• <strong>Gesture obstruction</strong> — Visual barriers between Mute and Deaf</li>
-            <li>• Don&apos;t stack more than 2 panic effects on a single mistake</li>
-          </ul>
-        </Card>
-        <Card accent="yellow">
-          <Share2 className="w-8 h-8 text-[var(--color-forest-ink)] mb-3" />
-          <h3 className="font-bold text-lg text-[var(--color-forest-ink)] mb-2">Community Sharing</h3>
-          <ul className="space-y-2 text-sm text-[var(--color-forest-ink)] opacity-70">
-            <li>• Use the in-game Share feature to upload your bomb design</li>
-            <li>• Join the official BOMBANANA! Discord to share codes</li>
-            <li>• Browse community-created bombs sorted by difficulty</li>
-            <li>• Rate bombs you play to surface the best community creations</li>
-          </ul>
-        </Card>
-      </div>
-
-      <h2 className="font-[family-name:var(--font-bricolage-grotesque)] font-extrabold text-[clamp(1.5rem,3vw,2rem)] leading-[1.1] tracking-[0.03em] text-[var(--color-forest-ink)] mb-4">Step-by-Step: Creating Your First Custom Bomb</h2>
-      <ol className="space-y-4 text-[var(--color-forest-ink)] opacity-70 leading-relaxed mb-6">
-        <li><strong>1. Open Free Mode</strong> from the main menu to see a blank bomb workspace.</li>
-        <li><strong>2. Add modules</strong> by clicking the &quot;+&quot; button. Drag and drop modules onto the bomb surface.</li>
-        <li><strong>3. Configure each module</strong> — set wire colors, button sequences, keypad codes, etc.</li>
-        <li><strong>4. Set the timer</strong> (beginners: 5-8 min, experts: 2-4 min).</li>
-        <li><strong>5. Set strike limit</strong> — how many mistakes before detonation? Default is 3.</li>
-        <li><strong>6. Add panic effects</strong> — choose which effects trigger on which strike number.</li>
-        <li><strong>7. Test your bomb</strong> by running through it yourself before sharing.</li>
-        <li><strong>8. Save and share</strong> — name your bomb, write a description, share the code.</li>
-      </ol>
-
-      <div className="rounded-xl bg-[var(--color-banana-yellow)]/20 p-6 border border-[var(--color-banana-yellow)]">
-        <Star className="w-6 h-6 text-[var(--color-forest-ink)] mb-2" />
-        <p className="text-sm text-[var(--color-forest-ink)] opacity-70">
-          <strong>Pro tip:</strong> The best custom bombs tell a story. Design sequences where Module 2&apos;s solution depends on what you learned from Module 1. This creates a narrative arc that makes defusal feel like a real mission.
+      <section className="mb-10 border-y border-[var(--color-pencil-gray)] py-6">
+        <h2 className="font-[family-name:var(--font-bricolage-grotesque)] text-2xl font-extrabold text-[var(--color-forest-ink)]">
+          What Free Mode Is For
+        </h2>
+        <p className="mt-3 text-[var(--color-forest-ink)] opacity-70 leading-relaxed">
+          Free Mode is best used as a controlled practice builder. Instead of
+          adding every module at once, define a single test: role coordination,
+          timer discipline, panic recovery, or module recognition. A good custom
+          bomb should reveal exactly which skill failed.
         </p>
-      </div>
+      </section>
+
+      <section className="mb-10">
+        <div className="mb-4 flex items-center gap-2">
+          <SlidersHorizontal className="h-5 w-5 text-[var(--color-forest-ink)]" />
+          <h2 className="font-[family-name:var(--font-bricolage-grotesque)] text-2xl font-extrabold text-[var(--color-forest-ink)]">
+            Setup Rules
+          </h2>
+        </div>
+
+        <div className="divide-y divide-[var(--color-whisper-gray)] border-y border-[var(--color-pencil-gray)]">
+          {setupRows.map((row) => {
+            const Icon = row.icon;
+            return (
+              <div
+                key={row.label}
+                className="grid gap-3 py-4 sm:grid-cols-[180px_minmax(0,1fr)]"
+              >
+                <div className="flex items-center gap-2 font-bold text-[var(--color-forest-ink)]">
+                  <Icon className="h-4 w-4 opacity-65" />
+                  {row.label}
+                </div>
+                <p className="text-sm leading-6 text-[var(--color-forest-ink)] opacity-70">
+                  {row.value}
+                </p>
+              </div>
+            );
+          })}
+        </div>
+      </section>
+
+      <section className="mb-10">
+        <div className="mb-4 flex items-center gap-2">
+          <TestTube2 className="h-5 w-5 text-[var(--color-forest-ink)]" />
+          <h2 className="font-[family-name:var(--font-bricolage-grotesque)] text-2xl font-extrabold text-[var(--color-forest-ink)]">
+            First Custom Bomb Flow
+          </h2>
+        </div>
+
+        <ol className="space-y-3">
+          {buildSteps.map((step, index) => (
+            <li key={step} className="flex gap-3">
+              <span className="mt-0.5 flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-[var(--color-banana-yellow)] text-sm font-extrabold text-[var(--color-forest-ink)]">
+                {index + 1}
+              </span>
+              <p className="pt-0.5 leading-relaxed text-[var(--color-forest-ink)] opacity-72">
+                {step}
+              </p>
+            </li>
+          ))}
+        </ol>
+      </section>
+
+      <section className="mb-10">
+        <div className="mb-4 flex items-center gap-2">
+          <Puzzle className="h-5 w-5 text-[var(--color-forest-ink)]" />
+          <h2 className="font-[family-name:var(--font-bricolage-grotesque)] text-2xl font-extrabold text-[var(--color-forest-ink)]">
+            Difficulty Recipes
+          </h2>
+        </div>
+
+        <div className="overflow-x-auto border-y border-[var(--color-pencil-gray)]">
+          <table className="w-full min-w-[720px] border-collapse text-sm">
+            <thead>
+              <tr className="text-left">
+                {["Tier", "Modules", "Timer", "Strikes", "Design Goal"].map(
+                  (header) => (
+                    <th
+                      key={header}
+                      className="border-b border-[var(--color-pencil-gray)] px-3 py-3 font-bold text-[var(--color-forest-ink)]"
+                    >
+                      {header}
+                    </th>
+                  )
+                )}
+              </tr>
+            </thead>
+            <tbody>
+              {difficultyRows.map((row) => (
+                <tr key={row[0]} className="border-b border-[var(--color-whisper-gray)] last:border-b-0">
+                  {row.map((cell, index) => (
+                    <td
+                      key={cell}
+                      className={`px-3 py-3 text-[var(--color-forest-ink)] ${
+                        index === 0 ? "font-bold" : "opacity-70"
+                      }`}
+                    >
+                      {cell}
+                    </td>
+                  ))}
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section className="mb-10 border-l-4 border-[var(--color-banana-yellow)] bg-[var(--color-banana-yellow)]/10 px-5 py-4">
+        <div className="flex gap-3">
+          <AlertTriangle className="mt-0.5 h-5 w-5 shrink-0 text-[var(--color-forest-ink)]" />
+          <div>
+            <h2 className="font-bold text-[var(--color-forest-ink)]">
+              Do not overbuild the first version.
+            </h2>
+            <p className="mt-2 text-sm leading-6 text-[var(--color-forest-ink)] opacity-72">
+              If a team fails, they should know whether the issue was timing,
+              communication, or puzzle logic. If the failure reason is unclear,
+              simplify the bomb before adding more modules.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <div className="mb-4 flex items-center gap-2">
+          <Share2 className="h-5 w-5 text-[var(--color-forest-ink)]" />
+          <h2 className="font-[family-name:var(--font-bricolage-grotesque)] text-2xl font-extrabold text-[var(--color-forest-ink)]">
+            Before Sharing
+          </h2>
+        </div>
+        <ul className="space-y-2 text-[var(--color-forest-ink)] opacity-72">
+          {[
+            "Run the bomb once with a team that did not design it.",
+            "Watch for repeated questions. Repeated questions usually mean the rule is unclear.",
+            "Adjust one variable at a time: module count, timer, strikes, or panic effects.",
+            "Keep notes so the next version improves the same test instead of becoming a different bomb.",
+          ].map((item) => (
+            <li key={item} className="flex gap-2">
+              <CheckCircle2 className="mt-1 h-4 w-4 shrink-0 opacity-60" />
+              <span className="leading-relaxed">{item}</span>
+            </li>
+          ))}
+        </ul>
+      </section>
     </ContentLayout>
   );
 }

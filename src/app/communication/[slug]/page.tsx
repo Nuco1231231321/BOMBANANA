@@ -1,27 +1,32 @@
 import { notFound } from "next/navigation";
 import ContentLayout from "@/components/layout/ContentLayout";
-import MdxRenderer from "@/components/layout/MdxRenderer";
-import { getContentEntries, getContentEntry } from "@/lib/content";
-import { getContentComponent } from "@/content/registry";
+import { getContentComponent, getRegistrySlugs } from "@/content/registry";
 import type { Metadata } from "next";
 
 interface Props { params: Promise<{ slug: string }>; }
 
+const META: Record<string, { title: string; description: string }> = {
+  "team-callouts": { title: "Team Callouts — Standard Phrases for BOMBANANA!", description: "Pre-agreed communication phrases that make defusal faster and clearer." },
+  "voice-chat-settings": { title: "Voice Chat Settings — BOMBANANA! Audio Guide", description: "Configure in-game voice chat: role restrictions, Steam setup, troubleshooting." },
+  "communication-chain": { title: "Communication Chain — How Information Flows", description: "Deep dive into the BOMBANANA! communication chain. Where it breaks and how to fix it." },
+};
+
 export async function generateStaticParams() {
-  return getContentEntries("en", "communication").map((e) => ({ slug: e.slug }));
+  return getRegistrySlugs("communication").map((slug) => ({ slug }));
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
-  const entry = getContentEntry("en", "communication", slug);
-  return entry ? { title: entry.meta.title, description: entry.meta.description } : { title: "Not Found" };
+  return META[slug] ?? { title: "Communication Guide" };
 }
 
 export default async function CommunicationSubPage({ params }: Props) {
   const { slug } = await params;
   const Component = getContentComponent("communication", slug);
-  if (Component) return <ContentLayout><Component /></ContentLayout>;
-  const entry = getContentEntry("en", "communication", slug);
-  if (!entry) notFound();
-  return <ContentLayout><MdxRenderer entry={entry} /></ContentLayout>;
+  if (!Component) notFound();
+  return (
+    <ContentLayout prose={false} contentClassName="max-w-[860px]">
+      <Component />
+    </ContentLayout>
+  );
 }

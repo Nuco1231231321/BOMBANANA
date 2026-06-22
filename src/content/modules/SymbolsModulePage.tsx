@@ -1,51 +1,69 @@
-import { ImageBlock, TipBox, WarningBox, ComparisonTable, SectionHeading, SubHeading, Para, BulletList, NumberedList } from "@/components/content/ContentBlocks";
+import { PageHero } from "@/components/guide/PageHero";
+import { ArticleImage } from "@/components/guide/ArticleMedia";
+import { BlufBox, RelatedGuides, TipBox, WarningBox, GuideH2, GuideH3, GuideP, GuideList } from "@/components/guide/GuideBlocks";
+import { FAQSection } from "@/components/guide/FAQSection";
+
+const faqs = [
+  { question: "How does the Deaf describe symbols accurately?", answer: "Use a structured framework: basic shape first (\"it's a circle\"), then features (\"with a cross inside\"), then comparisons (\"looks like a target symbol\"). Avoid vague descriptions like 'weird shape.' Be specific about orientation: \"The triangle points to the right, not up.\"" },
+  { question: "What if the Mute can't find the symbol in the manual?", answer: "The Mute signals 'not found' (both palms up, shrug). The Deaf must re-describe the symbol using different words or a different comparison. If still stuck after two attempts, describe the symbol feature by feature while the Mute scans the manual's reference images visually." },
+  { question: "How are symbols modules different from other puzzles?", answer: "Unlike wire or button modules that use position-based instructions, symbols modules rely entirely on the Deaf's ability to describe abstract visual information and the Mute's ability to match descriptions to images. There is no position-based fallback — description accuracy is everything." },
+  { question: "Are symbols always the same across all bombs?", answer: "The full game will include a library of symbols. Some appear frequently across bombs; others are rare. Practice in Free Mode to build recognition of the most common 10-15 symbols. The Demo includes a subset of the full symbol library." },
+];
+
+const relatedGuides = [
+  { title: "Wire Module Guide", description: "Master wire cutting with color communication.", href: "/modules/wire-module" },
+  { title: "Button Module Guide", description: "Grid navigation and timed button actions.", href: "/modules/button-module" },
+  { title: "Team Callouts Reference", description: "Standardized phrases for every situation.", href: "/communication/team-callouts" },
+  { title: "Mute Monkey Role Guide", description: "Hold the manual. Find the answers. Gesture through chaos.", href: "/roles/mute-monkey" },
+];
 
 export default function SymbolsModulePage() {
   return (
     <>
-      <SectionHeading>Symbols Modules</SectionHeading>
-      <Para>Symbols modules are among the hardest puzzles in BOMBANANA!. They display abstract glyphs on screen that the Blind cannot see. The Deaf must verbally describe symbols, and the Mute must match descriptions to the manual's symbol-action lookup table.</Para>
+      <PageHero src="/images/screenshots/ss_71217070b739545c452accf9e600c6ca72832e64.thumb.jpg" alt="BOMBANANA! Symbols Module Display" />
+      <BlufBox title="At a Glance"><strong>Symbols modules are the hardest puzzle in BOMBANANA!</strong> Abstract glyphs appear on screen. The Deaf must describe each one in words. The Mute matches the description to a lookup table in the manual, then gestures the corresponding action. <strong>Vague descriptions are the #1 cause of failure on this module.</strong> Every symbol description must be precise and specific.</BlufBox>
 
-      <ImageBlock src="/images/screenshots/ss_71217070b739545c452accf9e600c6ca72832e64.thumb.jpg" alt="BOMBANANA! Symbols Module" caption="A symbols module display. Abstract glyphs that the Deaf must describe in words." />
+      <GuideH2>How Symbols Modules Work</GuideH2>
+      <GuideP>A symbols module displays 1-4 abstract glyphs on its screen. The manual contains a lookup table — each symbol maps to a specific action (cut a wire, press a button, flip a switch). The Deaf describes the symbol in words; the Mute finds the matching entry. This is the only module type where the communication bottleneck is purely descriptive language, not spatial positioning.</GuideP>
 
-      <SubHeading>How Symbols Modules Work</SubHeading>
-      <BulletList items={["1-4 abstract symbols displayed on screen", "Manual contains a lookup table: symbol description → action", "Deaf describes each symbol in words", "Mute matches description to manual entry", "Mute gestures the corresponding action to the Deaf"]} />
+      <ArticleImage src="/images/screenshots/ss_353f30e2c12b406ab6f48642e6c21b2c5ffe1d72.thumb.jpg" alt="Symbol description in progress" caption="The Deaf describes what they see. The Mute searches the manual for a match. Precision matters more than speed." />
 
-      <SubHeading>Symbol Description Framework</SubHeading>
-      <Para>Use this structured approach when describing symbols:</Para>
-      <NumberedList items={[
-        "Basic shape: \"It looks like a circle with a cross inside\"",
-        "Comparison: \"Like a backwards letter N\" or \"Similar to a WiFi icon\"",
-        "Features: \"Three vertical lines — the middle one is taller\"",
-        "Common objects: \"Looks like a crown\" or \"Shaped like a key\"",
+      <GuideH2>The Symbol Description Framework</GuideH2>
+      <GuideP>Use this 4-step approach when describing any symbol:</GuideP>
+      <GuideList items={[
+        "<strong>1. Basic Shape:</strong> \"It's a circle\" / \"It's a triangle\" — start with the fundamental form.",
+        "<strong>2. Features:</strong> \"...with a vertical line through the center\" — add what's inside or attached to it.",
+        "<strong>3. Comparisons:</strong> \"Looks like a WiFi icon\" — familiar analogies help the Mute instantly recognize the symbol.",
+        "<strong>4. Orientation:</strong> \"The arrow points right\" / \"It's rotated 45 degrees\" — direction matters.",
       ]} />
 
-      <ComparisonTable
-        headers={["Visual Feature", "Description Words to Use"]}
-        rows={[
-          ["Circle-based", "Dot, ring, target (concentric), filled, empty"],
-          ["Line-based", "Vertical, horizontal, diagonal, cross, X, parallel"],
-          ["Triangle-based", "Pointing up/down/left/right, pyramid"],
-          ["Square-based", "Square, rectangle, diamond, checkerboard"],
-          ["Curves", "Wave, spiral, hook, crescent, arch"],
-          ["Combined", "Circle+line, square+X, triangle inside circle"],
-        ]}
-      />
-
-      <SubHeading>Symbol Module Variants</SubHeading>
-      <BulletList items={[
-        "Single Symbol — One symbol, one action. Fastest — but description must be perfect.",
-        "Pair Match — Two symbols; must find the matching pair in the manual.",
-        "Sequence — 3-4 symbols form an action sequence. Document each step as you go.",
-        "Exclusion — \"Which symbol is NOT present?\" — harder lookup in the manual.",
-        "Rotated — Symbols may appear tilted. Deaf must specify orientation: \"Turned sideways.\"",
+      <GuideH2>Symbol Vocabulary Reference</GuideH2>
+      <GuideList items={[
+        "<strong>Circle-based:</strong> dot, ring, target (concentric circles), filled circle, empty circle, circle with cross",
+        "<strong>Line-based:</strong> vertical line, horizontal line, diagonal, cross/X, parallel lines, zigzag",
+        "<strong>Triangle-based:</strong> pointing up/down/left/right, pyramid (triangle + base line), two triangles overlapping",
+        "<strong>Square-based:</strong> square, rectangle, diamond (rotated square), checkerboard pattern",
+        "<strong>Curves:</strong> wave (sine wave), spiral, hook, crescent moon, arch/rainbow shape",
+        "<strong>Combined:</strong> circle with line through it, square with X inside, triangle inside circle, arrow (line + triangle)",
       ]} />
 
-      <WarningBox title="Vague Descriptions Kill">\"Circle with a line\" could match 5+ different symbols. Be specific: \"Circle with a vertical line extending below the circle only.\" The Mute cannot guess — they must find the EXACT symbol in the manual.</WarningBox>
+      <GuideH3>Module Variants</GuideH3>
+      <GuideList items={[
+        "<strong>Single Symbol:</strong> One glyph → one action. Fastest variant — but the description must be perfect on the first try.",
+        "<strong>Pair Match:</strong> Two symbols displayed; the manual shows them as a matching pair. Find the pair → execute combined action.",
+        "<strong>Sequence:</strong> 3-4 symbols form an action sequence. Document each symbol-action mapping as you progress through the sequence.",
+        "<strong>Exclusion:</strong> \"Which of these symbols is NOT in the manual?\" — the Mute must check every listed symbol against every displayed one.",
+        "<strong>Rotated:</strong> Symbols may appear rotated, flipped, or mirrored. The Deaf MUST specify orientation: \"It's the crown symbol, but rotated 90 degrees clockwise.\"",
+      ]} />
 
-      <TipBox title="Pro Tip: Practice Symbol Recognition">Before playing, have someone show the Deaf random abstract shapes and practice describing each in 10 words or fewer. Speed and precision of symbol description is the #1 bottleneck on these modules.</TipBox>
+      <WarningBox title="Vague Descriptions Kill Runs">\"Circle with a line\" could match 5+ different symbols in the manual. Be painfully specific: \"Circle with a vertical line that extends below the circle only — not above.\" The Mute cannot guess. If there are two possible matches in the manual, ask the Deaf to re-describe with more detail.</WarningBox>
 
-      <TipBox title="For the Mute">Memorize the 10-15 most common symbols in the manual before the session. If you can recognize \"target\" or \"crown\" instantly from the Deaf's description, you save 5-10 seconds per symbol lookup.</TipBox>
+      <TipBox title="Pro Tip: Practice Symbol Recognition">Before a session, spend 5 minutes in Free Mode practicing symbol description. Have one person show the Deaf random shapes and describe each in 10 words or fewer. Speed and precision come from practice — not from memorizing the manual.</TipBox>
+
+      <TipBox title="Pro Tip: Memorize Common Symbols">The Mute should memorize the 10-15 most frequent symbols by sight. Recognizing \"target\" or \"crown\" instantly from the Deaf's description saves 5-10 seconds per lookup — critical time in a 3-minute bomb window.</TipBox>
+
+      <FAQSection faqs={faqs} />
+      <RelatedGuides guides={relatedGuides} />
     </>
   );
 }

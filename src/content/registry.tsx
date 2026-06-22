@@ -9,6 +9,7 @@ import WireModulePage from "./modules/WireModulePage";
 import ButtonModulePage from "./modules/ButtonModulePage";
 import SwitchModulePage from "./modules/SwitchModulePage";
 import SymbolsModulePage from "./modules/SymbolsModulePage";
+import OverviewModulePage from "./modules/OverviewModulePage";
 
 /* ── Beginner sub-pages ── */
 import HowToPlayPage from "./beginners/HowToPlayPage";
@@ -24,6 +25,7 @@ type RegistryMap = Record<string, Record<string, FC>>;
 
 export const CONTENT_REGISTRY: RegistryMap = {
   modules: {
+    "overview": OverviewModulePage,
     "wire-module": WireModulePage,
     "button-module": ButtonModulePage,
     "switch-module": SwitchModulePage,
@@ -43,4 +45,9 @@ export const CONTENT_REGISTRY: RegistryMap = {
 
 export function getContentComponent(section: string, slug: string): FC | null {
   return CONTENT_REGISTRY[section]?.[slug] ?? null;
+}
+
+/** Returns all slugs for a section (for generateStaticParams) */
+export function getRegistrySlugs(section: string): string[] {
+  return Object.keys(CONTENT_REGISTRY[section] ?? {});
 }

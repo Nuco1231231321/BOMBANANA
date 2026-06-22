@@ -1,38 +1,55 @@
-import { ImageBlock, TipBox, WarningBox, ComparisonTable, SectionHeading, SubHeading, Para, BulletList, NumberedList } from "@/components/content/ContentBlocks";
+import { PageHero } from "@/components/guide/PageHero";
+import { BlufBox, RelatedGuides, WarningBox, TipBox, GuideH2, GuideList } from "@/components/guide/GuideBlocks";
+
+const roleVoiceMatrix = [
+  "<strong>Blind Monkey:</strong> Can hear ✅ AND speak ✅ — full two-way communication",
+  "<strong>Deaf Monkey:</strong> Can speak ✅ but CANNOT hear ❌ — output only, no input",
+  "<strong>Mute Monkey:</strong> Can hear ✅ but CANNOT speak ❌ — input only, no output",
+];
+
+const steamSetup = [
+  "Steam → Settings → Voice",
+  "Voice Input Device: Select your microphone",
+  "Voice Output Device: Select your headphones",
+  "Click \"Test Microphone\" — verify the green bar moves when you speak",
+  "Transmission Type: set to Voice Activated (open mic)",
+  "Activation Threshold: Medium (adjust if too sensitive or not sensitive enough)",
+];
+
+const quickFixes = [
+  "<strong>Can't hear teammate?</strong> Check you're not the Deaf Monkey — Deaf cannot hear by design. Otherwise: verify Steam Voice Output is set to your headphones.",
+  "<strong>Teammate can't hear you?</strong> Check you're not the Mute Monkey — Mute cannot speak by design. Otherwise: check Windows Sound settings → Recording tab → set mic as default.",
+  "<strong>Audio echo?</strong> Everyone MUST use headphones. Speaker audio leaks into microphones. Reduce mic sensitivity in Steam.",
+  "<strong>Bluetooth delay?</strong> Use wired headphones. Bluetooth adds 100-200ms of latency — critical during timed button holds.",
+];
+
+const relatedGuides = [
+  { title: "Team Callouts", description: "Standardized phrases for every in-game situation.", href: "/communication/team-callouts" },
+  { title: "Communication Chain", description: "How information flows through the three monkeys.", href: "/communication/communication-chain" },
+  { title: "Troubleshooting", description: "Fix connection, voice, and launch issues.", href: "/troubleshooting" },
+  { title: "First Session Checklist", description: "Complete pre-game setup guide.", href: "/beginners/first-session-checklist" },
+];
 
 export default function VoiceChatSettingsPage() {
   return (
     <>
-      <SectionHeading>Voice Chat Configuration</SectionHeading>
-      <Para>The in-game voice chat is NOT just a communication tool — it's a core game mechanic. Role-based restrictions are enforced by the game itself and cannot be disabled. They ARE the game.</Para>
+      <PageHero src="/images/screenshots/ss_24c16a36e29f2309b796e7b2b284386c43948e69.thumb.jpg" alt="BOMBANANA! Voice Settings" />
+      <BlufBox title="At a Glance"><strong>The in-game voice chat IS the game mechanic.</strong> Role restrictions are enforced by the game — they cannot be disabled. The Blind hears and speaks. The Deaf speaks but cannot hear. The Mute hears but cannot speak. <strong>These restrictions are not bugs. They are the entire point.</strong></BlufBox>
 
-      <ImageBlock src="/images/screenshots/ss_24c16a36e29f2309b796e7b2b284386c43948e69.thumb.jpg" alt="BOMBANANA! Audio Settings" caption="Configure your audio before entering the van — you cannot change settings mid-bomb."/>
+      <GuideH2>Role Voice Restrictions</GuideH2>
+      <GuideList items={roleVoiceMatrix} />
 
-      <ComparisonTable
-        headers={["Role", "Can Hear?", "Can Speak?", "Effect"]}
-        rows={[
-          ["Blind Monkey", "✅ Yes", "✅ Yes", "Full two-way communication"],
-          ["Deaf Monkey", "❌ No", "✅ Yes", "Speaks but hears nothing — not even the timer"],
-          ["Mute Monkey", "✅ Yes", "❌ No", "Hears everything but cannot make a sound"],
-        ]}
-      />
+      <GuideH2>Steam Voice Setup</GuideH2>
+      <GuideList items={steamSetup} />
 
-      <SubHeading>Steam Voice Settings</SubHeading>
-      <NumberedList items={[
-        "Steam → Settings → Voice",
-        "Voice Input Device: Select your microphone",
-        "Voice Output Device: Select your headphones",
-        "Click \"Test Microphone\" — verify the green bar moves when you speak",
-        "Transmission Type: Voice Activated (open mic)",
-        "Activation Threshold: Medium (adjust if too sensitive or not sensitive enough)",
-      ]} />
+      <GuideH2>Quick Fixes</GuideH2>
+      <GuideList items={quickFixes} />
 
-      <SubHeading>Common Voice Issues & Fixes</SubHeading>
-      <BulletList items={["Can't hear teammate? Check you're not the Deaf Monkey — the Deaf cannot hear by design. Otherwise: verify Steam Voice Output device is set to your headphones.", "Teammate can't hear you? Check you're not the Mute Monkey — the Mute cannot speak by design. Otherwise: verify microphone is set as default in Windows Sound settings.", "Audio echo? Everyone MUST use headphones. Speaker audio leaks into microphones. Also lower mic sensitivity in Steam Voice settings.", "Bluetooth delay? Use wired headphones. Bluetooth can add 100-200ms of audio latency — critical during timed sequences."]} />
+      <WarningBox title="Should You Use Discord Instead?">Technically yes, but you should not. External voice chat removes the role restrictions — the Mute can speak freely, the Deaf can hear everything. This transforms BOMBANANA! from a unique communication challenge into a simple puzzle game. The restrictions ARE the experience. External VC is only acceptable for documented accessibility needs.</WarningBox>
 
-      <WarningBox title="Should You Use Discord Instead?">Technically yes, but you shouldn't. External voice chat removes the role restrictions — Mute can speak, Deaf can hear. This transforms BOMBANANA! from a unique communication challenge into a simple puzzle game. The restrictions are the entire point.</WarningBox>
+      <TipBox title="Audio Optimization">Disable Windows audio enhancements (spatial sound, bass boost), close Spotify/YouTube, and set sample rate to 16-bit 48000 Hz in Windows Sound settings for best Steam Voice compatibility. Wired headphones are strongly recommended over Bluetooth.</TipBox>
 
-      <TipBox title="Audio Optimization">Disable Windows audio enhancements (spatial sound, bass boost), close other audio apps (Spotify, YouTube), and set sample rate to 16-bit 48000 Hz for best Steam Voice compatibility.</TipBox>
+      <RelatedGuides guides={relatedGuides} />
     </>
   );
 }

@@ -1,29 +1,34 @@
 import { notFound } from "next/navigation";
 import ContentLayout from "@/components/layout/ContentLayout";
-import MdxRenderer from "@/components/layout/MdxRenderer";
-import { getContentEntries, getContentEntry } from "@/lib/content";
-import { getContentComponent } from "@/content/registry";
+import { getContentComponent, getRegistrySlugs } from "@/content/registry";
 import type { Metadata } from "next";
 
 interface Props { params: Promise<{ slug: string }>; }
 
+const META: Record<string, { title: string; description: string }> = {
+  overview: { title: "Bomb Modules Overview — Complete Catalog", description: "Complete overview of all bomb modules in BOMBANANA! Rules, panic effects, and strategies." },
+  "wire-module": { title: "Wire Module Guide — BOMBANANA! Strategy", description: "Master wire cutting: color communication, sequences, conditional cuts. Complete guide." },
+  "button-module": { title: "Button Module Guide — BOMBANANA! Strategy", description: "Master button grids, press/hold timing, Simon Says patterns. Complete guide." },
+  "switch-module": { title: "Switch Module Guide — BOMBANANA! Strategy", description: "Master toggle switches: state communication, pattern matching, timed flips." },
+  "symbols-module": { title: "Symbols Module Guide — BOMBANANA! Strategy", description: "Master abstract symbols: description frameworks, glyph matching, lookup strategies." },
+};
+
 export async function generateStaticParams() {
-  return getContentEntries("en", "modules").map((e) => ({ slug: e.slug }));
+  return getRegistrySlugs("modules").map((slug) => ({ slug }));
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
-  const entry = getContentEntry("en", "modules", slug);
-  return entry ? { title: entry.meta.title, description: entry.meta.description } : { title: "Not Found" };
+  return META[slug] ?? { title: "Module Guide" };
 }
 
 export default async function ModulePage({ params }: Props) {
   const { slug } = await params;
-  // Try component registry first
   const Component = getContentComponent("modules", slug);
-  if (Component) return <ContentLayout><Component /></ContentLayout>;
-  // Fall back to MD
-  const entry = getContentEntry("en", "modules", slug);
-  if (!entry) notFound();
-  return <ContentLayout><MdxRenderer entry={entry} /></ContentLayout>;
+  if (!Component) notFound();
+  return (
+    <ContentLayout prose={false} contentClassName="max-w-[860px]">
+      <Component />
+    </ContentLayout>
+  );
 }

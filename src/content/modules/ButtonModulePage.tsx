@@ -1,3 +1,4 @@
+import { PageTitle } from "@/components/guide/PageTitle";
 import { PageHero } from "@/components/guide/PageHero";
 import { ArticleImage } from "@/components/guide/ArticleMedia";
 import { BlufBox, ActionTable, RelatedGuides, TipBox, WarningBox, GuideH2, GuideP, GuideList } from "@/components/guide/GuideBlocks";
@@ -28,7 +29,9 @@ export default function ButtonModulePage() {
   return (
     <>
       <PageHero src="/images/screenshots/ss_3ecd09d511a5ac97a7342505ec47766554d702a3.thumb.jpg" alt="BOMBANANA! Button Module — Press, Hold, Decide" />
-      <BlufBox title="At a Glance"><strong>The Button Module is not a speed test. It is a decision test.</strong> The hardest part is resisting the instinct to press immediately just because the object looks simple. In a game built on communication, the best move is often to stop for one beat and verify the rule together. If the team reads the clue properly before touching the button, this module becomes much easier to control.</BlufBox>
+      
+      <PageTitle highlight="Button Module">Button Module Guide: Press, Hold, Decide</PageTitle>
+<BlufBox title="At a Glance"><strong>The Button Module is not a speed test. It is a decision test.</strong> The hardest part is resisting the instinct to press immediately just because the object looks simple. In a game built on communication, the best move is often to stop for one beat and verify the rule together. If the team reads the clue properly before touching the button, this module becomes much easier to control.</BlufBox>
 
       <GuideH2>How the Button Module Works</GuideH2>
       <GuideP>Button modules combine a visible button with a rule that decides what to do next. The button's color, label, or state can matter, and the correct answer may change depending on the module's internal conditions. The team should always treat the button as a decision point: What does it look like? What action does the module want? Is this a press or a hold? Has the team confirmed before execution?</GuideP>

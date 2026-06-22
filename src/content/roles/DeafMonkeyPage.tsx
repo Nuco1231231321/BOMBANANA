@@ -1,3 +1,4 @@
+import { PageTitle } from "@/components/guide/PageTitle";
 import { PageHero } from "@/components/guide/PageHero";
 import { ArticleImage } from "@/components/guide/ArticleMedia";
 import { BlufBox, ActionTable, RelatedGuides, TipBox, WarningBox, GuideH2, GuideH3, GuideP, GuideList } from "@/components/guide/GuideBlocks";
@@ -31,7 +32,9 @@ export default function DeafMonkeyPage() {
   return (
     <>
       <PageHero src="/images/screenshots/ss_353f30e2c12b406ab6f48642e6c21b2c5ffe1d72.thumb.jpg" alt="BOMBANANA! Deaf Monkey — Hear No Evil" />
-      <BlufBox title="At a Glance"><strong>The Deaf Monkey is the critical communication bridge.</strong> You see the bomb clearly, you see the Mute's gestures, and you speak instructions to the Blind. But you hear absolutely nothing — no voice chat, no game sounds. <strong>Your default gaze should be on the Mute, not the bomb.</strong> The Mute is your primary information source.</BlufBox>
+      
+      <PageTitle highlight="Deaf Monkey">Deaf Monkey Guide: Hear No Evil, Lead the Team</PageTitle>
+<BlufBox title="At a Glance"><strong>The Deaf Monkey is the critical communication bridge.</strong> You see the bomb clearly, you see the Mute's gestures, and you speak instructions to the Blind. But you hear absolutely nothing — no voice chat, no game sounds. <strong>Your default gaze should be on the Mute, not the bomb.</strong> The Mute is your primary information source.</BlufBox>
 
       <GuideH2>Your Role: Hear No Evil</GuideH2>
       <GuideP>The Deaf Monkey occupies the most demanding position in BOMBANANA!. Information flows into you through your eyes — from two different sources — and out through your mouth. The Mute gestures. The bomb displays status. You process both streams and produce the spoken instructions that guide the Blind's hands. Every word you say determines whether the bomb is defused or detonated.</GuideP>

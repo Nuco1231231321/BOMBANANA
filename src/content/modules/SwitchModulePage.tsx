@@ -1,3 +1,4 @@
+import { PageTitle } from "@/components/guide/PageTitle";
 import { PageHero } from "@/components/guide/PageHero";
 import { ArticleImage } from "@/components/guide/ArticleMedia";
 import { BlufBox, ActionTable, RelatedGuides, TipBox, WarningBox, GuideH2, GuideP, GuideList } from "@/components/guide/GuideBlocks";
@@ -29,7 +30,9 @@ export default function SwitchModulePage() {
   return (
     <>
       <PageHero src="/images/screenshots/ss_24c16a36e29f2309b796e7b2b284386c43948e69.thumb.jpg" alt="BOMBANANA! Switch Module — Track, Then Flip" />
-      <BlufBox title="At a Glance"><strong>Switch modules are about order, memory, and confirmation.</strong> A good team treats them like a live checklist rather than a casual toggle puzzle. The danger is not just flipping a switch — it is losing track of what the board looked like before the last move. The puzzle rewards teams that record what they saw first and update the state after every action.</BlufBox>
+      
+      <PageTitle highlight="Switch Module">Switch Module Guide: Track State, Flip in Order</PageTitle>
+<BlufBox title="At a Glance"><strong>Switch modules are about order, memory, and confirmation.</strong> A good team treats them like a live checklist rather than a casual toggle puzzle. The danger is not just flipping a switch — it is losing track of what the board looked like before the last move. The puzzle rewards teams that record what they saw first and update the state after every action.</BlufBox>
 
       <GuideH2>How the Switch Module Works</GuideH2>
       <GuideP>The basic challenge is to read the starting state, understand what each switch currently does, and make the next move without losing the sequence. In practice, the Switch Module is less about "flip something" and more about "track something." The team needs one person keeping the state clean while other players focus on the clue and execution path. This module often becomes harder in longer runs because the team's mental load increases.</GuideP>

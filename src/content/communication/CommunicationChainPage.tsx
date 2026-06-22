@@ -1,3 +1,4 @@
+import { PageTitle } from "@/components/guide/PageTitle";
 import { PageHero } from "@/components/guide/PageHero";
 import { BlufBox, ActionTable, RelatedGuides, WarningBox, TipBox, GuideH2 } from "@/components/guide/GuideBlocks";
 
@@ -20,7 +21,9 @@ export default function CommunicationChainPage() {
   return (
     <>
       <PageHero src="/images/screenshots/ss_71217070b739545c452accf9e600c6ca72832e64.thumb.jpg" alt="BOMBANANA! Communication Chain" />
-      <BlufBox title="At a Glance"><strong>Information must travel through three monkeys — each with a different disability — before reaching the bomb.</strong> Every arrow in the chain is a potential failure point. Your goal: minimize information loss at each transfer. <strong>The Mute→Deaf gesture step is the #1 cause of failed defusals.</strong> Pre-agreed gesture vocabulary is the single most effective improvement any team can make.</BlufBox>
+      
+      <PageTitle highlight="Communication Chain">BOMBANANA! Communication Chain: How Information Flows</PageTitle>
+<BlufBox title="At a Glance"><strong>Information must travel through three monkeys — each with a different disability — before reaching the bomb.</strong> Every arrow in the chain is a potential failure point. Your goal: minimize information loss at each transfer. <strong>The Mute→Deaf gesture step is the #1 cause of failed defusals.</strong> Pre-agreed gesture vocabulary is the single most effective improvement any team can make.</BlufBox>
 
       <div className="my-8 p-6 rounded-xl bg-[var(--color-surface-dark)] text-[var(--color-cream-paper)] font-mono text-sm text-center tracking-wider">
         📖 MANUAL → 🙊 MUTE (reads, can't speak) → 🙉 DEAF (interprets, can't hear) → 🙈 BLIND (executes, can't see) → 💣 BOMB

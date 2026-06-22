@@ -1,3 +1,4 @@
+import { PageTitle } from "@/components/guide/PageTitle";
 import { PageHero } from "@/components/guide/PageHero";
 import { BlufBox, ActionTable, RelatedGuides, WarningBox, GuideH2, GuideList } from "@/components/guide/GuideBlocks";
 
@@ -21,7 +22,9 @@ export default function FirstSessionChecklistPage() {
   return (
     <>
       <PageHero src="/images/screenshots/ss_68f3c44625be8227496c6c017bfe847ed3c83e3d.thumb.jpg" alt="BOMBANANA! Session Setup" />
-      <BlufBox title="At a Glance"><strong>5 minutes of prep prevents 50 minutes of frustration.</strong> This printable checklist covers everything your team needs before hitting Start. Go through every item — skipping prep is the most common reason new teams fail their first 5 bombs.</BlufBox>
+      
+      <PageTitle highlight="Checklist">BOMBANANA! First Session Checklist</PageTitle>
+<BlufBox title="At a Glance"><strong>5 minutes of prep prevents 50 minutes of frustration.</strong> This printable checklist covers everything your team needs before hitting Start. Go through every item — skipping prep is the most common reason new teams fail their first 5 bombs.</BlufBox>
 
       <GuideH2>Technical Setup — All 3 Players</GuideH2>
       <GuideList items={["Steam installed and logged in to a valid account", "BOMBANANA! Demo downloaded and launched at least once", "Microphone working: Steam → Settings → Voice → Test Microphone", "Headphones plugged in — NOT speakers (echo prevention)", "Steam overlay enabled: Steam → Settings → In Game", "All other voice apps closed (Discord, Teamspeak, etc.)", "No downloads running in the background"]} />

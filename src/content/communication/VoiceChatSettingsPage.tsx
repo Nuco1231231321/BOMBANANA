@@ -1,3 +1,4 @@
+import { PageTitle } from "@/components/guide/PageTitle";
 import { PageHero } from "@/components/guide/PageHero";
 import { BlufBox, RelatedGuides, WarningBox, TipBox, GuideH2, GuideList } from "@/components/guide/GuideBlocks";
 
@@ -34,7 +35,9 @@ export default function VoiceChatSettingsPage() {
   return (
     <>
       <PageHero src="/images/screenshots/ss_24c16a36e29f2309b796e7b2b284386c43948e69.thumb.jpg" alt="BOMBANANA! Voice Settings" />
-      <BlufBox title="At a Glance"><strong>The in-game voice chat IS the game mechanic.</strong> Role restrictions are enforced by the game — they cannot be disabled. The Blind hears and speaks. The Deaf speaks but cannot hear. The Mute hears but cannot speak. <strong>These restrictions are not bugs. They are the entire point.</strong></BlufBox>
+      
+      <PageTitle highlight="Voice Chat">BOMBANANA! Voice Chat Settings: Configure In-Game Audio</PageTitle>
+<BlufBox title="At a Glance"><strong>The in-game voice chat IS the game mechanic.</strong> Role restrictions are enforced by the game — they cannot be disabled. The Blind hears and speaks. The Deaf speaks but cannot hear. The Mute hears but cannot speak. <strong>These restrictions are not bugs. They are the entire point.</strong></BlufBox>
 
       <GuideH2>Role Voice Restrictions</GuideH2>
       <GuideList items={roleVoiceMatrix} />

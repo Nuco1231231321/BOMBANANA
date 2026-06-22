@@ -1,3 +1,4 @@
+import { PageTitle } from "@/components/guide/PageTitle";
 import { PageHero } from "@/components/guide/PageHero";
 import { BlufBox, RelatedGuides, WarningBox, TipBox, GuideH2, GuideP, GuideList } from "@/components/guide/GuideBlocks";
 
@@ -20,7 +21,9 @@ export default function BeginnerMistakesPage() {
   return (
     <>
       <PageHero src="/images/screenshots/ss_0345ddc6d194e6528b764cf488ca5ead157b7995.thumb.jpg" alt="Common Beginner Mistakes in BOMBANANA!" />
-      <BlufBox title="At a Glance"><strong>Every new BOMBANANA! team makes these mistakes.</strong> Learning them here — before they happen in a live bomb — is the fastest path to consistent defusals. <strong>The #1 root cause of all beginner failures: poor preparation.</strong> Five minutes of prep prevents fifty minutes of explosions.</BlufBox>
+      
+      <PageTitle highlight="Beginner Mistakes">10 BOMBANANA! Beginner Mistakes and How to Fix Them</PageTitle>
+<BlufBox title="At a Glance"><strong>Every new BOMBANANA! team makes these mistakes.</strong> Learning them here — before they happen in a live bomb — is the fastest path to consistent defusals. <strong>The #1 root cause of all beginner failures: poor preparation.</strong> Five minutes of prep prevents fifty minutes of explosions.</BlufBox>
 
       {mistakesData.map((m) => (
         <div key={m.title} className="my-6">

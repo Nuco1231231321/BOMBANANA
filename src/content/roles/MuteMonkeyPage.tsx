@@ -1,3 +1,4 @@
+import { PageTitle } from "@/components/guide/PageTitle";
 import { PageHero } from "@/components/guide/PageHero";
 import { ArticleImage } from "@/components/guide/ArticleMedia";
 import { BlufBox, ActionTable, RelatedGuides, TipBox, WarningBox, GuideH2, GuideH3, GuideP, GuideList } from "@/components/guide/GuideBlocks";
@@ -30,7 +31,9 @@ export default function MuteMonkeyPage() {
   return (
     <>
       <PageHero src="/images/screenshots/ss_2c952b65fc5734ce79f252df9f55af35b590be4a.thumb.jpg" alt="BOMBANANA! Mute Monkey — Speak No Evil" />
-      <BlufBox title="At a Glance"><strong>The Mute Monkey holds the defusal manual — the single source of truth.</strong> You know exactly how to solve every module, but you cannot speak a single word. All communication must be through gestures and body language. <strong>Pre-agreed gesture vocabulary is the most important preparation you can do.</strong> Every gesture should mean exactly one thing.</BlufBox>
+      
+      <PageTitle highlight="Mute Monkey">Mute Monkey Guide: Speak No Evil, Know All Answers</PageTitle>
+<BlufBox title="At a Glance"><strong>The Mute Monkey holds the defusal manual — the single source of truth.</strong> You know exactly how to solve every module, but you cannot speak a single word. All communication must be through gestures and body language. <strong>Pre-agreed gesture vocabulary is the most important preparation you can do.</strong> Every gesture should mean exactly one thing.</BlufBox>
 
       <GuideH2>Your Role: Speak No Evil</GuideH2>
       <GuideP>The Mute Monkey is the knowledge holder. The defusal manual — with every solution, every decision tree, every correct sequence — belongs to you alone. But your microphone is disabled. You must convey complex puzzle solutions through nothing but hand signals, body language, and pre-agreed gestures. You can hear everything (the Deaf's instructions, the Blind's confirmations), which gives you the awareness to catch errors and correct them.</GuideP>

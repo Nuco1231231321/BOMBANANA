@@ -1,3 +1,4 @@
+import { PageTitle } from "@/components/guide/PageTitle";
 import { PageHero } from "@/components/guide/PageHero";
 import { ArticleImage } from "@/components/guide/ArticleMedia";
 import { BlufBox, ActionTable, RelatedGuides, TipBox, WarningBox, GuideH2, GuideH3, GuideP, GuideList } from "@/components/guide/GuideBlocks";
@@ -28,7 +29,9 @@ export default function WireModulePage() {
   return (
     <>
       <PageHero src="/images/screenshots/ss_2c952b65fc5734ce79f252df9f55af35b590be4a.thumb.jpg" alt="BOMBANANA! Wire Module — Read, Confirm, Cut" />
-      <BlufBox title="At a Glance"><strong>Wire modules are a counting-and-logic puzzle.</strong> The exact answer depends on what the module shows, and the safest approach is always to identify the full layout before anyone touches the bomb. For new players, this is the best first module to learn — it teaches the entire team the basic rhythm of clue reading and confirmation.</BlufBox>
+      
+      <PageTitle highlight="Wire Module">Wire Module Guide: Read, Confirm, and Cut Safely</PageTitle>
+<BlufBox title="At a Glance"><strong>Wire modules are a counting-and-logic puzzle.</strong> The exact answer depends on what the module shows, and the safest approach is always to identify the full layout before anyone touches the bomb. For new players, this is the best first module to learn — it teaches the entire team the basic rhythm of clue reading and confirmation.</BlufBox>
 
       <GuideH2>How the Wire Module Works</GuideH2>
       <GuideP>The wire puzzle is built around visible clues: wire count, wire color, wire position, and any additional indicator that changes the correct answer. A player should not guess based on color alone. In BOMBANANA!, a correct solution comes from combining the visual cue with the rule, then verifying the exact target before cutting. The best Wire Module playstyle is slow at the start and clean at the end.</GuideP>

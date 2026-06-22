@@ -1,3 +1,4 @@
+import { PageTitle } from "@/components/guide/PageTitle";
 import { PageHero } from "@/components/guide/PageHero";
 import { BlufBox, ActionTable, RelatedGuides, TipBox, WarningBox, GuideH2, GuideH3, GuideList } from "@/components/guide/GuideBlocks";
 import { FAQSection } from "@/components/guide/FAQSection";
@@ -29,7 +30,9 @@ export default function HowToPlayPage() {
   return (
     <>
       <PageHero src="/images/screenshots/ss_858b009c283bfaac07f526309cb8a68c0c284278.thumb.jpg" alt="BOMBANANA! First Session" />
-      <BlufBox title="At a Glance"><strong>BOMBANANA! is a 3-player online co-op bomb defusal game.</strong> You need exactly two friends, a Steam account, and the free Demo. Your first 2-3 bombs will probably explode — that is completely normal. <strong>Communication is a skill that builds with practice.</strong> The average team succeeds on their 3rd or 4th attempt.</BlufBox>
+      
+      <PageTitle highlight="How to Play">How to Play BOMBANANA!: Your First Session</PageTitle>
+<BlufBox title="At a Glance"><strong>BOMBANANA! is a 3-player online co-op bomb defusal game.</strong> You need exactly two friends, a Steam account, and the free Demo. Your first 2-3 bombs will probably explode — that is completely normal. <strong>Communication is a skill that builds with practice.</strong> The average team succeeds on their 3rd or 4th attempt.</BlufBox>
 
       <GuideH2>Before You Launch</GuideH2>
       <GuideH3>System Check (All 3 Players)</GuideH3>

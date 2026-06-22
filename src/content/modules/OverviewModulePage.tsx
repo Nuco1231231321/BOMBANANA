@@ -1,3 +1,4 @@
+import { PageTitle } from "@/components/guide/PageTitle";
 import { PageHero } from "@/components/guide/PageHero";
 import { ArticleImage } from "@/components/guide/ArticleMedia";
 import { BlufBox, RelatedGuides, TipBox, GuideH2, GuideH3, GuideP, GuideList } from "@/components/guide/GuideBlocks";
@@ -21,7 +22,9 @@ export default function OverviewModulePage() {
   return (
     <>
       <PageHero src="/images/screenshots/ss_858b009c283bfaac07f526309cb8a68c0c284278.thumb.jpg" alt="BOMBANANA! Modules Overview" />
-      <BlufBox title="At a Glance"><strong>BOMBANANA! is built around a three-player co-op setup where each role has different limits.</strong> Modules are not just puzzles — they are coordination problems. One player touches the bomb, another reads the manual, and another bridges information into action. The Demo's four module types are the foundation. Once you learn them, the full game's added complexity becomes a matter of scale.</BlufBox>
+      
+      <PageTitle highlight="Modules">BOMBANANA! Bomb Modules Overview</PageTitle>
+<BlufBox title="At a Glance"><strong>BOMBANANA! is built around a three-player co-op setup where each role has different limits.</strong> Modules are not just puzzles — they are coordination problems. One player touches the bomb, another reads the manual, and another bridges information into action. The Demo's four module types are the foundation. Once you learn them, the full game's added complexity becomes a matter of scale.</BlufBox>
 
       <GuideH2>What a Module Is</GuideH2>
       <GuideP>A module is a self-contained puzzle attached to the bomb. It has its own visual cues, its own logic, and its own way of punishing mistakes. Solving one module does not automatically solve the rest of the bomb — your team must treat every module as a separate task inside one shared timer. That structure is what makes the game tense. You are not only solving puzzles — you are deciding who should read, who should remember, who should communicate, and who should act.</GuideP>

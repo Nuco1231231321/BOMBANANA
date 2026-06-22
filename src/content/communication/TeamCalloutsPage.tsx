@@ -1,3 +1,4 @@
+import { PageTitle } from "@/components/guide/PageTitle";
 import { PageHero } from "@/components/guide/PageHero";
 import { BlufBox, RelatedGuides, TipBox, GuideH2, GuideList } from "@/components/guide/GuideBlocks";
 
@@ -50,7 +51,9 @@ export default function TeamCalloutsPage() {
   return (
     <>
       <PageHero src="/images/screenshots/ss_353f30e2c12b406ab6f48642e6c21b2c5ffe1d72.thumb.jpg" alt="BOMBANANA! Team Communication" />
-      <BlufBox title="At a Glance"><strong>Standardized callouts eliminate ambiguity.</strong> In high-pressure situations, people revert to habit. Pre-agreed phrases mean you don't waste mental energy constructing sentences — you just say the words you've practiced. This is the same principle used by pilots, surgeons, and military teams.</BlufBox>
+      
+      <PageTitle highlight="Team Callouts">BOMBANANA! Team Callouts: Standard Communication Phrases</PageTitle>
+<BlufBox title="At a Glance"><strong>Standardized callouts eliminate ambiguity.</strong> In high-pressure situations, people revert to habit. Pre-agreed phrases mean you don't waste mental energy constructing sentences — you just say the words you've practiced. This is the same principle used by pilots, surgeons, and military teams.</BlufBox>
 
       <GuideH2>Deaf Monkey Callouts</GuideH2>
       <GuideList items={deafCallouts} />

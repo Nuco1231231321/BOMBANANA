@@ -1,3 +1,4 @@
+import { PageTitle } from "@/components/guide/PageTitle";
 import { PageHero } from "@/components/guide/PageHero";
 import { ArticleImage } from "@/components/guide/ArticleMedia";
 import { BlufBox, ActionTable, RelatedGuides, TipBox, WarningBox, GuideH2, GuideH3, GuideP, GuideList } from "@/components/guide/GuideBlocks";
@@ -29,7 +30,9 @@ export default function BlindMonkeyPage() {
   return (
     <>
       <PageHero src="/images/screenshots/ss_858b009c283bfaac07f526309cb8a68c0c284278.thumb.jpg" alt="BOMBANANA! Blind Monkey — See No Evil" />
-      <BlufBox title="At a Glance"><strong>The Blind Monkey is the only character who physically touches the bomb.</strong> You see nothing but grainy grayscale outlines — no colors, no text, no labels. You hear the Deaf's instructions and speak to confirm them. <strong>Never act without the Deaf saying "Confirmed."</strong> The 3-step loop (listen → repeat → execute) is your lifeline.</BlufBox>
+      
+      <PageTitle highlight="Blind Monkey">Blind Monkey Guide: See No Evil, Defuse Everything</PageTitle>
+<BlufBox title="At a Glance"><strong>The Blind Monkey is the only character who physically touches the bomb.</strong> You see nothing but grainy grayscale outlines — no colors, no text, no labels. You hear the Deaf's instructions and speak to confirm them. <strong>Never act without the Deaf saying "Confirmed."</strong> The 3-step loop (listen → repeat → execute) is your lifeline.</BlufBox>
 
       <GuideH2>Your Role: See No Evil</GuideH2>
       <GuideP>The Blind Monkey is the hands of the operation. Every wire cut, every button pressed, every switch flipped — that is you. But your eyes tell you almost nothing. The bomb appears as a blur of gray shapes. Wires look identical. Screens are unreadable. You are entirely dependent on your Deaf teammate's voice.</GuideP>

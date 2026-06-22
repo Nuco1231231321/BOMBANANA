@@ -1,3 +1,4 @@
+import { PageTitle } from "@/components/guide/PageTitle";
 import { PageHero } from "@/components/guide/PageHero";
 import { ArticleImage } from "@/components/guide/ArticleMedia";
 import { BlufBox, RelatedGuides, TipBox, WarningBox, GuideH2, GuideH3, GuideP, GuideList } from "@/components/guide/GuideBlocks";
@@ -21,7 +22,9 @@ export default function SymbolsModulePage() {
   return (
     <>
       <PageHero src="/images/screenshots/ss_71217070b739545c452accf9e600c6ca72832e64.thumb.jpg" alt="BOMBANANA! Symbols Module — Match Glyphs, Clean Callouts" />
-      <BlufBox title="At a Glance"><strong>Symbols modules are visual matching puzzles.</strong> The challenge comes from identifying similar-looking glyphs, remembering their order, and describing them in a way your teammates instantly understand. In BOMBANANA!, this makes Symbols one of the most communication-heavy puzzle types. A good symbol callout system saves more time than raw memory ever will.</BlufBox>
+      
+      <PageTitle highlight="Symbols Module">Symbols Module Guide: Match Glyphs, Clean Callouts</PageTitle>
+<BlufBox title="At a Glance"><strong>Symbols modules are visual matching puzzles.</strong> The challenge comes from identifying similar-looking glyphs, remembering their order, and describing them in a way your teammates instantly understand. In BOMBANANA!, this makes Symbols one of the most communication-heavy puzzle types. A good symbol callout system saves more time than raw memory ever will.</BlufBox>
 
       <GuideH2>How the Symbols Module Works</GuideH2>
       <GuideP>The module presents several glyphs or icon-like shapes that must be matched, interpreted, or selected in the correct order. Because many symbols can look similar, the team needs a stable naming system before the round becomes chaotic. The difficulty is not just visual — it is linguistic. If one player says "the star thing," another says "the fork," and a third says "the top-left one," the team is already losing time.</GuideP>

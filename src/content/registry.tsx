@@ -1,0 +1,46 @@
+/**
+ * Content Registry — maps [slug] to React components with full layout control.
+ * Each component can freely embed images, callouts, tables, tips.
+ */
+import type { FC } from "react";
+
+/* ── Module pages ── */
+import WireModulePage from "./modules/WireModulePage";
+import ButtonModulePage from "./modules/ButtonModulePage";
+import SwitchModulePage from "./modules/SwitchModulePage";
+import SymbolsModulePage from "./modules/SymbolsModulePage";
+
+/* ── Beginner sub-pages ── */
+import HowToPlayPage from "./beginners/HowToPlayPage";
+import FirstSessionChecklistPage from "./beginners/FirstSessionChecklistPage";
+import BeginnerMistakesPage from "./beginners/BeginnerMistakesPage";
+
+/* ── Communication sub-pages ── */
+import TeamCalloutsPage from "./communication/TeamCalloutsPage";
+import VoiceChatSettingsPage from "./communication/VoiceChatSettingsPage";
+import CommunicationChainPage from "./communication/CommunicationChainPage";
+
+type RegistryMap = Record<string, Record<string, FC>>;
+
+export const CONTENT_REGISTRY: RegistryMap = {
+  modules: {
+    "wire-module": WireModulePage,
+    "button-module": ButtonModulePage,
+    "switch-module": SwitchModulePage,
+    "symbols-module": SymbolsModulePage,
+  },
+  beginners: {
+    "how-to-play": HowToPlayPage,
+    "first-session-checklist": FirstSessionChecklistPage,
+    "beginner-mistakes": BeginnerMistakesPage,
+  },
+  communication: {
+    "team-callouts": TeamCalloutsPage,
+    "voice-chat-settings": VoiceChatSettingsPage,
+    "communication-chain": CommunicationChainPage,
+  },
+};
+
+export function getContentComponent(section: string, slug: string): FC | null {
+  return CONTENT_REGISTRY[section]?.[slug] ?? null;
+}

@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Inter, Roboto_Mono } from "next/font/google";
+import Script from "next/script";
 import { SiteJsonLd } from "@/components/layout/JsonLd";
 import "./globals.css";
 
@@ -16,6 +17,8 @@ const robotoMono = Roboto_Mono({
   display: "swap",
   weight: ["400"],
 });
+
+const GA_MEASUREMENT_ID = "G-GW4NH81201";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://bombanana.online"),
@@ -53,6 +56,9 @@ export const metadata: Metadata = {
     apple: [{ url: "/apple-touch-icon.png", sizes: "180x180", type: "image/png" }],
   },
   manifest: "/site.webmanifest",
+  verification: {
+    google: "YnhBaJq08Uuwd0KD4EgBrFeSuYjanoYxTuET_8S65hU",
+  },
   robots: {
     index: true,
     follow: true,
@@ -68,6 +74,18 @@ export default function RootLayout({
     <html lang="en" className={`${inter.variable} ${robotoMono.variable}`}>
       <body className="min-h-screen bg-[var(--color-cream-paper)] text-[var(--color-forest-ink)] antialiased">
         <SiteJsonLd />
+        <Script
+          src={`https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`}
+          strategy="afterInteractive"
+        />
+        <Script id="google-analytics" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){window.dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', '${GA_MEASUREMENT_ID}');
+          `}
+        </Script>
         {children}
       </body>
     </html>

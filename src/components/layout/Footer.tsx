@@ -1,189 +1,158 @@
-import Link from "next/link";
 import { Banana, Github, MessageCircle, Rss } from "lucide-react";
-import { getNav, type Locale } from "@/lib/i18n";
+import { useTranslations } from "next-intl";
+import { Link } from "@/i18n/navigation";
+import type { Locale } from "@/i18n/routing";
 
 interface FooterProps {
   locale?: Locale;
 }
 
-type NavKey = "roles" | "modules" | "levels" | "beginners" | "communication" | "freeMode" | "news" | "faq" | "troubleshooting";
+const GUIDE_LINKS = [
+  { href: "/roles", key: "roles", translated: false },
+  { href: "/modules", key: "modules", translated: false },
+  { href: "/beginners", key: "beginners", translated: false },
+  { href: "/manual", key: "manual", translated: false },
+] as const;
 
-interface FooterLinkItem {
-  href: string;
-  key?: NavKey;
-  label?: string;
-}
+const COMMUNITY_LINKS = [
+  { href: "/communication", key: "communication", translated: false },
+  { href: "/free-mode", key: "freeMode", translated: false },
+  { href: "/faq", key: "faq", translated: false },
+  { href: "/troubleshooting", key: "troubleshooting", translated: false },
+] as const;
 
-interface FooterSection {
-  en: string;
-  zh: string;
-  ja: string;
-  items: FooterLinkItem[];
-}
-
-const FOOTER_LINKS: Record<string, FooterSection> = {
-  guides: {
-    en: "Guides",
-    zh: "攻略",
-    ja: "ガイド",
-    items: [
-      { href: "/roles", key: "roles" },
-      { href: "/modules", key: "modules" },
-      { href: "/levels", key: "levels" },
-      { href: "/beginners", key: "beginners" },
-    ],
+const RESOURCE_LINKS = [
+  {
+    href: "https://store.steampowered.com/app/4747510/BOMBANANA_Demo/",
+    label: "Steam Demo",
   },
-  community: {
-    en: "Community",
-    zh: "社区",
-    ja: "コミュニティ",
-    items: [
-      { href: "/communication", key: "communication" },
-      { href: "/free-mode", key: "freeMode" },
-      { href: "/faq", key: "faq" },
-      { href: "/troubleshooting", key: "troubleshooting" },
-    ],
+  {
+    href: "https://store.steampowered.com/app/4656000/BOMBANANA/",
+    label: "Steam Full Game",
   },
-  resources: {
-    en: "Resources",
-    zh: "资源",
-    ja: "リソース",
-    items: [
-      { href: "https://store.steampowered.com/app/4747510/BOMBANANA_Demo/", label: "Steam Demo" },
-      { href: "https://store.steampowered.com/app/4656000/BOMBANANA/", label: "Steam Full Game" },
-      { href: "https://store.steampowered.com/search/?developer=Lefto%20Studio", label: "Developer" },
-    ],
+  {
+    href: "https://store.steampowered.com/search/?developer=Lefto%20Studio",
+    label: "Developer",
   },
-};
+] as const;
 
 export default function Footer({ locale = "en" }: FooterProps) {
-  const nav = getNav(locale);
+  const nav = useTranslations("nav");
+  const common = useTranslations("common");
 
   return (
-    <footer className="bg-[var(--color-surface-dark)] text-[var(--color-cream-paper)] mt-32">
-      {/* Main footer */}
+    <footer className="mt-32 bg-[var(--color-surface-dark)] text-[var(--color-cream-paper)]">
       <div className="container-page py-16">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-10">
-          {/* ── Brand Column ── */}
+        <div className="grid grid-cols-1 gap-10 sm:grid-cols-2 lg:grid-cols-5">
           <div className="lg:col-span-2">
-            <Link href="/" className="inline-flex items-center gap-2 mb-4 group">
-              <span className="flex items-center justify-center w-10 h-10 rounded-xl bg-[var(--color-banana-yellow)] text-[var(--color-forest-ink)] group-hover:scale-110 transition-transform">
-                <Banana className="w-6 h-6" />
+            <Link href={"/" as never} locale={locale} className="group mb-4 inline-flex items-center gap-2">
+              <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-[var(--color-banana-yellow)] text-[var(--color-forest-ink)] transition-transform group-hover:scale-110">
+                <Banana className="h-6 w-6" />
               </span>
-              <span className="font-bold text-xl text-[var(--color-cream-paper)] tracking-tight">
+              <span className="text-xl font-bold tracking-tight text-[var(--color-cream-paper)]">
                 BOMBANANA!
               </span>
             </Link>
-            <p className="text-sm text-[var(--color-pencil-gray)] max-w-xs leading-relaxed mt-3">
-              {locale === "zh"
-                ? "BOMBANANA! 最全面的中文攻略站。三只猴子的拆弹冒险 — 盲猴、聋猴、哑猴的终极合作指南。"
-                : locale === "ja"
-                  ? "BOMBANANA! の完全攻略ガイド。3匹の猿による爆弾解除 — 見ざる、言わざる、聞かざるの究極協力プレイ。"
-                  : "The ultimate guide for BOMBANANA! Master the art of bomb defusal with your three-monkey crew — blind, deaf, and mute chaos."}
+            <p className="mt-3 max-w-xs text-sm leading-relaxed text-[var(--color-pencil-gray)]">
+              {common("brandDescription")}
             </p>
           </div>
 
-          {/* ── Guides ── */}
-          <div>
-            <h4 className="font-semibold text-sm mb-4 text-[var(--color-cream-paper)] uppercase tracking-wider">
-              {FOOTER_LINKS.guides[locale] || FOOTER_LINKS.guides.en}
-            </h4>
-            <ul className="space-y-2.5">
-              {FOOTER_LINKS.guides.items.map((item) => (
-                <li key={item.href}>
-                  <Link
-                    href={item.href}
-                    className="text-sm text-[var(--color-pencil-gray)] hover:text-[var(--color-banana-yellow)] transition-colors"
-                  >
-                    {item.key ? nav[item.key] : item.label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
+          <FooterColumn title={common("guides")}>
+            {GUIDE_LINKS.map((item) => (
+              <li key={item.href}>
+                <Link
+                  href={item.href as never}
+                  locale={item.translated ? locale : "en"}
+                  className="text-sm text-[var(--color-pencil-gray)] transition-colors hover:text-[var(--color-banana-yellow)]"
+                >
+                  {nav(item.key)}
+                </Link>
+              </li>
+            ))}
+          </FooterColumn>
 
-          {/* ── Community ── */}
-          <div>
-            <h4 className="font-semibold text-sm mb-4 text-[var(--color-cream-paper)] uppercase tracking-wider">
-              {FOOTER_LINKS.community[locale] || FOOTER_LINKS.community.en}
-            </h4>
-            <ul className="space-y-2.5">
-              {FOOTER_LINKS.community.items.map((item) => (
-                <li key={item.href}>
-                  <Link
-                    href={item.href}
-                    className="text-sm text-[var(--color-pencil-gray)] hover:text-[var(--color-banana-yellow)] transition-colors"
-                  >
-                    {item.key ? nav[item.key] : item.label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
+          <FooterColumn title={common("community")}>
+            {COMMUNITY_LINKS.map((item) => (
+              <li key={item.href}>
+                <Link
+                  href={item.href as never}
+                  locale={item.translated ? locale : "en"}
+                  className="text-sm text-[var(--color-pencil-gray)] transition-colors hover:text-[var(--color-banana-yellow)]"
+                >
+                  {nav(item.key)}
+                </Link>
+              </li>
+            ))}
+          </FooterColumn>
 
-          {/* ── Resources ── */}
-          <div>
-            <h4 className="font-semibold text-sm mb-4 text-[var(--color-cream-paper)] uppercase tracking-wider">
-              {FOOTER_LINKS.resources[locale] || FOOTER_LINKS.resources.en}
-            </h4>
-            <ul className="space-y-2.5">
-              {FOOTER_LINKS.resources.items.map((item) => (
-                <li key={item.href}>
-                  <a
-                    href={item.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-sm text-[var(--color-pencil-gray)] hover:text-[var(--color-banana-yellow)] transition-colors"
-                  >
-                    {item.label}
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </div>
+          <FooterColumn title={common("resources")}>
+            {RESOURCE_LINKS.map((item) => (
+              <li key={item.href}>
+                <a
+                  href={item.href as never}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-sm text-[var(--color-pencil-gray)] transition-colors hover:text-[var(--color-banana-yellow)]"
+                >
+                  {item.label}
+                </a>
+              </li>
+            ))}
+          </FooterColumn>
         </div>
       </div>
 
-      {/* ── Bottom bar ── */}
       <div className="border-t border-[rgba(255,255,255,0.08)]">
-        <div className="container-page py-6 flex flex-col sm:flex-row items-center justify-between gap-4">
+        <div className="container-page flex flex-col items-center justify-between gap-4 py-6 sm:flex-row">
           <p className="text-xs text-[var(--color-pencil-gray)]">
             &copy; {new Date().getFullYear()} BOMBANANA! Guide.{" "}
-            <span className="opacity-60">
-              {locale === "zh"
-                ? "独立的粉丝攻略站，与 Lefto Studio 无关。"
-                : locale === "ja"
-                  ? "Lefto Studio非公式のファンガイドです。"
-                  : "An unofficial fan guide. Not affiliated with Lefto Studio."}
-            </span>
+            <span className="opacity-60">{common("unofficial")}</span>
           </p>
           <div className="flex items-center gap-4">
             <a
               href="https://github.com/Nuco1231231321/BOMBANANA"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-[var(--color-pencil-gray)] hover:text-[var(--color-banana-yellow)] transition-colors"
+              className="text-[var(--color-pencil-gray)] transition-colors hover:text-[var(--color-banana-yellow)]"
               aria-label="GitHub"
             >
-              <Github className="w-4 h-4" />
+              <Github className="h-4 w-4" />
             </a>
             <a
               href="#"
-              className="text-[var(--color-pencil-gray)] hover:text-[var(--color-banana-yellow)] transition-colors"
+              className="text-[var(--color-pencil-gray)] transition-colors hover:text-[var(--color-banana-yellow)]"
               aria-label="Discord"
             >
-              <MessageCircle className="w-4 h-4" />
+              <MessageCircle className="h-4 w-4" />
             </a>
             <a
               href="#"
-              className="text-[var(--color-pencil-gray)] hover:text-[var(--color-banana-yellow)] transition-colors"
+              className="text-[var(--color-pencil-gray)] transition-colors hover:text-[var(--color-banana-yellow)]"
               aria-label="RSS Feed"
             >
-              <Rss className="w-4 h-4" />
+              <Rss className="h-4 w-4" />
             </a>
           </div>
         </div>
       </div>
     </footer>
+  );
+}
+
+function FooterColumn({
+  title,
+  children,
+}: {
+  title: string;
+  children: React.ReactNode;
+}) {
+  return (
+    <div>
+      <h4 className="mb-4 text-sm font-semibold uppercase tracking-wider text-[var(--color-cream-paper)]">
+        {title}
+      </h4>
+      <ul className="space-y-2.5">{children}</ul>
+    </div>
   );
 }

@@ -1,0 +1,29 @@
+{
+  "nav": {
+    "home": "Home",
+    "roles": "Roles",
+    "modules": "Modules",
+    "levels": "Levels",
+    "communication": "Communication",
+    "freeMode": "Free Mode",
+    "beginners": "Beginner's Guide",
+    "faq": "FAQ",
+    "troubleshooting": "Troubleshooting",
+    "updates": "Updates",
+    "manual": "Manual",
+    "demo": "Demo",
+    "releaseDate": "Release"
+  },
+  "common": {
+    "start": "Start",
+    "getStarted": "Get Started",
+    "switchLanguage": "Switch language",
+    "guides": "Guides",
+    "community": "Community",
+    "resources": "Resources",
+    "brandDescription": "The ultimate guide for BOMBANANA! Master bomb defusal with your three-monkey crew: blind, deaf, and mute.",
+    "unofficial": "An unofficial fan guide. Not affiliated with Lefto Studio.",
+    "portuguese": "Português",
+    "english": "English"
+  }
+}

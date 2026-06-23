@@ -1,7 +1,7 @@
 import ContentLayout from "@/components/layout/ContentLayout";
 import { LinkCard } from "@/components/ui/Card";
 import { TaglineBadge } from "@/components/ui/TaglineBadge";
-import { Puzzle, Bomb } from "lucide-react";
+import { Puzzle, Bomb, BookOpenCheck } from "lucide-react";
 
 export const metadata = {
   title: "BOMBANANA! Bomb Modules Guide — Wire, Button, Switch, and Symbol Puzzles",
@@ -26,6 +26,13 @@ export default function ModulesPage() {
       </header>
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 mb-10">
         {MODULES.map((m) => <LinkCard key={m.slug} title={m.title} description={m.description} href={`/modules/${m.slug}`} accent="cream" icon={<Puzzle className="w-5 h-5" />} />)}
+        <LinkCard
+          title="Manual Guide"
+          description="Learn how Mute reads rules, Deaf relays, and Blind executes safely."
+          href="/manual"
+          accent="mint"
+          icon={<BookOpenCheck className="w-5 h-5" />}
+        />
       </div>
       <div className="rounded-xl border border-[var(--color-pencil-gray)] p-8 text-center">
         <Bomb className="w-8 h-8 text-[var(--color-banana-yellow)] mx-auto mb-3" />

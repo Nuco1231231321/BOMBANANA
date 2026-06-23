@@ -1,30 +1,37 @@
 "use client";
 
-import { useState, useEffect } from "react";
-import Link from "next/link";
-import { Menu, X, Banana, Globe } from "lucide-react";
+import { useEffect, useState } from "react";
+import { Banana, Globe, Menu, X } from "lucide-react";
+import { useLocale, useTranslations } from "next-intl";
+import { Link, usePathname } from "@/i18n/navigation";
+import type { Locale } from "@/i18n/routing";
 import { cn } from "@/lib/utils";
-import { getNav, type Locale } from "@/lib/i18n";
 
 interface HeaderProps {
   locale?: Locale;
 }
 
 const NAV_ITEMS = [
-  { href: "/roles", key: "roles" as const },
-  { href: "/modules", key: "modules" as const },
-  { href: "/beginners", key: "beginners" as const },
-  { href: "/communication", key: "communication" as const },
-  { href: "/free-mode", key: "freeMode" as const },
-  { href: "/levels", key: "levels" as const },
-  { href: "/faq", key: "faq" as const },
-  { href: "/troubleshooting", key: "troubleshooting" as const },
-];
+  { href: "/roles", key: "roles", translated: false },
+  { href: "/modules", key: "modules", translated: false },
+  { href: "/beginners", key: "beginners", translated: false },
+  { href: "/communication", key: "communication", translated: false },
+  { href: "/manual", key: "manual", translated: false },
+  { href: "/demo", key: "demo", translated: true },
+  { href: "/release-date", key: "releaseDate", translated: true },
+  { href: "/faq", key: "faq", translated: false },
+] as const;
 
-export default function Header({ locale = "en" }: HeaderProps) {
+export default function Header({ locale }: HeaderProps) {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-  const nav = getNav(locale);
+  const currentLocale = useLocale() as Locale;
+  const activeLocale = locale ?? currentLocale;
+  const pathname = usePathname();
+  const nav = useTranslations("nav");
+  const common = useTranslations("common");
+  const switchLocale: Locale = activeLocale === "pt" ? "en" : "pt";
+  const switchHref = getSwitchHref(pathname, activeLocale, switchLocale);
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 20);
@@ -32,151 +39,170 @@ export default function Header({ locale = "en" }: HeaderProps) {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // Lock body scroll when mobile menu is open
   useEffect(() => {
     document.body.style.overflow = mobileOpen ? "hidden" : "";
-    return () => { document.body.style.overflow = ""; };
+    return () => {
+      document.body.style.overflow = "";
+    };
   }, [mobileOpen]);
 
   return (
     <header
       className={cn(
-        "fixed top-0 left-0 right-0 z-50 flex justify-center px-4 pt-4 transition-all duration-300",
+        "fixed left-0 right-0 top-0 z-50 flex justify-center px-4 pt-4 transition-all duration-300",
         scrolled && "pt-2"
       )}
     >
-      {/* Floating pill nav */}
       <nav
         className={cn(
-          "flex items-center w-full max-w-[1200px] h-14 px-4",
-          "bg-[var(--color-cream-paper)]",
-          "border border-[var(--color-pencil-gray)]",
-          "rounded-2xl",
-          "shadow-[var(--shadow-nav)]",
-          "transition-all duration-300",
+          "flex h-14 w-full max-w-[1200px] items-center px-4",
+          "rounded-2xl border border-[var(--color-pencil-gray)] bg-[var(--color-cream-paper)]",
+          "shadow-[var(--shadow-nav)] transition-all duration-300",
           scrolled && "h-12 shadow-[var(--shadow-subtle-2)]"
         )}
       >
-        {/* ── Logo ── */}
         <Link
-          href="/"
-          className="flex items-center gap-2 shrink-0 mr-4 group"
+          href={"/" as never}
+          locale={activeLocale}
+          className="group mr-4 flex shrink-0 items-center gap-2"
           aria-label="BOMBANANA! Guide Home"
         >
-          <span className="flex items-center justify-center w-8 h-8 rounded-lg bg-[var(--color-banana-yellow)] text-[var(--color-forest-ink)] group-hover:scale-110 transition-transform">
-            <Banana className="w-5 h-5" />
+          <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-[var(--color-banana-yellow)] text-[var(--color-forest-ink)] transition-transform group-hover:scale-110">
+            <Banana className="h-5 w-5" />
           </span>
-          <span className="hidden sm:block font-bold text-[15px] text-[var(--color-forest-ink)] tracking-tight">
+          <span className="hidden text-[15px] font-bold tracking-tight text-[var(--color-forest-ink)] sm:block">
             BOMBANANA!
           </span>
         </Link>
 
-        {/* ── Desktop Nav Links ── */}
-        <div className="hidden lg:flex items-center justify-center flex-1 gap-1">
+        <div className="hidden flex-1 items-center justify-center gap-1 lg:flex">
           {NAV_ITEMS.map((item) => (
             <Link
               key={item.key}
-              href={item.href}
+              href={item.href as never}
+              locale={item.translated ? activeLocale : "en"}
               className={cn(
-                "px-3 py-1.5 rounded-md text-sm font-medium",
+                "rounded-md px-3 py-1.5 text-sm font-medium",
                 "text-[var(--color-forest-ink)] opacity-70",
-                "hover:opacity-100 hover:bg-[var(--color-whisper-gray)]",
-                "transition-all duration-200"
+                "transition-all duration-200 hover:bg-[var(--color-whisper-gray)] hover:opacity-100"
               )}
             >
-              {nav[item.key]}
+              {nav(item.key)}
             </Link>
           ))}
         </div>
 
-        {/* ── Right Actions ── */}
-        <div className="flex items-center gap-2 ml-auto">
-          {/* Locale switcher placeholder — ready for i18n */}
-          <button
-            className={cn(
-              "hidden sm:flex items-center gap-1.5 px-2.5 py-1.5 rounded-md",
-              "text-xs font-medium text-[var(--color-forest-ink)] opacity-60",
-              "hover:opacity-100 hover:bg-[var(--color-whisper-gray)]",
-              "transition-all duration-200"
-            )}
-            aria-label="Switch language"
-          >
-            <Globe className="w-3.5 h-3.5" />
-            <span>{locale.toUpperCase()}</span>
-          </button>
-
-          {/* CTA */}
+        <div className="ml-auto flex items-center gap-2">
           <Link
-            href="/beginners"
+            href={switchHref as never}
+            locale={switchLocale}
             className={cn(
-              "hidden sm:inline-flex items-center gap-1.5 px-4 py-1.5 rounded-md",
-              "bg-[var(--color-forest-ink)] text-[var(--color-cream-paper)]",
-              "text-sm font-medium",
-              "hover:opacity-90 transition-opacity",
-              "shadow-[var(--shadow-subtle)]"
+              "hidden items-center gap-1.5 rounded-md px-2.5 py-1.5 sm:flex",
+              "text-xs font-medium text-[var(--color-forest-ink)] opacity-60",
+              "transition-all duration-200 hover:bg-[var(--color-whisper-gray)] hover:opacity-100"
             )}
+            aria-label={common("switchLanguage")}
           >
-            {locale === "zh" ? "开始玩" : locale === "ja" ? "はじめる" : "Start"}
-            <span aria-hidden="true">→</span>
+            <Globe className="h-3.5 w-3.5" />
+            <span>{switchLocale === "pt" ? "PT-BR" : "EN"}</span>
           </Link>
 
-          {/* ── Mobile Menu Toggle ── */}
+          <Link
+            href={"/beginners" as never}
+            locale={activeLocale}
+            className={cn(
+              "hidden items-center gap-1.5 rounded-md px-4 py-1.5 sm:inline-flex",
+              "bg-[var(--color-forest-ink)] text-[var(--color-cream-paper)]",
+              "text-sm font-medium shadow-[var(--shadow-subtle)] transition-opacity hover:opacity-90"
+            )}
+          >
+            {common("start")}
+            <span aria-hidden="true">-&gt;</span>
+          </Link>
+
           <button
             onClick={() => setMobileOpen(!mobileOpen)}
-            className="lg:hidden flex items-center justify-center w-9 h-9 rounded-md hover:bg-[var(--color-whisper-gray)] transition-colors"
+            className="flex h-9 w-9 items-center justify-center rounded-md transition-colors hover:bg-[var(--color-whisper-gray)] lg:hidden"
             aria-label={mobileOpen ? "Close menu" : "Open menu"}
           >
             {mobileOpen ? (
-              <X className="w-5 h-5 text-[var(--color-forest-ink)]" />
+              <X className="h-5 w-5 text-[var(--color-forest-ink)]" />
             ) : (
-              <Menu className="w-5 h-5 text-[var(--color-forest-ink)]" />
+              <Menu className="h-5 w-5 text-[var(--color-forest-ink)]" />
             )}
           </button>
         </div>
       </nav>
 
-      {/* ── Mobile Menu Overlay ── */}
       <div
         className={cn(
-          "fixed inset-0 top-[72px] bg-[var(--color-cream-paper)] z-40 lg:hidden",
-          "flex flex-col items-center justify-start pt-12 gap-2",
+          "fixed inset-0 top-[72px] z-40 flex flex-col items-center justify-start gap-2 bg-[var(--color-cream-paper)] pt-12 lg:hidden",
           "transition-all duration-300 ease-in-out",
           mobileOpen
-            ? "opacity-100 translate-y-0"
-            : "opacity-0 -translate-y-2 pointer-events-none"
+            ? "translate-y-0 opacity-100"
+            : "pointer-events-none -translate-y-2 opacity-0"
         )}
       >
-        {NAV_ITEMS.map((item, i) => (
+          {NAV_ITEMS.map((item, index) => (
           <Link
             key={item.key}
-            href={item.href}
+            href={item.href as never}
+            locale={item.translated ? activeLocale : "en"}
             onClick={() => setMobileOpen(false)}
             className={cn(
-              "text-xl font-semibold text-[var(--color-forest-ink)] py-3 px-8",
-              "hover:bg-[var(--color-banana-yellow)] rounded-xl transition-colors",
-              "opacity-0",
+              "rounded-xl px-8 py-3 text-xl font-semibold text-[var(--color-forest-ink)]",
+              "opacity-0 transition-colors hover:bg-[var(--color-banana-yellow)]",
               mobileOpen && "animate-fade-in-up"
             )}
-            style={{ animationDelay: mobileOpen ? `${i * 60}ms` : "0ms" }}
+            style={{ animationDelay: mobileOpen ? `${index * 60}ms` : "0ms" }}
           >
-            {nav[item.key]}
+            {nav(item.key)}
           </Link>
         ))}
         <Link
-          href="/beginners"
+          href={switchHref as never}
+          locale={switchLocale}
           onClick={() => setMobileOpen(false)}
           className={cn(
-            "mt-6 inline-flex items-center gap-2 px-8 py-3 rounded-xl",
-            "bg-[var(--color-forest-ink)] text-[var(--color-cream-paper)]",
-            "text-lg font-semibold",
+            "mt-3 inline-flex items-center gap-2 rounded-xl border border-[var(--color-pencil-gray)] px-6 py-2 text-[var(--color-forest-ink)]",
             "opacity-0",
             mobileOpen && "animate-fade-in-up"
           )}
           style={{ animationDelay: mobileOpen ? `${NAV_ITEMS.length * 60}ms` : "0ms" }}
         >
-          {locale === "zh" ? "🎮 开始游戏" : locale === "ja" ? "🎮 はじめる" : "🎮 Get Started"}
+          <Globe className="h-4 w-4" />
+          {switchLocale === "pt" ? common("portuguese") : common("english")}
+        </Link>
+        <Link
+          href={"/beginners" as never}
+          locale="en"
+          onClick={() => setMobileOpen(false)}
+          className={cn(
+            "mt-6 inline-flex items-center gap-2 rounded-xl px-8 py-3",
+            "bg-[var(--color-forest-ink)] text-lg font-semibold text-[var(--color-cream-paper)]",
+            "opacity-0",
+            mobileOpen && "animate-fade-in-up"
+          )}
+          style={{ animationDelay: mobileOpen ? `${(NAV_ITEMS.length + 1) * 60}ms` : "0ms" }}
+        >
+          {common("getStarted")}
         </Link>
       </div>
     </header>
   );
+}
+
+function getSwitchHref(pathname: string, locale: Locale, targetLocale: Locale) {
+  if (targetLocale === "en") {
+    if (pathname === "/bombanana-demo") return "/demo";
+    if (pathname === "/preco-data-lancamento") return "/release-date";
+    return "/";
+  }
+
+  if (locale === "en") {
+    if (pathname === "/demo") return "/demo";
+    if (pathname === "/release-date") return "/release-date";
+  }
+
+  return "/como-jogar-bombanana";
 }

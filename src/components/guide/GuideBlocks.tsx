@@ -1,5 +1,5 @@
-import Link from "next/link";
 import type { ReactNode } from "react";
+import { Link } from "@/i18n/navigation";
 
 /* ═══════════════════════════════════════
    BLUF Box — "Bottom Line Up Front"
@@ -35,7 +35,7 @@ export function SearchAnswerPanel({ title, answer, intentRows, jumpLinks }: Sear
           <h3 className="mb-3 text-sm font-semibold text-[var(--color-forest-ink)]">What you probably searched for</h3>
           <div className="grid gap-3">
             {intentRows.map((row) => (
-              <Link key={row.query} href={row.href} className="group rounded-lg border border-[var(--color-pencil-gray)] bg-[var(--color-cream-paper)] p-3 transition-colors hover:border-[var(--color-banana-yellow)]">
+              <Link key={row.query} href={row.href as never} className="group rounded-lg border border-[var(--color-pencil-gray)] bg-[var(--color-cream-paper)] p-3 transition-colors hover:border-[var(--color-banana-yellow)]">
                 <div className="flex flex-col gap-2 sm:flex-row sm:items-start sm:justify-between">
                   <p className="text-sm font-semibold text-[var(--color-forest-ink)]">{row.query}</p>
                   {row.label && <span className="inline-flex rounded-md bg-[var(--color-banana-yellow)]/40 px-2 py-0.5 text-xs font-medium text-[var(--color-forest-ink)] w-fit">{row.label}</span>}
@@ -49,7 +49,7 @@ export function SearchAnswerPanel({ title, answer, intentRows, jumpLinks }: Sear
           <h3 className="mb-3 text-sm font-semibold text-[var(--color-forest-ink)]">Jump to</h3>
           <div className="flex flex-wrap gap-2 lg:flex-col">
             {jumpLinks.map((link) => (
-              <Link key={link.href} href={link.href} className="rounded-md border border-[var(--color-pencil-gray)] bg-[var(--color-cream-paper)] px-3 py-1.5 text-sm text-[var(--color-forest-ink)]/60 hover:text-[var(--color-forest-ink)] hover:border-[var(--color-banana-yellow)] transition-colors">{link.label}</Link>
+              <Link key={link.href} href={link.href as never} className="rounded-md border border-[var(--color-pencil-gray)] bg-[var(--color-cream-paper)] px-3 py-1.5 text-sm text-[var(--color-forest-ink)]/60 hover:text-[var(--color-forest-ink)] hover:border-[var(--color-banana-yellow)] transition-colors">{link.label}</Link>
             ))}
           </div>
         </nav>
@@ -129,7 +129,7 @@ export function RelatedGuides({ guides }: RelatedGuidesProps) {
       <h2 className="mb-4 text-xl font-bold tracking-[-0.22px] text-[var(--color-forest-ink)]">Continue Reading</h2>
       <div className="grid gap-3 sm:grid-cols-2">
         {guides.map((guide) => (
-          <Link key={guide.href} href={guide.href} className="rounded-lg border border-[var(--color-pencil-gray)] bg-[var(--color-cream-paper)] p-4 transition-colors hover:border-[var(--color-banana-yellow)]">
+          <Link key={guide.href} href={guide.href as never} className="rounded-lg border border-[var(--color-pencil-gray)] bg-[var(--color-cream-paper)] p-4 transition-colors hover:border-[var(--color-banana-yellow)]">
             <h3 className="text-sm font-semibold text-[var(--color-forest-ink)]">{guide.title}</h3>
             <p className="mt-1 text-xs leading-relaxed text-[var(--color-forest-ink)]/60">{guide.description}</p>
           </Link>

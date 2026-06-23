@@ -1,7 +1,7 @@
 import { AlertTriangle, Clock, Lightbulb, Puzzle } from "lucide-react";
 import { Button } from "@/components/ui/Button";
 import { LinkCard } from "@/components/ui/Card";
-import type { Locale } from "@/lib/i18n";
+import type { Locale } from "@/i18n/routing";
 
 interface ModulePreviewProps {
   locale?: Locale;

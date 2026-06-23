@@ -1,7 +1,7 @@
 import { Banana, Users, Zap } from "lucide-react";
 import { Button } from "@/components/ui/Button";
 import { HighlightedWord, TaglineBadge } from "@/components/ui/TaglineBadge";
-import type { Locale } from "@/lib/i18n";
+import type { Locale } from "@/i18n/routing";
 
 interface HeroProps {
   locale?: Locale;

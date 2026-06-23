@@ -1,7 +1,7 @@
 import ContentLayout from "@/components/layout/ContentLayout";
 import { TaglineBadge } from "@/components/ui/TaglineBadge";
 import { ArrowRight, EyeOff, MessageSquareOff, VolumeOff, Banana } from "lucide-react";
-import Link from "next/link";
+import { Link } from "@/i18n/navigation";
 
 const roleIcons = {
   blind: EyeOff,
@@ -98,7 +98,7 @@ export default function RolesPage() {
           return (
             <Link
               key={card.slug}
-              href={`/roles/${card.slug}`}
+              href={`/roles/${card.slug}` as never}
               className={[
                 "group relative flex min-h-[300px] flex-col overflow-hidden rounded-xl p-5 no-underline",
                 "border border-[var(--color-forest-ink)]/20 transition-all duration-200",

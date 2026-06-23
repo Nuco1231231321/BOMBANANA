@@ -1,7 +1,7 @@
 import { Banana } from "lucide-react";
 import { Button } from "@/components/ui/Button";
 import { HighlightedWord } from "@/components/ui/TaglineBadge";
-import type { Locale } from "@/lib/i18n";
+import type { Locale } from "@/i18n/routing";
 
 interface CTASectionProps {
   locale?: Locale;

@@ -1,6 +1,6 @@
 import { type ReactNode } from "react";
-import Link from "next/link";
 import { ArrowRight } from "lucide-react";
+import { Link } from "@/i18n/navigation";
 import { cn } from "@/lib/utils";
 
 type CardAccent = "cream" | "mint" | "teal" | "blush" | "yellow";
@@ -62,7 +62,7 @@ export function LinkCard({
 }: LinkCardProps) {
   return (
     <Link
-      href={href}
+      href={href as never}
       className={cn(
         "guide-card group relative block min-h-[184px] overflow-hidden rounded-lg p-5 no-underline transition-all duration-300 sm:p-6",
         "hover:-translate-y-1 hover:shadow-[var(--shadow-card)]",

@@ -1,7 +1,7 @@
 import ContentLayout from "@/components/layout/ContentLayout";
 import { LinkCard } from "@/components/ui/Card";
 import { TaglineBadge } from "@/components/ui/TaglineBadge";
-import { BadgeCheck, Banana, BookOpenCheck, ListChecks, TriangleAlert } from "lucide-react";
+import { BadgeCheck, Banana, BookOpenCheck, Download, ListChecks, TriangleAlert } from "lucide-react";
 
 export const metadata = {
   title: "BOMBANANA! Beginner Guide",
@@ -11,25 +11,39 @@ export const metadata = {
 
 const BEGINNER_GUIDES = [
   {
-    slug: "how-to-play",
+    href: "/beginners/how-to-play",
     title: "How to Play BOMBANANA!",
     description: "Learn the three-player role loop, what each monkey can do, and how a first defusal works.",
     icon: BookOpenCheck,
     accent: "cream" as const,
   },
   {
-    slug: "first-session-checklist",
+    href: "/beginners/first-session-checklist",
     title: "First Session Checklist",
     description: "A quick setup checklist for roles, voice chat, gestures, and the first practice run.",
     icon: ListChecks,
     accent: "mint" as const,
   },
   {
-    slug: "beginner-mistakes",
+    href: "/beginners/beginner-mistakes",
     title: "Beginner Mistakes",
     description: "Fix the common errors that cause early explosions: rushing, unclear gestures, and skipped confirms.",
     icon: TriangleAlert,
     accent: "blush" as const,
+  },
+  {
+    href: "/demo",
+    title: "Demo Download Guide",
+    description: "Open the Steam demo safely and avoid unconfirmed APK or third-party downloads.",
+    icon: Download,
+    accent: "yellow" as const,
+  },
+  {
+    href: "/manual",
+    title: "Manual Guide",
+    description: "Understand the Mute Monkey manual flow before moving into module-specific pages.",
+    icon: BookOpenCheck,
+    accent: "mint" as const,
   },
 ];
 
@@ -65,10 +79,10 @@ export default function BeginnersPage() {
             const Icon = guide.icon;
             return (
               <LinkCard
-                key={guide.slug}
+                key={guide.href}
                 title={guide.title}
                 description={guide.description}
-                href={`/beginners/${guide.slug}`}
+                href={guide.href}
                 accent={guide.accent}
                 icon={<Icon className="h-5 w-5" />}
               />

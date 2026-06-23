@@ -59,6 +59,14 @@ const faqSections = [
         a: "The full game is scheduled for August 2026 on Steam.",
       },
       {
+        q: "Where should I download the demo?",
+        a: "Use the Steam demo page as the safe primary source. APK or third-party downloads are not confirmed.",
+      },
+      {
+        q: "Is the price or PS5 version confirmed?",
+        a: "No. Price, PS5, and console status are not confirmed here. Use the release date page for the current status.",
+      },
+      {
         q: "Is BOMBANANA! beginner-friendly?",
         a: "The early bombs are designed to teach the basics gradually. Most teams need a few attempts to build a rhythm.",
       },

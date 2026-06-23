@@ -1,4 +1,4 @@
-import Link from "next/link";
+import { Link } from "@/i18n/navigation";
 import {
   BookOpenCheck,
   Cable,
@@ -100,7 +100,7 @@ export default function HomeGuideLinks() {
                     {group.links.map((link) => (
                       <li key={link.href}>
                         <Link
-                          href={link.href}
+                          href={link.href as never}
                           className="group flex items-center justify-between border-b border-[var(--color-whisper-gray)] py-2 text-sm font-medium text-[var(--color-forest-ink)] no-underline last:border-b-0 hover:text-[var(--color-terracotta)]"
                         >
                           <span>{link.label}</span>
@@ -129,7 +129,7 @@ export default function HomeGuideLinks() {
                 return (
                   <Link
                     key={link.href}
-                    href={link.href}
+                    href={link.href as never}
                     className="flex items-center gap-3 rounded-md border border-[var(--color-forest-ink)]/20 bg-[var(--color-cream-paper)] px-3 py-3 text-sm font-semibold text-[var(--color-forest-ink)] no-underline transition-colors hover:border-[var(--color-forest-ink)]"
                   >
                     <Icon className="h-4 w-4" />

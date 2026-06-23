@@ -1,5 +1,3 @@
-import Link from "next/link";
-
 interface ArticleImageProps { src: string; alt: string; caption: string }
 interface VideoEmbedProps { videoId: string; title: string; caption?: string }
 
@@ -31,7 +29,7 @@ export function VideoEmbed({ videoId, title, caption }: VideoEmbedProps) {
       {caption && (
         <figcaption className="border-t border-[var(--color-pencil-gray)] bg-[var(--color-cream-paper)] px-4 py-3 text-xs leading-relaxed text-[var(--color-forest-ink)]/50">
           {caption}{" "}
-          <Link href={`https://www.youtube.com/watch?v=${videoId}`} target="_blank" rel="noreferrer" className="font-medium text-[var(--color-forest-ink)] underline decoration-[var(--color-pencil-gray)] hover:decoration-[var(--color-banana-yellow)]">Watch on YouTube</Link>
+          <a href={`https://www.youtube.com/watch?v=${videoId}`} target="_blank" rel="noreferrer" className="font-medium text-[var(--color-forest-ink)] underline decoration-[var(--color-pencil-gray)] hover:decoration-[var(--color-banana-yellow)]">Watch on YouTube</a>
         </figcaption>
       )}
     </figure>

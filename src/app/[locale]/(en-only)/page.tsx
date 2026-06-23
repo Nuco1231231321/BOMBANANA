@@ -8,6 +8,7 @@ import ModulePreview from "@/components/sections/ModulePreview";
 import HomeGuideLinks from "@/components/sections/HomeGuideLinks";
 import HomeFaq from "@/components/sections/HomeFaq";
 import CTASection from "@/components/sections/CTASection";
+import type { Locale } from "@/i18n/routing";
 
 export const metadata: Metadata = {
   title: "BOMBANANA! Guide - Co-op Bomb Defusal Walkthrough",
@@ -15,25 +16,30 @@ export const metadata: Metadata = {
     "BOMBANANA! guide for co-op bomb defusal, monkey roles, bomb modules, communication, beginner routes, and walkthrough help.",
 };
 
-export default function HomePage() {
+interface Props {
+  params: Promise<{ locale: Locale }>;
+}
+
+export default async function HomePage({ params }: Props) {
+  const { locale } = await params;
+
   return (
     <>
-      <Header locale="en" />
+      <Header locale={locale} />
       <main>
-        <Hero locale="en" />
-        <RoleOverview locale="en" />
-        {/* Media Gallery — screenshots & gameplay videos */}
-        <section className="py-16 md:py-24 bg-[var(--color-cream-paper)]">
+        <Hero locale={locale} />
+        <RoleOverview locale={locale} />
+        <section className="bg-[var(--color-cream-paper)] py-16 md:py-24">
           <div className="container-page">
             <MediaGallery />
           </div>
         </section>
-        <ModulePreview locale="en" />
+        <ModulePreview locale={locale} />
         <HomeGuideLinks />
         <HomeFaq />
-        <CTASection locale="en" />
+        <CTASection locale={locale} />
       </main>
-      <Footer locale="en" />
+      <Footer locale={locale} />
     </>
   );
 }

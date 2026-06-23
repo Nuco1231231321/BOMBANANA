@@ -1,7 +1,7 @@
 import { EyeOff, MessageSquareOff, VolumeOff } from "lucide-react";
 import { Button } from "@/components/ui/Button";
 import { Card } from "@/components/ui/Card";
-import type { Locale } from "@/lib/i18n";
+import type { Locale } from "@/i18n/routing";
 
 interface RoleOverviewProps {
   locale?: Locale;

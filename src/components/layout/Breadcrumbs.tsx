@@ -1,5 +1,5 @@
-import Link from "next/link";
 import { ChevronRight, Home } from "lucide-react";
+import { Link } from "@/i18n/navigation";
 
 interface BreadcrumbItem {
   label: string;
@@ -15,7 +15,7 @@ export default function Breadcrumbs({ items }: BreadcrumbsProps) {
     <nav aria-label="Breadcrumb" className="mb-8">
       <ol className="flex flex-wrap items-center gap-1.5 text-sm">
         <li>
-          <Link href="/" className="text-[var(--color-forest-ink)] opacity-40 hover:opacity-70 transition-opacity flex items-center gap-1">
+          <Link href={"/" as never} className="text-[var(--color-forest-ink)] opacity-40 hover:opacity-70 transition-opacity flex items-center gap-1">
             <Home className="w-3.5 h-3.5" />
             <span className="sr-only">Home</span>
           </Link>
@@ -24,7 +24,7 @@ export default function Breadcrumbs({ items }: BreadcrumbsProps) {
           <li key={i} className="flex items-center gap-1.5">
             <ChevronRight className="w-3.5 h-3.5 text-[var(--color-forest-ink)] opacity-20" />
             {item.href ? (
-              <Link href={item.href} className="text-[var(--color-forest-ink)] opacity-40 hover:opacity-70 transition-opacity">
+              <Link href={item.href as never} className="text-[var(--color-forest-ink)] opacity-40 hover:opacity-70 transition-opacity">
                 {item.label}
               </Link>
             ) : (

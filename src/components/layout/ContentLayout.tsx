@@ -3,7 +3,7 @@ import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import Breadcrumbs from "@/components/layout/Breadcrumbs";
 import { cn } from "@/lib/utils";
-import type { Locale } from "@/lib/i18n";
+import type { Locale } from "@/i18n/routing";
 
 interface BreadcrumbItem { label: string; href?: string }
 

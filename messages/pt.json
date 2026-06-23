@@ -1,0 +1,29 @@
+{
+  "nav": {
+    "home": "Início",
+    "roles": "Funções",
+    "modules": "Módulos",
+    "levels": "Fases",
+    "communication": "Comunicação",
+    "freeMode": "Modo livre",
+    "beginners": "Guia inicial",
+    "faq": "FAQ",
+    "troubleshooting": "Soluções",
+    "updates": "Updates",
+    "manual": "Manual",
+    "demo": "Demo",
+    "releaseDate": "Lançamento"
+  },
+  "common": {
+    "start": "Começar",
+    "getStarted": "Começar",
+    "switchLanguage": "Trocar idioma",
+    "guides": "Guias",
+    "community": "Comunidade",
+    "resources": "Recursos",
+    "brandDescription": "Guia de BOMBANANA! para entender as funções, os módulos e a comunicação entre os três macacos.",
+    "unofficial": "Guia de fã não oficial. Sem afiliação com a Lefto Studio.",
+    "portuguese": "Português",
+    "english": "English"
+  }
+}

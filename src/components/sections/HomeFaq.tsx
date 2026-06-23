@@ -30,9 +30,9 @@ const faqs = [
       "Most failed runs come from unclear callouts, role confusion, and changing the action before the Blind Monkey confirms the instruction.",
   },
   {
-    question: "Are the module pages written as components or Markdown?",
+    question: "Where is the BOMBANANA! manual help?",
     answer:
-      "The current module, role, beginner, and communication detail pages are registered React components, giving each guide custom layout control.",
+      "Use the manual guide when you need the role flow, then jump into a specific module page when your team needs a concrete wire, switch, button, or symbol answer.",
   },
   {
     question: "Where can I find troubleshooting help?",

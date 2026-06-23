@@ -8,7 +8,7 @@ import type { Locale } from "@/i18n/routing";
 
 export interface InfoTable {
   headers: string[];
-  rows: string[][];
+  rows: ReactNode[][];
 }
 
 export interface RelatedLink {
@@ -43,7 +43,6 @@ export interface InfoArticlePageProps {
     src: string;
     alt: string;
   };
-  visualSuggestion: string;
   quickAnswerTitle: string;
   quickAnswer: ReactNode;
   table: InfoTable;
@@ -60,7 +59,6 @@ export default function InfoArticlePage({
   cta,
   updated,
   hero,
-  visualSuggestion,
   quickAnswerTitle,
   quickAnswer,
   table,
@@ -68,6 +66,8 @@ export default function InfoArticlePage({
   faqs,
   relatedLinks,
 }: InfoArticlePageProps) {
+  const pagePathLocale = locale === "pt" ? locale : undefined;
+
   return (
     <ContentLayout locale={locale} prose={false} contentClassName="max-w-[920px]">
       <PageHero src={hero.src} alt={hero.alt} />
@@ -95,7 +95,7 @@ export default function InfoArticlePage({
           ) : (
             <Link
               href={cta.href as never}
-              locale={locale}
+              locale={pagePathLocale}
               className="inline-flex items-center gap-2 rounded-md bg-[var(--color-forest-ink)] px-5 py-3 text-sm font-bold text-[var(--color-cream-paper)] transition-opacity hover:opacity-90"
             >
               {cta.label}
@@ -116,15 +116,6 @@ export default function InfoArticlePage({
         <div className="text-sm leading-7 text-[var(--color-forest-ink)]/75 [&_strong]:text-[var(--color-forest-ink)]">
           {quickAnswer}
         </div>
-      </section>
-
-      <section className="my-8 rounded-xl border border-[var(--color-pencil-gray)] bg-[var(--color-cream-paper)] p-5">
-        <h2 className="mb-3 text-xl font-bold text-[var(--color-forest-ink)]">
-          Visual asset suggestion
-        </h2>
-        <p className="text-sm leading-7 text-[var(--color-forest-ink)]/70">
-          {visualSuggestion}
-        </p>
       </section>
 
       <ArticleTable table={table} />
@@ -160,7 +151,7 @@ export default function InfoArticlePage({
               <Link
                 key={link.href}
                 href={link.href as never}
-                locale={link.locale ?? locale}
+                locale={getInfoLinkLocale(locale, link.locale)}
                 className="rounded-lg border border-[var(--color-pencil-gray)] bg-[var(--color-cream-paper)] p-4 text-sm font-semibold text-[var(--color-forest-ink)] transition-colors hover:border-[var(--color-banana-yellow)]"
               >
                 {link.label}
@@ -176,6 +167,11 @@ export default function InfoArticlePage({
       />
     </ContentLayout>
   );
+}
+
+function getInfoLinkLocale(pageLocale: Locale, linkLocale?: Locale) {
+  const targetLocale = linkLocale ?? pageLocale;
+  return targetLocale === "pt" ? targetLocale : undefined;
 }
 
 function ArticleTable({ table }: { table: InfoTable }) {
@@ -195,10 +191,10 @@ function ArticleTable({ table }: { table: InfoTable }) {
           </tr>
         </thead>
         <tbody>
-          {table.rows.map((row) => (
-            <tr key={row.join("|")} className="border-b border-[var(--color-pencil-gray)] last:border-0">
-              {row.map((cell) => (
-                <td key={cell} className="px-4 py-3 leading-6 text-[var(--color-forest-ink)]/72">
+          {table.rows.map((row, rowIndex) => (
+            <tr key={rowIndex} className="border-b border-[var(--color-pencil-gray)] last:border-0">
+              {row.map((cell, cellIndex) => (
+                <td key={cellIndex} className="px-4 py-3 leading-6 text-[var(--color-forest-ink)]/72">
                   {cell}
                 </td>
               ))}

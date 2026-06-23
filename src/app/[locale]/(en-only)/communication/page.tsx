@@ -61,6 +61,15 @@ export default function CommunicationPage() {
         </p>
       </header>
 
+      <section className="mb-8 rounded-lg border border-[var(--color-banana-yellow)] bg-[var(--color-banana-yellow)]/10 p-5">
+        <p className="mb-2 font-[family-name:var(--font-roboto-mono)] text-xs font-bold uppercase tracking-[0.12em] text-[var(--color-terracotta)]">
+          Direct answer
+        </p>
+        <p className="max-w-[760px] text-sm leading-7 text-[var(--color-forest-ink)]/72">
+          Use one relay path: Mute turns the manual rule into a small signal, Deaf speaks one clear command, and Blind repeats before touching the bomb.
+        </p>
+      </section>
+
       <section className="mb-10 rounded-xl border border-[var(--color-forest-ink)] bg-[var(--color-cream-paper)] p-5">
         <div className="mb-4 flex items-center gap-3">
           <span className="flex h-10 w-10 items-center justify-center rounded-md bg-[var(--color-banana-yellow)]/55 text-[var(--color-forest-ink)]">
@@ -91,6 +100,12 @@ export default function CommunicationPage() {
           ))}
         </div>
       </section>
+
+      <div className="mb-4">
+        <p className="font-[family-name:var(--font-roboto-mono)] text-xs font-bold uppercase tracking-[0.12em] text-[var(--color-terracotta)]">
+          Pick the communication fix
+        </p>
+      </div>
 
       <div className="grid grid-cols-1 gap-5 sm:grid-cols-3">
         {COMMUNICATION_GUIDES.map((guide) => {

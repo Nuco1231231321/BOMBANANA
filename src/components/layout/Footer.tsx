@@ -1,4 +1,4 @@
-import { Banana, Github, MessageCircle, Rss } from "lucide-react";
+import { Banana, Github } from "lucide-react";
 import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
 import type { Locale } from "@/i18n/routing";
@@ -39,13 +39,14 @@ const RESOURCE_LINKS = [
 export default function Footer({ locale = "en" }: FooterProps) {
   const nav = useTranslations("nav");
   const common = useTranslations("common");
+  const footerPathLocale = locale === "pt" ? locale : undefined;
 
   return (
     <footer className="mt-32 bg-[var(--color-surface-dark)] text-[var(--color-cream-paper)]">
       <div className="container-page py-16">
         <div className="grid grid-cols-1 gap-10 sm:grid-cols-2 lg:grid-cols-5">
           <div className="lg:col-span-2">
-            <Link href={"/" as never} locale={locale} className="group mb-4 inline-flex items-center gap-2">
+            <Link href={"/" as never} locale={footerPathLocale} className="group mb-4 inline-flex items-center gap-2">
               <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-[var(--color-banana-yellow)] text-[var(--color-forest-ink)] transition-transform group-hover:scale-110">
                 <Banana className="h-6 w-6" />
               </span>
@@ -63,7 +64,7 @@ export default function Footer({ locale = "en" }: FooterProps) {
               <li key={item.href}>
                 <Link
                   href={item.href as never}
-                  locale={item.translated ? locale : "en"}
+                  locale={item.translated ? footerPathLocale : undefined}
                   className="text-sm text-[var(--color-pencil-gray)] transition-colors hover:text-[var(--color-banana-yellow)]"
                 >
                   {nav(item.key)}
@@ -77,7 +78,7 @@ export default function Footer({ locale = "en" }: FooterProps) {
               <li key={item.href}>
                 <Link
                   href={item.href as never}
-                  locale={item.translated ? locale : "en"}
+                  locale={item.translated ? footerPathLocale : undefined}
                   className="text-sm text-[var(--color-pencil-gray)] transition-colors hover:text-[var(--color-banana-yellow)]"
                 >
                   {nav(item.key)}
@@ -118,20 +119,6 @@ export default function Footer({ locale = "en" }: FooterProps) {
               aria-label="GitHub"
             >
               <Github className="h-4 w-4" />
-            </a>
-            <a
-              href="#"
-              className="text-[var(--color-pencil-gray)] transition-colors hover:text-[var(--color-banana-yellow)]"
-              aria-label="Discord"
-            >
-              <MessageCircle className="h-4 w-4" />
-            </a>
-            <a
-              href="#"
-              className="text-[var(--color-pencil-gray)] transition-colors hover:text-[var(--color-banana-yellow)]"
-              aria-label="RSS Feed"
-            >
-              <Rss className="h-4 w-4" />
             </a>
           </div>
         </div>

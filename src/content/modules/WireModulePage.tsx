@@ -1,7 +1,7 @@
 import { PageTitle } from "@/components/guide/PageTitle";
 import { PageHero } from "@/components/guide/PageHero";
 import { ArticleImage } from "@/components/guide/ArticleMedia";
-import { BlufBox, ActionTable, RelatedGuides, TipBox, WarningBox, GuideH2, GuideH3, GuideP, GuideList } from "@/components/guide/GuideBlocks";
+import { BlufBox, ActionTable, RelatedGuides, TipBox, WarningBox, GuideH2, GuideP, GuideList } from "@/components/guide/GuideBlocks";
 import { FAQSection } from "@/components/guide/FAQSection";
 
 const faqs = [
@@ -25,12 +25,34 @@ const relatedGuides = [
   { title: "Team Callouts", description: "Standardized phrases for every in-game situation.", href: "/communication/team-callouts" },
 ];
 
+const solveRhythm = [
+  { label: "Read", detail: "Count wires and collect the clue before naming a target." },
+  { label: "Confirm", detail: "Repeat the exact wire position so the team agrees." },
+  { label: "Cut", detail: "The Blind player acts only after confirmation." },
+] as const;
+
 export default function WireModulePage() {
   return (
     <>
       <PageHero src="/images/screenshots/ss_2c952b65fc5734ce79f252df9f55af35b590be4a.thumb.jpg" alt="BOMBANANA! Wire Module — Read, Confirm, Cut" />
       
       <PageTitle highlight="Wire Module">Wire Module Guide: Read, Confirm, and Cut Safely</PageTitle>
+      <section
+        aria-label="Wire module fast solve rhythm"
+        className="mb-8 rounded-lg border border-[var(--color-pencil-gray)] bg-[var(--color-cream-paper)] p-4"
+      >
+        <p className="mb-3 font-[family-name:var(--font-roboto-mono)] text-xs font-bold uppercase tracking-[0.12em] text-[var(--color-terracotta)]">
+          Read -&gt; Confirm -&gt; Cut
+        </p>
+        <div className="grid gap-3 sm:grid-cols-3">
+          {solveRhythm.map((step) => (
+            <div key={step.label} className="rounded-md bg-[var(--color-whisper-gray)] px-3 py-3">
+              <p className="text-sm font-bold text-[var(--color-forest-ink)]">{step.label}</p>
+              <p className="mt-1 text-xs leading-relaxed text-[var(--color-forest-ink)]/65">{step.detail}</p>
+            </div>
+          ))}
+        </div>
+      </section>
 <BlufBox title="At a Glance"><strong>Wire modules are a counting-and-logic puzzle.</strong> The exact answer depends on what the module shows, and the safest approach is always to identify the full layout before anyone touches the bomb. For new players, this is the best first module to learn — it teaches the entire team the basic rhythm of clue reading and confirmation.</BlufBox>
 
       <GuideH2>How the Wire Module Works</GuideH2>

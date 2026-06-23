@@ -73,11 +73,6 @@ export function SiteJsonLd() {
     name: "BOMBANANA! Guide",
     url: "https://bombanana.online",
     description: "The ultimate strategy guide for BOMBANANA!, the chaotic 3-player co-op bomb defusal game.",
-    potentialAction: {
-      "@type": "SearchAction",
-      target: "https://bombanana.online/search?q={search_term_string}",
-      "query-input": "required name=search_term_string",
-    },
   };
   return (
     <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />

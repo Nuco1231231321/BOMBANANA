@@ -32,6 +32,7 @@ export default function Header({ locale }: HeaderProps) {
   const common = useTranslations("common");
   const switchLocale: Locale = activeLocale === "pt" ? "en" : "pt";
   const switchHref = getSwitchHref(pathname, activeLocale, switchLocale);
+  const activePathLocale = activeLocale === "pt" ? activeLocale : undefined;
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 20);
@@ -63,7 +64,7 @@ export default function Header({ locale }: HeaderProps) {
       >
         <Link
           href={"/" as never}
-          locale={activeLocale}
+          locale={activePathLocale}
           className="group mr-4 flex shrink-0 items-center gap-2"
           aria-label="BOMBANANA! Guide Home"
         >
@@ -80,7 +81,7 @@ export default function Header({ locale }: HeaderProps) {
             <Link
               key={item.key}
               href={item.href as never}
-              locale={item.translated ? activeLocale : "en"}
+              locale={item.translated ? activePathLocale : undefined}
               className={cn(
                 "rounded-md px-3 py-1.5 text-sm font-medium",
                 "text-[var(--color-forest-ink)] opacity-70",
@@ -109,7 +110,7 @@ export default function Header({ locale }: HeaderProps) {
 
           <Link
             href={"/beginners" as never}
-            locale={activeLocale}
+            locale={activePathLocale}
             className={cn(
               "hidden items-center gap-1.5 rounded-md px-4 py-1.5 sm:inline-flex",
               "bg-[var(--color-forest-ink)] text-[var(--color-cream-paper)]",
@@ -147,7 +148,7 @@ export default function Header({ locale }: HeaderProps) {
           <Link
             key={item.key}
             href={item.href as never}
-            locale={item.translated ? activeLocale : "en"}
+            locale={item.translated ? activePathLocale : undefined}
             onClick={() => setMobileOpen(false)}
             className={cn(
               "rounded-xl px-8 py-3 text-xl font-semibold text-[var(--color-forest-ink)]",
@@ -175,7 +176,7 @@ export default function Header({ locale }: HeaderProps) {
         </Link>
         <Link
           href={"/beginners" as never}
-          locale="en"
+          locale={activePathLocale}
           onClick={() => setMobileOpen(false)}
           className={cn(
             "mt-6 inline-flex items-center gap-2 rounded-xl px-8 py-3",

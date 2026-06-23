@@ -15,8 +15,6 @@ export const manualPage = {
     src: "/images/screenshots/ss_68f3c44625be8227496c6c017bfe847ed3c83e3d.thumb.jpg",
     alt: "BOMBANANA! bomb module interface",
   },
-  visualSuggestion:
-    "Use a module screenshot with a small annotated overlay showing Mute reads, Deaf relays, and Blind executes. Do not present it as an official PDF manual.",
   quickAnswerTitle: "Direct answer",
   quickAnswer: (
     <p>
@@ -28,10 +26,34 @@ export const manualPage = {
   table: {
     headers: ["Module type", "Who reads", "Who executes", "Failure point", "Related internal page"],
     rows: [
-      ["Wire", "Mute Monkey", "Blind Monkey", "Cutting before color/order is confirmed", "/modules/wire-module"],
-      ["Button", "Mute Monkey", "Blind Monkey", "Pressing before hold/release logic is clear", "/modules/button-module"],
-      ["Switch", "Mute Monkey", "Blind Monkey", "Losing track of current switch state", "/modules/switch-module"],
-      ["Symbols", "Mute Monkey", "Blind Monkey", "Using inconsistent names for the same symbol", "/modules/symbols-module"],
+      [
+        "Wire",
+        "Mute Monkey",
+        "Blind Monkey",
+        "Cutting before color/order is confirmed",
+        <Link key="wire-module-link" href={"/modules/wire-module" as never} className="font-semibold underline">Wire module guide</Link>,
+      ],
+      [
+        "Button",
+        "Mute Monkey",
+        "Blind Monkey",
+        "Pressing before hold/release logic is clear",
+        <Link key="button-module-link" href={"/modules/button-module" as never} className="font-semibold underline">Button module guide</Link>,
+      ],
+      [
+        "Switch",
+        "Mute Monkey",
+        "Blind Monkey",
+        "Losing track of current switch state",
+        <Link key="switch-module-link" href={"/modules/switch-module" as never} className="font-semibold underline">Switch module guide</Link>,
+      ],
+      [
+        "Symbols",
+        "Mute Monkey",
+        "Blind Monkey",
+        "Using inconsistent names for the same symbol",
+        <Link key="symbols-module-link" href={"/modules/symbols-module" as never} className="font-semibold underline">Symbols module guide</Link>,
+      ],
     ],
   },
   sections: [
@@ -144,8 +166,6 @@ export const demoPage = {
     src: "/images/ui/game-header.jpg",
     alt: "BOMBANANA! Steam header artwork",
   },
-  visualSuggestion:
-    "Use the Steam header image or demo capsule with a small safety checklist beside it: Steam first, avoid unofficial APKs, verify the developer and app page.",
   quickAnswerTitle: "Direct answer",
   quickAnswer: (
     <p>
@@ -241,8 +261,6 @@ export const releaseDatePage = {
     src: "/images/screenshots/ss_858b009c283bfaac07f526309cb8a68c0c284278.thumb.jpg",
     alt: "BOMBANANA! gameplay screenshot",
   },
-  visualSuggestion:
-    "Use a status-card graphic over a Steam screenshot: Demo, August 2026 full game, Windows, price not confirmed, console not confirmed.",
   quickAnswerTitle: "Direct answer",
   quickAnswer: (
     <p>
@@ -342,8 +360,6 @@ export const ptHowToPlayPage = {
     src: "/images/screenshots/ss_71217070b739545c452accf9e600c6ca72832e64.thumb.jpg",
     alt: "Cena de BOMBANANA! com a equipe de macacos",
   },
-  visualSuggestion:
-    "Use uma imagem dos três macacos com etiquetas simples: cego executa, surdo observa e fala, mudo lê o manual e gesticula.",
   quickAnswerTitle: "Resposta direta",
   quickAnswer: (
     <p>

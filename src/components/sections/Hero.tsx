@@ -1,4 +1,5 @@
 import { Banana, Users, Zap } from "lucide-react";
+import { Link } from "@/i18n/navigation";
 import { Button } from "@/components/ui/Button";
 import { HighlightedWord, TaglineBadge } from "@/components/ui/TaglineBadge";
 import type { Locale } from "@/i18n/routing";
@@ -11,6 +12,14 @@ const stats = [
   { label: "Role guides", value: "3", icon: Users },
   { label: "Module guides", value: "5", icon: Zap },
   { label: "Starter routes", value: "3", icon: Banana },
+] as const;
+
+const searchedLinks = [
+  { href: "/manual", label: "Manual" },
+  { href: "/modules", label: "Modules" },
+  { href: "/modules/wire-module", label: "Wire Module" },
+  { href: "/modules/switch-module", label: "Switch Module" },
+  { href: "/beginners/how-to-play", label: "How to Play" },
 ] as const;
 
 export default function Hero({ locale = "en" }: HeroProps) {
@@ -47,13 +56,33 @@ export default function Hero({ locale = "en" }: HeroProps) {
           </p>
 
           <div className="mt-8 flex flex-col items-center gap-3 sm:flex-row">
-            <Button href="/beginners" variant="primary" size="lg" arrow>
-              Start Learning
+            <Button href="/modules" variant="primary" size="lg" arrow>
+              Open Module Guides
             </Button>
-            <Button href="/modules" variant="outline" size="lg">
-              View All Modules
+            <Button href="/manual" variant="outline" size="lg">
+              Manual Guide
             </Button>
           </div>
+
+          <nav
+            aria-label="Most searched help"
+            className="mt-5 w-full max-w-[640px] rounded-lg border border-[var(--color-pencil-gray)] bg-[var(--color-cream-paper)]/75 p-3 text-left"
+          >
+            <p className="mb-2 font-[family-name:var(--font-roboto-mono)] text-xs font-bold uppercase tracking-[0.12em] text-[var(--color-terracotta)]">
+              Most searched help
+            </p>
+            <div className="flex flex-wrap gap-2">
+              {searchedLinks.map((link) => (
+                <Link
+                  key={link.href}
+                  href={link.href as never}
+                  className="inline-flex min-h-10 items-center rounded-md border border-[var(--color-pencil-gray)] bg-[var(--color-cream-paper)] px-3 py-2 text-sm font-semibold leading-tight text-[var(--color-forest-ink)] transition-colors hover:border-[var(--color-banana-yellow)]"
+                >
+                  {link.label}
+                </Link>
+              ))}
+            </div>
+          </nav>
 
           <div className="mt-12 flex flex-wrap items-center justify-center gap-6 border-t border-[var(--color-pencil-gray)] pt-8 sm:gap-10">
             {stats.map((stat) => {

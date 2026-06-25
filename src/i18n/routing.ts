@@ -29,6 +29,9 @@ export const routing = defineRouting({
       en: "/how-to-play-bombanana",
       pt: "/como-jogar-bombanana",
     },
+    "/privacy": "/privacy",
+    "/contact": "/contact",
+    "/about": "/about",
   },
 });
 

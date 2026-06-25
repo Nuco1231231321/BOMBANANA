@@ -72,6 +72,12 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className={`${inter.variable} ${robotoMono.variable}`}>
+      <head>
+        <meta
+          name="google-adsense-account"
+          content="ca-pub-3114396640600943"
+        />
+      </head>
       <body className="min-h-screen bg-[var(--color-cream-paper)] text-[var(--color-forest-ink)] antialiased">
         <SiteJsonLd />
         <Script
@@ -86,6 +92,13 @@ export default function RootLayout({
             gtag('config', '${GA_MEASUREMENT_ID}');
           `}
         </Script>
+        <Script
+          id="google-adsense"
+          async
+          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3114396640600943"
+          crossOrigin="anonymous"
+          strategy="afterInteractive"
+        />
         {children}
       </body>
     </html>

@@ -36,6 +36,12 @@ const RESOURCE_LINKS = [
   },
 ] as const;
 
+const LEGAL_LINKS = [
+  { href: "/about", label: "About" },
+  { href: "/privacy", label: "Privacy" },
+  { href: "/contact", label: "Contact" },
+] as const;
+
 export default function Footer({ locale = "en" }: FooterProps) {
   const nav = useTranslations("nav");
   const common = useTranslations("common");
@@ -87,7 +93,7 @@ export default function Footer({ locale = "en" }: FooterProps) {
             ))}
           </FooterColumn>
 
-          <FooterColumn title={common("resources")}>
+          <FooterColumn title={common("resources")}> 
             {RESOURCE_LINKS.map((item) => (
               <li key={item.href}>
                 <a
@@ -98,6 +104,19 @@ export default function Footer({ locale = "en" }: FooterProps) {
                 >
                   {item.label}
                 </a>
+              </li>
+            ))}
+          </FooterColumn>
+          <FooterColumn title="Legal">
+            {LEGAL_LINKS.map((item) => (
+              <li key={item.href}>
+                <Link
+                  href={item.href as never}
+                  locale={footerPathLocale}
+                  className="text-sm text-[var(--color-pencil-gray)] transition-colors hover:text-[var(--color-banana-yellow)]"
+                >
+                  {item.label}
+                </Link>
               </li>
             ))}
           </FooterColumn>

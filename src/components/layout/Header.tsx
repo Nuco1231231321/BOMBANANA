@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import NextLink from "next/link";
 import { Banana, Globe, Menu, X } from "lucide-react";
 import { useLocale, useTranslations } from "next-intl";
 import { Link, usePathname } from "@/i18n/navigation";
@@ -33,6 +34,7 @@ export default function Header({ locale }: HeaderProps) {
   const switchLocale: Locale = activeLocale === "pt" ? "en" : "pt";
   const switchHref = getSwitchHref(pathname, activeLocale, switchLocale);
   const activePathLocale = activeLocale === "pt" ? activeLocale : undefined;
+  const isPt = activeLocale === "pt";
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 20);
@@ -62,69 +64,59 @@ export default function Header({ locale }: HeaderProps) {
           scrolled && "h-12 bg-[var(--color-panel-cream)]/94 shadow-[var(--shadow-subtle-2)]"
         )}
       >
-        <Link
-          href={"/" as never}
-          locale={activePathLocale}
-          className="group mr-4 flex shrink-0 items-center gap-2"
-          aria-label="BOMBANANA! Guide Home"
-        >
+        <BrandLink isPt={isPt}>
           <span className="flex h-8 w-8 items-center justify-center rounded-lg border border-[var(--color-forest-ink)]/10 bg-[var(--color-banana-yellow)] text-[var(--color-forest-ink)] shadow-[var(--shadow-subtle)] transition-transform group-hover:scale-110">
             <Banana className="h-5 w-5" />
           </span>
           <span className="hidden text-[15px] font-bold tracking-tight text-[var(--color-forest-ink)] sm:block">
             BOMBANANA!
           </span>
-        </Link>
+        </BrandLink>
 
         <div className="hidden flex-1 items-center justify-center gap-1 lg:flex">
           {NAV_ITEMS.map((item) => {
             const isActive = pathname === item.href || pathname.startsWith(`${item.href}/`);
 
-            return (
+            const className = cn(
+              "rounded-lg px-3 py-1.5 text-sm font-semibold",
+              "text-[var(--color-forest-ink)]/68",
+              "transition-all duration-200 hover:bg-[var(--color-banana-yellow)]/35 hover:text-[var(--color-forest-ink)]",
+              isActive && "bg-[var(--color-forest-ink)] text-[var(--color-cream-paper)] hover:bg-[var(--color-forest-ink)] hover:text-[var(--color-cream-paper)]"
+            );
+
+            return item.translated ? (
               <Link
                 key={item.key}
                 href={item.href as never}
-                locale={item.translated ? activePathLocale : undefined}
-                className={cn(
-                  "rounded-lg px-3 py-1.5 text-sm font-semibold",
-                  "text-[var(--color-forest-ink)]/68",
-                  "transition-all duration-200 hover:bg-[var(--color-banana-yellow)]/35 hover:text-[var(--color-forest-ink)]",
-                  isActive && "bg-[var(--color-forest-ink)] text-[var(--color-cream-paper)] hover:bg-[var(--color-forest-ink)] hover:text-[var(--color-cream-paper)]"
-                )}
+                locale={activePathLocale}
+                className={className}
               >
                 {nav(item.key)}
               </Link>
+            ) : (
+              <NextLink key={item.key} href={item.href} className={className}>
+                {nav(item.key)}
+              </NextLink>
             );
           })}
         </div>
 
         <div className="ml-auto flex items-center gap-2">
-          <Link
-            href={switchHref as never}
+          <LanguageSwitchLink
+            href={switchHref}
             locale={switchLocale}
+            ariaLabel={common("switchLanguage")}
             className={cn(
               "hidden items-center gap-1.5 rounded-lg px-2.5 py-1.5 sm:flex",
               "text-xs font-semibold text-[var(--color-forest-ink)]/58",
               "transition-all duration-200 hover:bg-[var(--color-banana-yellow)]/30 hover:text-[var(--color-forest-ink)]"
             )}
-            aria-label={common("switchLanguage")}
           >
             <Globe className="h-3.5 w-3.5" />
             <span>{switchLocale === "pt" ? "PT-BR" : "EN"}</span>
-          </Link>
+          </LanguageSwitchLink>
 
-          <Link
-            href={"/beginners" as never}
-            locale={activePathLocale}
-            className={cn(
-              "hidden items-center gap-1.5 rounded-lg px-4 py-1.5 sm:inline-flex",
-              "bg-[var(--color-forest-ink)] text-[var(--color-cream-paper)]",
-              "text-sm font-bold shadow-[var(--shadow-subtle)] transition-all hover:-translate-y-0.5 hover:bg-[var(--color-terracotta)]"
-            )}
-          >
-            {common("start")}
-            <span aria-hidden="true">-&gt;</span>
-          </Link>
+          <StartLink isPt={isPt} label={common("start")} />
 
           <button
             onClick={() => setMobileOpen(!mobileOpen)}
@@ -150,23 +142,39 @@ export default function Header({ locale }: HeaderProps) {
         )}
       >
           {NAV_ITEMS.map((item, index) => (
-          <Link
-            key={item.key}
-            href={item.href as never}
-            locale={item.translated ? activePathLocale : undefined}
-            onClick={() => setMobileOpen(false)}
-            className={cn(
+          item.translated ? (
+            <Link
+              key={item.key}
+              href={item.href as never}
+              locale={activePathLocale}
+              onClick={() => setMobileOpen(false)}
+              className={cn(
+                "rounded-xl px-8 py-3 text-xl font-semibold text-[var(--color-forest-ink)]",
+                "opacity-0 transition-colors hover:bg-[var(--color-banana-yellow)]",
+                mobileOpen && "animate-fade-in-up"
+              )}
+              style={{ animationDelay: mobileOpen ? `${index * 60}ms` : "0ms" }}
+            >
+              {nav(item.key)}
+            </Link>
+          ) : (
+            <NextLink
+              key={item.key}
+              href={item.href}
+              onClick={() => setMobileOpen(false)}
+              className={cn(
               "rounded-xl px-8 py-3 text-xl font-semibold text-[var(--color-forest-ink)]",
               "opacity-0 transition-colors hover:bg-[var(--color-banana-yellow)]",
               mobileOpen && "animate-fade-in-up"
-            )}
-            style={{ animationDelay: mobileOpen ? `${index * 60}ms` : "0ms" }}
-          >
-            {nav(item.key)}
-          </Link>
+              )}
+              style={{ animationDelay: mobileOpen ? `${index * 60}ms` : "0ms" }}
+            >
+              {nav(item.key)}
+            </NextLink>
+          )
         ))}
-        <Link
-          href={switchHref as never}
+        <LanguageSwitchLink
+          href={switchHref}
           locale={switchLocale}
           onClick={() => setMobileOpen(false)}
           className={cn(
@@ -178,10 +186,10 @@ export default function Header({ locale }: HeaderProps) {
         >
           <Globe className="h-4 w-4" />
           {switchLocale === "pt" ? common("portuguese") : common("english")}
-        </Link>
-        <Link
-          href={"/beginners" as never}
-          locale={activePathLocale}
+        </LanguageSwitchLink>
+        <MobileStartLink
+          isPt={isPt}
+          label={common("getStarted")}
           onClick={() => setMobileOpen(false)}
           className={cn(
             "mt-6 inline-flex items-center gap-2 rounded-xl px-8 py-3",
@@ -190,11 +198,115 @@ export default function Header({ locale }: HeaderProps) {
             mobileOpen && "animate-fade-in-up"
           )}
           style={{ animationDelay: mobileOpen ? `${(NAV_ITEMS.length + 1) * 60}ms` : "0ms" }}
-        >
-          {common("getStarted")}
-        </Link>
+        />
       </div>
     </header>
+  );
+}
+
+function LanguageSwitchLink({
+  href,
+  locale,
+  ariaLabel,
+  onClick,
+  className,
+  style,
+  children,
+}: {
+  href: string;
+  locale: Locale;
+  ariaLabel?: string;
+  onClick?: () => void;
+  className: string;
+  style?: React.CSSProperties;
+  children: React.ReactNode;
+}) {
+  if (locale === "en") {
+    return (
+      <NextLink href={href} aria-label={ariaLabel} onClick={onClick} className={className} style={style}>
+        {children}
+      </NextLink>
+    );
+  }
+
+  return (
+    <Link href={href as never} locale={locale} aria-label={ariaLabel} onClick={onClick} className={className} style={style}>
+      {children}
+    </Link>
+  );
+}
+
+function BrandLink({ isPt, children }: { isPt: boolean; children: React.ReactNode }) {
+  const className = "group mr-4 flex shrink-0 items-center gap-2";
+
+  if (isPt) {
+    return (
+      <Link href={"/como-jogar-bombanana" as never} locale="pt" className={className} aria-label="BOMBANANA! Guide Home">
+        {children}
+      </Link>
+    );
+  }
+
+  return (
+    <NextLink href="/" className={className} aria-label="BOMBANANA! Guide Home">
+      {children}
+    </NextLink>
+  );
+}
+
+function StartLink({ isPt, label }: { isPt: boolean; label: string }) {
+  const className = cn(
+    "hidden items-center gap-1.5 rounded-lg px-4 py-1.5 sm:inline-flex",
+    "bg-[var(--color-forest-ink)] text-[var(--color-cream-paper)]",
+    "text-sm font-bold shadow-[var(--shadow-subtle)] transition-all hover:-translate-y-0.5 hover:bg-[var(--color-terracotta)]"
+  );
+  const children = (
+    <>
+      {label}
+      <span aria-hidden="true">-&gt;</span>
+    </>
+  );
+
+  if (isPt) {
+    return (
+      <Link href={"/como-jogar-bombanana" as never} locale="pt" className={className}>
+        {children}
+      </Link>
+    );
+  }
+
+  return (
+    <NextLink href="/beginners" className={className}>
+      {children}
+    </NextLink>
+  );
+}
+
+function MobileStartLink({
+  isPt,
+  label,
+  onClick,
+  className,
+  style,
+}: {
+  isPt: boolean;
+  label: string;
+  onClick: () => void;
+  className: string;
+  style: React.CSSProperties;
+}) {
+  if (isPt) {
+    return (
+      <Link href={"/como-jogar-bombanana" as never} locale="pt" onClick={onClick} className={className} style={style}>
+        {label}
+      </Link>
+    );
+  }
+
+  return (
+    <NextLink href="/beginners" onClick={onClick} className={className} style={style}>
+      {label}
+    </NextLink>
   );
 }
 

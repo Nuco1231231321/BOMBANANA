@@ -36,10 +36,6 @@ export default function Hero({ locale = "en" }: HeroProps) {
           backgroundSize: "48px 48px",
         }}
       />
-      <div
-        className="absolute inset-x-0 top-0 h-[520px] bg-[linear-gradient(135deg,rgba(255,233,92,0.38),rgba(168,229,229,0.28)_46%,rgba(246,208,255,0.2))]"
-        aria-hidden="true"
-      />
 
       <div className="container-page relative z-10">
         <div className="grid items-center gap-10 lg:grid-cols-[minmax(0,0.94fr)_minmax(420px,1.06fr)]">

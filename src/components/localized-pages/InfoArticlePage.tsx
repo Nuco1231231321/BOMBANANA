@@ -1,4 +1,5 @@
 import type { ReactNode } from "react";
+import NextLink from "next/link";
 import { ArrowRight, CalendarDays, ExternalLink } from "lucide-react";
 import ContentLayout from "@/components/layout/ContentLayout";
 import { PageHero } from "@/components/guide/PageHero";
@@ -136,28 +137,38 @@ export default function InfoArticlePage({
           Internal links
         </h2>
         <div className="grid gap-3 sm:grid-cols-2">
-          {relatedLinks.map((link) =>
-            link.external ? (
+          {relatedLinks.map((link) => {
+            const className = "rounded-lg border border-[var(--color-pencil-gray)] bg-[var(--color-cream-paper)] p-4 text-sm font-semibold text-[var(--color-forest-ink)] transition-colors hover:border-[var(--color-banana-yellow)]";
+
+            return link.external ? (
               <a
                 key={link.href}
                 href={link.href}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="rounded-lg border border-[var(--color-pencil-gray)] bg-[var(--color-cream-paper)] p-4 text-sm font-semibold text-[var(--color-forest-ink)] transition-colors hover:border-[var(--color-banana-yellow)]"
+                className={className}
               >
                 {link.label}
               </a>
+            ) : link.locale === "en" ? (
+              <NextLink
+                key={link.href}
+                href={link.href}
+                className={className}
+              >
+                {link.label}
+              </NextLink>
             ) : (
               <Link
                 key={link.href}
                 href={link.href as never}
                 locale={getInfoLinkLocale(locale, link.locale)}
-                className="rounded-lg border border-[var(--color-pencil-gray)] bg-[var(--color-cream-paper)] p-4 text-sm font-semibold text-[var(--color-forest-ink)] transition-colors hover:border-[var(--color-banana-yellow)]"
+                className={className}
               >
                 {link.label}
               </Link>
-            )
-          )}
+            );
+          })}
         </div>
       </section>
 

@@ -21,28 +21,25 @@ export default async function ContactPage({ params }: Props) {
   return (
     <>
       <Header locale={locale} />
-      <main className="container-page py-16">
-        <article className="mx-auto max-w-3xl">
-          {/* ── Header ── */}
-          <div className="mb-10 rounded-3xl border border-[rgba(0,0,0,0.06)] bg-white/90 p-8 shadow-[0_30px_100px_-55px_rgba(0,0,0,0.5)]">
-            <h1 className="font-[family-name:var(--font-bricolage-grotesque)] text-4xl font-extrabold tracking-tight text-[var(--color-forest-ink)]">
+      <main className="container-page pt-[7.5rem] pb-20 md:pt-32 md:pb-28">
+        <article className="mx-auto max-w-[960px]">
+          <div className="mb-10 rounded-2xl border border-[var(--color-forest-ink)]/10 bg-[var(--color-panel-cream)]/95 p-6 shadow-[var(--shadow-card)] md:p-10">
+            <h1 className="font-[family-name:var(--font-bricolage-grotesque)] text-[clamp(2.25rem,5vw,4rem)] font-extrabold leading-[1.02] text-[var(--color-forest-ink)]">
               Contact Us
             </h1>
-            <p className="mt-4 max-w-2xl text-base leading-8 text-[var(--color-pencil-gray)]">
+            <p className="mt-5 max-w-[760px] text-base leading-8 text-[var(--color-forest-ink)]/72 md:text-lg">
               Have a question, correction, or feedback about the BOMBANANA! guide?
               We&apos;d love to hear from you. Choose the best way to reach us below.
             </p>
           </div>
 
-          {/* ── Contact Methods ── */}
-          <div className="mb-10 grid gap-4 sm:grid-cols-3">
+          <div className="mb-10 grid gap-5 md:grid-cols-3">
             <ContactMethodCard icon={Mail} title="Email" detail="contact@bombanana.online" description="Best for detailed feedback, corrections, and privacy inquiries." href="mailto:contact@bombanana.online" primary />
             <ContactMethodCard icon={Github} title="GitHub" detail="Open an Issue or PR" description="Best for bug reports, content fixes, and code contributions." href="https://github.com/Nuco1231231321/BOMBANANA" primary={false} />
             <ContactMethodCard icon={MessageCircle} title="Social" detail="Coming soon" description="Community channels for discussion and strategy sharing." href={null} primary={false} />
           </div>
 
-          {/* ── Content ── */}
-          <div className="space-y-10 rounded-3xl border border-[rgba(0,0,0,0.06)] bg-white/90 p-8 shadow-[0_30px_100px_-55px_rgba(0,0,0,0.5)]">
+          <div className="space-y-10 rounded-2xl border border-[var(--color-forest-ink)]/10 bg-[var(--color-panel-cream)]/95 p-6 shadow-[var(--shadow-card)] md:p-10">
             <section>
               <h2 className="mb-4 font-[family-name:var(--font-bricolage-grotesque)] text-2xl font-bold text-[var(--color-forest-ink)]">
                 What to include in your message
@@ -50,10 +47,10 @@ export default async function ContactPage({ params }: Props) {
               <div className="space-y-3 text-sm leading-7 text-[var(--color-forest-ink)]/80">
                 <p>To help us respond quickly and accurately, please include the following in your message:</p>
                 <ul className="list-disc space-y-2 pl-5">
-                  <li><strong>Subject line</strong> — Briefly describe what your message is about.</li>
-                  <li><strong>Page or topic</strong> — Mention the specific page URL or guide topic you&apos;re referring to.</li>
-                  <li><strong>Details</strong> — For corrections, include the current text and your suggested fix. For bugs, describe what happened and what you expected.</li>
-                  <li><strong>Context</strong> — If reporting a strategy issue, mention which roles and modules you were using.</li>
+                  <li><strong>Subject line</strong> - Briefly describe what your message is about.</li>
+                  <li><strong>Page or topic</strong> - Mention the specific page URL or guide topic you&apos;re referring to.</li>
+                  <li><strong>Details</strong> - For corrections, include the current text and your suggested fix. For bugs, describe what happened and what you expected.</li>
+                  <li><strong>Context</strong> - If reporting a strategy issue, mention which roles and modules you were using.</li>
                 </ul>
               </div>
             </section>
@@ -151,7 +148,7 @@ function ContactMethodCard({
       className={`rounded-2xl border p-6 transition-shadow hover:shadow-[var(--shadow-nav)] ${
         primary
           ? "border-[var(--color-banana-gold)] bg-[var(--color-banana-yellow)]/10 shadow-[var(--shadow-card)]"
-          : "border-[rgba(0,0,0,0.06)] bg-white/90 shadow-[var(--shadow-card)]"
+          : "border-[var(--color-forest-ink)]/10 bg-[var(--color-panel-cream)] shadow-[var(--shadow-card)]"
       }`}
     >
       <div className="mb-3 flex h-10 w-10 items-center justify-center rounded-xl bg-[var(--color-forest-ink)] text-[var(--color-cream-paper)]">

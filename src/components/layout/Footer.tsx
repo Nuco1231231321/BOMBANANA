@@ -1,4 +1,5 @@
 import { Banana, Github } from "lucide-react";
+import NextLink from "next/link";
 import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
 import type { Locale } from "@/i18n/routing";
@@ -47,20 +48,21 @@ export default function Footer({ locale = "en" }: FooterProps) {
   const nav = useTranslations("nav");
   const common = useTranslations("common");
   const footerPathLocale = locale === "pt" ? locale : undefined;
+  const isPt = locale === "pt";
 
   return (
     <footer className="mt-32 bg-[var(--color-surface-dark)] text-[var(--color-cream-paper)]">
       <div className="container-page py-16">
         <div className="grid grid-cols-1 gap-10 sm:grid-cols-2 lg:grid-cols-5">
           <div className="lg:col-span-2">
-            <Link href={"/" as never} locale={footerPathLocale} className="group mb-4 inline-flex items-center gap-2">
+            <FooterBrandLink isPt={isPt}>
               <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-[var(--color-banana-yellow)] text-[var(--color-forest-ink)] transition-transform group-hover:scale-110">
                 <Banana className="h-6 w-6" />
               </span>
               <span className="text-xl font-bold tracking-tight text-[var(--color-cream-paper)]">
                 BOMBANANA!
               </span>
-            </Link>
+            </FooterBrandLink>
             <p className="mt-3 max-w-xs text-sm leading-relaxed text-[var(--color-pencil-gray)]">
               {common("brandDescription")}
             </p>
@@ -69,13 +71,9 @@ export default function Footer({ locale = "en" }: FooterProps) {
           <FooterColumn title={common("guides")}>
             {GUIDE_LINKS.map((item) => (
               <li key={item.href}>
-                <Link
-                  href={item.href as never}
-                  locale={item.translated ? footerPathLocale : undefined}
-                  className="text-sm text-[var(--color-pencil-gray)] transition-colors hover:text-[var(--color-banana-yellow)]"
-                >
+                <FooterInternalLink href={item.href} translated={item.translated} locale={footerPathLocale}>
                   {nav(item.key)}
-                </Link>
+                </FooterInternalLink>
               </li>
             ))}
           </FooterColumn>
@@ -83,13 +81,9 @@ export default function Footer({ locale = "en" }: FooterProps) {
           <FooterColumn title={common("community")}>
             {COMMUNITY_LINKS.map((item) => (
               <li key={item.href}>
-                <Link
-                  href={item.href as never}
-                  locale={item.translated ? footerPathLocale : undefined}
-                  className="text-sm text-[var(--color-pencil-gray)] transition-colors hover:text-[var(--color-banana-yellow)]"
-                >
+                <FooterInternalLink href={item.href} translated={item.translated} locale={footerPathLocale}>
                   {nav(item.key)}
-                </Link>
+                </FooterInternalLink>
               </li>
             ))}
           </FooterColumn>
@@ -111,13 +105,12 @@ export default function Footer({ locale = "en" }: FooterProps) {
           <FooterColumn title="Legal">
             {LEGAL_LINKS.map((item) => (
               <li key={item.href}>
-                <Link
-                  href={item.href as never}
-                  locale={footerPathLocale}
+                <NextLink
+                  href={item.href}
                   className="text-sm text-[var(--color-pencil-gray)] transition-colors hover:text-[var(--color-banana-yellow)]"
                 >
                   {item.label}
-                </Link>
+                </NextLink>
               </li>
             ))}
           </FooterColumn>
@@ -144,6 +137,52 @@ export default function Footer({ locale = "en" }: FooterProps) {
         </div>
       </div>
     </footer>
+  );
+}
+
+function FooterBrandLink({ isPt, children }: { isPt: boolean; children: React.ReactNode }) {
+  const className = "group mb-4 inline-flex items-center gap-2";
+
+  if (isPt) {
+    return (
+      <Link href={"/como-jogar-bombanana" as never} locale="pt" className={className}>
+        {children}
+      </Link>
+    );
+  }
+
+  return (
+    <NextLink href="/" className={className}>
+      {children}
+    </NextLink>
+  );
+}
+
+function FooterInternalLink({
+  href,
+  translated,
+  locale,
+  children,
+}: {
+  href: string;
+  translated: boolean;
+  locale?: Locale;
+  children: React.ReactNode;
+}) {
+  const className = "text-sm text-[var(--color-pencil-gray)] transition-colors hover:text-[var(--color-banana-yellow)]";
+
+  if (translated) {
+    return (
+      <Link href={href as never} locale={locale} className={className}>
+        {children}
+      </Link>
+    );
+  }
+
+  return (
+    <NextLink href={href} className={className}>
+      {children}
+    </NextLink>
   );
 }
 

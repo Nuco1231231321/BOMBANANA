@@ -21,17 +21,16 @@ export default async function AboutPage({ params }: Props) {
   return (
     <>
       <Header locale={locale} />
-      <main className="container-page py-16">
-        <article className="mx-auto max-w-3xl">
-          {/* ── Hero ── */}
-          <div className="mb-10 rounded-3xl border border-[rgba(0,0,0,0.06)] bg-white/90 p-8 shadow-[0_30px_100px_-55px_rgba(0,0,0,0.5)]">
+      <main className="container-page pt-[7.5rem] pb-20 md:pt-32 md:pb-28">
+        <article className="mx-auto max-w-[960px]">
+          <div className="mb-10 rounded-2xl border border-[var(--color-forest-ink)]/10 bg-[var(--color-panel-cream)]/95 p-6 shadow-[var(--shadow-card)] md:p-10">
             <p className="mb-3 font-[family-name:var(--font-roboto-mono)] text-xs font-bold uppercase tracking-[0.16em] text-[var(--color-terracotta)]">
               Our Story
             </p>
-            <h1 className="font-[family-name:var(--font-bricolage-grotesque)] text-4xl font-extrabold tracking-tight text-[var(--color-forest-ink)]">
+            <h1 className="font-[family-name:var(--font-bricolage-grotesque)] text-[clamp(2.25rem,5vw,4rem)] font-extrabold leading-[1.02] text-[var(--color-forest-ink)]">
               About BOMBANANA! Guide
             </h1>
-            <p className="mt-4 max-w-2xl text-base leading-8 text-[var(--color-pencil-gray)]">
+            <p className="mt-5 max-w-[720px] text-base leading-8 text-[var(--color-forest-ink)]/72 md:text-lg">
               We&apos;re a small team of passionate gamers who fell in love with the chaotic,
               hilarious, and deeply rewarding co-op experience that is BOMBANANA!. This
               guide exists to help players communicate better, defuse faster, and laugh
@@ -39,16 +38,14 @@ export default async function AboutPage({ params }: Props) {
             </p>
           </div>
 
-          {/* ── Mission Cards ── */}
-          <div className="mb-10 grid gap-4 sm:grid-cols-2">
+          <div className="mb-10 grid gap-4 md:grid-cols-2">
             <MissionCard icon={Target} title="Our Mission" text="Make BOMBANANA! accessible to new players while providing depth for veterans who want to optimize their team play." />
             <MissionCard icon={Heart} title="Our Motivation" text="We built this because a clear, central guide means fewer confused teams and more successful defusals." />
             <MissionCard icon={Users} title="For the Community" text="This guide is built by players, for players. We play the game ourselves and update content based on real team experience." />
             <MissionCard icon={BookOpen} title="What We Cover" text="Monkey roles, module strategies, communication chains, beginner tips, and troubleshooting — all in one place." />
           </div>
 
-          {/* ── Detail Content ── */}
-          <div className="space-y-10 rounded-3xl border border-[rgba(0,0,0,0.06)] bg-white/90 p-8 shadow-[0_30px_100px_-55px_rgba(0,0,0,0.5)]">
+          <div className="space-y-10 rounded-2xl border border-[var(--color-forest-ink)]/10 bg-[var(--color-panel-cream)]/95 p-6 shadow-[var(--shadow-card)] md:p-10">
             <section>
               <h2 className="mb-4 font-[family-name:var(--font-bricolage-grotesque)] text-2xl font-bold text-[var(--color-forest-ink)]">
                 What this site covers
@@ -213,7 +210,7 @@ function MissionCard({
   text: string;
 }) {
   return (
-    <div className="rounded-2xl border border-[rgba(0,0,0,0.06)] bg-white/90 p-6 shadow-[var(--shadow-card)] transition-shadow hover:shadow-[var(--shadow-nav)]">
+    <div className="rounded-2xl border border-[var(--color-forest-ink)]/10 bg-[var(--color-panel-cream)] p-6 shadow-[var(--shadow-card)] transition-shadow hover:shadow-[var(--shadow-nav)]">
       <Icon className="mb-3 h-6 w-6 text-[var(--color-banana-gold)]" />
       <h3 className="mb-2 font-semibold text-[var(--color-forest-ink)]">{title}</h3>
       <p className="text-sm leading-6 text-[var(--color-forest-ink)]/70">{text}</p>

@@ -23,14 +23,13 @@ export default async function TermsPage({ params }: Props) {
   return (
     <>
       <Header locale={locale} />
-      <main className="container-page py-16">
-        <article className="mx-auto max-w-3xl">
-          {/* ── Header ── */}
-          <div className="mb-10 rounded-3xl border border-[rgba(0,0,0,0.06)] bg-white/90 p-8 shadow-[0_30px_100px_-55px_rgba(0,0,0,0.5)]">
-            <h1 className="font-[family-name:var(--font-bricolage-grotesque)] text-4xl font-extrabold tracking-tight text-[var(--color-forest-ink)]">
+      <main className="container-page pt-[7.5rem] pb-20 md:pt-32 md:pb-28">
+        <article className="mx-auto max-w-[960px]">
+          <div className="mb-10 rounded-2xl border border-[var(--color-forest-ink)]/10 bg-[var(--color-panel-cream)]/95 p-6 shadow-[var(--shadow-card)] md:p-10">
+            <h1 className="font-[family-name:var(--font-bricolage-grotesque)] text-[clamp(2.25rem,5vw,4rem)] font-extrabold leading-[1.02] text-[var(--color-forest-ink)]">
               Terms of Service
             </h1>
-            <p className="mt-4 text-base leading-8 text-[var(--color-pencil-gray)]">
+            <p className="mt-5 max-w-[760px] text-base leading-8 text-[var(--color-forest-ink)]/72 md:text-lg">
               Please read these Terms of Service carefully before using the
               BOMBANANA! Guide website. By accessing or using this site, you
               agree to be bound by these terms.
@@ -41,8 +40,7 @@ export default async function TermsPage({ params }: Props) {
             </div>
           </div>
 
-          {/* ── Table of Contents ── */}
-          <nav className="mb-10 rounded-2xl border border-[var(--color-banana-yellow)]/30 bg-[var(--color-banana-yellow)]/5 p-6">
+          <nav className="mb-10 rounded-2xl border border-[var(--color-banana-yellow)]/30 bg-[var(--color-banana-yellow)]/5 p-6 shadow-[var(--shadow-subtle)] md:p-8">
             <h2 className="mb-3 text-sm font-bold uppercase tracking-[0.12em] text-[var(--color-forest-ink)]">
               Table of Contents
             </h2>
@@ -62,8 +60,7 @@ export default async function TermsPage({ params }: Props) {
             </ol>
           </nav>
 
-          {/* ── Sections ── */}
-          <div className="space-y-10 rounded-3xl border border-[rgba(0,0,0,0.06)] bg-white/90 p-8 shadow-[0_30px_100px_-55px_rgba(0,0,0,0.5)]">
+          <div className="space-y-10 rounded-2xl border border-[var(--color-forest-ink)]/10 bg-[var(--color-panel-cream)]/95 p-6 shadow-[var(--shadow-card)] md:p-10">
             <section id="acceptance">
               <h2 className="mb-3 font-[family-name:var(--font-bricolage-grotesque)] text-2xl font-bold text-[var(--color-forest-ink)]">
                 1. Acceptance of Terms

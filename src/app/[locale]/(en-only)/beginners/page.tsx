@@ -56,8 +56,8 @@ const firstRunSteps = [
 
 export default function BeginnersPage() {
   return (
-    <ContentLayout prose={false} contentClassName="max-w-[980px]">
-      <header className="mb-12 border-b border-[var(--color-pencil-gray)] pb-10">
+    <ContentLayout prose={false} contentClassName="max-w-[1120px]">
+      <header className="mb-12 border-b border-[var(--color-pencil-gray)] pb-10 lg:mb-14">
         <TaglineBadge icon={<Banana className="h-3 w-3" />}>START HERE</TaglineBadge>
         <h1 className="mt-4 font-[family-name:var(--font-bricolage-grotesque)] text-[clamp(2.25rem,5vw,3.85rem)] font-extrabold leading-[1.02] tracking-[0.04em] text-[var(--color-forest-ink)]">
           BOMBANANA!{" "}
@@ -84,8 +84,8 @@ export default function BeginnersPage() {
         </div>
       </header>
 
-      <section className="mb-10 grid gap-5 md:grid-cols-[minmax(0,1fr)_320px]">
-        <div className="grid grid-cols-1 gap-5 sm:grid-cols-3 md:grid-cols-1 lg:grid-cols-3">
+      <section className="mb-10 grid items-start gap-8 lg:grid-cols-[minmax(0,1fr)_360px]">
+        <div className="grid self-start grid-cols-1 gap-5 sm:grid-cols-2">
           {BEGINNER_GUIDES.map((guide) => {
             const Icon = guide.icon;
             return (
@@ -101,7 +101,7 @@ export default function BeginnersPage() {
           })}
         </div>
 
-        <aside className="space-y-4">
+        <aside className="self-start space-y-5">
           <div className="rounded-xl border border-[var(--color-forest-ink)] bg-[var(--color-cream-paper)] p-5">
             <div className="mb-4 flex items-center gap-3">
               <span className="flex h-10 w-10 items-center justify-center rounded-md bg-[var(--color-banana-yellow)]/55 text-[var(--color-forest-ink)]">

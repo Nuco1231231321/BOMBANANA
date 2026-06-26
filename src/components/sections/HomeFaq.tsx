@@ -45,7 +45,7 @@ export default function HomeFaq() {
   return (
     <section className="py-16 md:py-24">
       <div className="container-page">
-        <div className="grid gap-10 lg:grid-cols-[360px_minmax(0,1fr)]">
+        <div className="grid gap-10 lg:grid-cols-[320px_minmax(0,1fr)]">
           <div>
             <p className="font-[family-name:var(--font-roboto-mono)] text-xs font-bold uppercase tracking-[0.12em] text-[var(--color-terracotta)]">
               Quick answers

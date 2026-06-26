@@ -61,24 +61,26 @@ export default function MediaGallery({
   return (
     <>
       {/* ── Section Header ── */}
-      <div className="mx-auto mb-10 max-w-[720px] text-center">
-        <TaglineBadge
-          icon={<Camera className="w-3 h-3" />}
-          className="border border-[var(--color-forest-ink)]/10 bg-[var(--color-banana-yellow)]/75"
-        >
-          MEDIA GALLERY
-        </TaglineBadge>
-        <h2
-          className="mt-4 font-[family-name:var(--font-bricolage-grotesque)] text-[clamp(2.25rem,4.4vw,4rem)] font-extrabold leading-[0.98] text-[var(--color-forest-ink)] text-balance"
-        >
-          {title}
-        </h2>
-        <p className="mx-auto mt-3 max-w-[560px] text-base leading-[1.7] text-[var(--color-forest-ink)]/66 text-balance">
-          {subtitle}
-        </p>
+      <div className="mb-10 flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
+        <div className="max-w-[720px]">
+          <TaglineBadge
+            icon={<Camera className="w-3 h-3" />}
+            className="border border-[var(--color-forest-ink)]/10 bg-[var(--color-banana-yellow)]/75"
+          >
+            MEDIA GALLERY
+          </TaglineBadge>
+          <h2
+            className="mt-4 font-[family-name:var(--font-bricolage-grotesque)] text-[clamp(2.25rem,4.4vw,4rem)] font-extrabold leading-[0.98] text-[var(--color-forest-ink)] text-balance"
+          >
+            {title}
+          </h2>
+          <p className="mt-3 max-w-[560px] text-base leading-[1.7] text-[var(--color-forest-ink)]/66 text-balance">
+            {subtitle}
+          </p>
+        </div>
 
         {/* Filter tabs */}
-        <div className="flex items-center justify-center gap-2 mt-6">
+        <div className="flex items-center gap-2 md:pb-1">
           {([
             { key: "all", label: "All" },
             { key: "video", label: "Videos" },
@@ -101,7 +103,7 @@ export default function MediaGallery({
       </div>
 
       {/* ── Gallery Grid ── */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+      <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
         {filtered.map((item, index) => (
           <button
             key={item.id}

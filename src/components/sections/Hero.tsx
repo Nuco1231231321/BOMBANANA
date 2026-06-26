@@ -26,7 +26,7 @@ export default function Hero({ locale = "en" }: HeroProps) {
   void locale;
 
   return (
-    <section className="relative overflow-hidden pt-28 pb-16 md:pt-36 md:pb-24">
+    <section className="relative overflow-hidden pt-28 pb-16 md:pt-36 md:pb-20">
       <div
         className="absolute inset-0 pointer-events-none opacity-[0.08]"
         aria-hidden="true"
@@ -38,8 +38,8 @@ export default function Hero({ locale = "en" }: HeroProps) {
       />
 
       <div className="container-page relative z-10">
-        <div className="grid items-center gap-10 lg:grid-cols-[minmax(0,0.94fr)_minmax(420px,1.06fr)]">
-          <div className="max-w-[650px]">
+        <div className="grid items-start gap-10 lg:grid-cols-[minmax(0,1fr)_340px]">
+          <div className="max-w-[760px]">
             <TaglineBadge
               icon={<Gauge className="h-3.5 w-3.5" />}
               className="border border-[var(--color-forest-ink)]/10 bg-[var(--color-panel-cream)]/90 shadow-[var(--shadow-subtle)]"
@@ -96,24 +96,15 @@ export default function Hero({ locale = "en" }: HeroProps) {
             </nav>
           </div>
 
-          <div className="relative lg:pt-6">
-            <div className="absolute -left-4 top-10 hidden h-28 w-28 rotate-[-8deg] rounded-xl border border-[var(--color-forest-ink)]/15 bg-[var(--color-banana-yellow)] shadow-[var(--shadow-card)] lg:block" />
-            <div className="relative overflow-hidden rounded-2xl border border-[var(--color-forest-ink)]/15 bg-[var(--color-surface-dark)] p-2 shadow-[0_28px_80px_-46px_rgba(26,51,0,0.65)]">
-              <div className="relative aspect-[16/10] overflow-hidden rounded-xl">
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img
-                  src="/images/screenshots/ss_858b009c283bfaac07f526309cb8a68c0c284278.full.jpg"
-                  alt="BOMBANANA! co-op bomb defusal gameplay"
-                  className="h-full w-full object-cover"
-                />
-                <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(0,0,0,0.02),rgba(0,0,0,0.5))]" />
-                <div className="absolute bottom-4 left-4 right-4 grid gap-2 sm:grid-cols-3">
+          <div className="relative space-y-4 lg:pt-6">
+            <div className="rounded-2xl border border-[var(--color-forest-ink)]/15 bg-[var(--color-panel-cream)]/90 p-4 shadow-[var(--shadow-card)]">
+              <div className="grid grid-cols-3 gap-3">
                   {stats.map((stat) => {
                     const Icon = stat.icon;
                     return (
                       <div
                         key={stat.label}
-                        className="rounded-lg border border-white/14 bg-[var(--color-panel-cream)]/90 p-3 text-[var(--color-forest-ink)] shadow-[var(--shadow-subtle)] backdrop-blur"
+                        className="rounded-lg border border-[var(--color-forest-ink)]/10 bg-[var(--color-cream-paper)] p-3 text-[var(--color-forest-ink)] shadow-[var(--shadow-subtle)]"
                       >
                         <div className="flex items-center gap-2">
                           <Icon className="h-4 w-4" />
@@ -128,15 +119,25 @@ export default function Hero({ locale = "en" }: HeroProps) {
                     );
                   })}
                 </div>
-              </div>
             </div>
-            <div className="absolute -right-2 -top-1 hidden rounded-xl border border-[var(--color-forest-ink)]/15 bg-[var(--color-panel-cream)] px-4 py-3 shadow-[var(--shadow-card)] md:block">
+            <div className="rounded-xl border border-[var(--color-forest-ink)]/15 bg-[var(--color-panel-cream)] px-4 py-3 shadow-[var(--shadow-card)]">
               <p className="font-[family-name:var(--font-roboto-mono)] text-[11px] font-bold uppercase tracking-[0.12em] text-[var(--color-terracotta)]">
                 Defusal status
               </p>
               <p className="mt-1 text-sm font-bold text-[var(--color-forest-ink)]">
                 Manual ready
               </p>
+            </div>
+            <div className="relative overflow-hidden rounded-2xl border border-[var(--color-forest-ink)]/15 bg-[var(--color-surface-dark)] p-2 shadow-[0_28px_80px_-46px_rgba(26,51,0,0.65)]">
+              <div className="relative aspect-[16/10] overflow-hidden rounded-xl">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src="/images/screenshots/ss_858b009c283bfaac07f526309cb8a68c0c284278.full.jpg"
+                  alt="BOMBANANA! co-op bomb defusal gameplay"
+                  className="h-full w-full object-cover"
+                />
+                <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(0,0,0,0.02),rgba(0,0,0,0.5))]" />
+              </div>
             </div>
           </div>
         </div>

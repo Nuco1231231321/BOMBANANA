@@ -40,20 +40,20 @@ export default function ModulePreview({ locale = "en" }: ModulePreviewProps) {
   return (
     <section className="bg-[var(--color-sticky-note-mint)]/30 py-16 md:py-24">
       <div className="container-page">
-        <div className="mb-12 text-center md:mb-16">
+        <div className="mb-10 max-w-[720px] md:mb-12">
           <h2 className="font-[family-name:var(--font-bricolage-grotesque)] text-[clamp(2rem,4vw,3.4375rem)] font-extrabold leading-[1.05] tracking-[0.04em] text-[var(--color-forest-ink)] text-balance">
             Bomb Modules{" "}
             <span className="rounded-sm bg-[var(--color-banana-yellow)] px-2 py-0.5">
               Explained
             </span>
           </h2>
-          <p className="mx-auto mt-4 max-w-[560px] text-lg text-[var(--color-forest-ink)] opacity-60 text-balance">
+          <p className="mt-4 max-w-[560px] text-lg text-[var(--color-forest-ink)] opacity-60 text-balance">
             Start with the module families players need most often, then branch into
             specific rules and callouts.
           </p>
         </div>
 
-        <div className="mb-10 grid grid-cols-1 gap-5 sm:grid-cols-2">
+        <div className="mb-10 grid grid-cols-1 gap-4 md:grid-cols-2">
           {modules.map((mod) => {
             const Icon = mod.icon;
             return (

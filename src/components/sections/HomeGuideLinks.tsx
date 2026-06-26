@@ -78,8 +78,8 @@ export default function HomeGuideLinks() {
           </p>
         </div>
 
-        <div className="grid gap-8 lg:grid-cols-[minmax(0,1fr)_320px]">
-          <div className="grid gap-5 sm:grid-cols-2">
+        <div className="grid gap-5">
+          <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
             {guideGroups.map((group) => {
               const Icon = group.icon;
               return (
@@ -123,7 +123,7 @@ export default function HomeGuideLinks() {
             <h3 className="text-lg font-bold text-[var(--color-cream-paper)]">
               Useful Before Launch
             </h3>
-            <div className="mt-4 grid gap-3">
+            <div className="mt-4 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
               {utilityLinks.map((link) => {
                 const Icon = link.icon;
                 return (

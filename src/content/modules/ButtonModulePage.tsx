@@ -3,6 +3,7 @@ import { PageHero } from "@/components/guide/PageHero";
 import { ArticleImage } from "@/components/guide/ArticleMedia";
 import { BlufBox, ActionTable, RelatedGuides, TipBox, WarningBox, GuideH2, GuideP, GuideList } from "@/components/guide/GuideBlocks";
 import { FAQSection } from "@/components/guide/FAQSection";
+import { ModuleHowToJsonLd, FAQPageJsonLd } from "@/components/layout/JsonLd";
 
 const faqs = [
   { question: "Is the Button Module about speed?", answer: "No. It is mostly about correct decision-making under pressure. The instinct to press immediately is exactly what this module is designed to punish." },
@@ -25,11 +26,21 @@ const relatedGuides = [
   { title: "Communication Chain", description: "Understand the information flow between roles.", href: "/communication/communication-chain" },
 ];
 
+const buttonHowToSteps = [
+  { name: "Read the button", text: "The Deaf Monkey identifies the button's color and reads any visible label text. Common colors: red, blue, white, yellow. Common labels: Hold, Press, Abort, Detonate." },
+  { name: "Mute checks the manual", text: "Using the button color and label, the Mute Monkey looks up the correct action in the bomb manual. The rule specifies whether to press, hold, or avoid." },
+  { name: "Mute gestures the action", text: "The Mute communicates the required action via gesture: closed fist for hold, tap motion for press, open palm for do-not-touch." },
+  { name: "Deaf relays the command", text: "The Deaf Monkey sees the gesture and speaks clearly: 'Red button says Hold — press and hold.' Includes both color and action." },
+  { name: "Blind executes with care", text: "The Blind Monkey performs the action. For hold: press and keep holding until the indicator changes. For press: quick tap and release. Never confuse press with hold." },
+];
+
 export default function ButtonModulePage() {
   return (
     <>
+      <ModuleHowToJsonLd moduleName="Button Module" steps={buttonHowToSteps} totalTime="PT2M" imageUrl="https://bombanana.online/images/screenshots/ss_3ecd09d511a5ac97a7342505ec47766554d702a3.thumb.jpg" />
+      <FAQPageJsonLd questions={faqs} />
       <PageHero src="/images/screenshots/ss_3ecd09d511a5ac97a7342505ec47766554d702a3.thumb.jpg" alt="BOMBANANA! Button Module — Press, Hold, Decide" />
-      
+
       <PageTitle highlight="Button Module">Button Module Guide: Press, Hold, Decide</PageTitle>
 <BlufBox title="At a Glance"><strong>The Button Module is not a speed test. It is a decision test.</strong> The hardest part is resisting the instinct to press immediately just because the object looks simple. In a game built on communication, the best move is often to stop for one beat and verify the rule together. If the team reads the clue properly before touching the button, this module becomes much easier to control.</BlufBox>
 
@@ -63,6 +74,69 @@ export default function ButtonModulePage() {
       <GuideP>That format protects the team from acting on impulse.</GuideP>
 
       <TipBox title="Pro Tip: Say Less, Verify More">If the module feels ambiguous, say less and verify more. One extra second of confirmation is usually worth much more than a strike. Assign one player to read the button and another to confirm the action before the Blind touches it.</TipBox>
+
+      <GuideH2>Button Module Rules — Decision Table</GuideH2>
+      <GuideP>The Button Module varies based on the button's <strong>color</strong>, its <strong>label text</strong>, and sometimes the bomb's current <strong>timer state</strong>. The Deaf Monkey must read all visible details before the Mute consults the manual. Use the table below to identify the correct action.</GuideP>
+
+      <div className="my-6 overflow-x-auto rounded-xl border border-[var(--color-pencil-gray)] bg-[var(--color-cream-paper)]">
+        <table className="w-full text-sm">
+          <thead>
+            <tr className="border-b border-[var(--color-pencil-gray)] bg-[var(--color-whisper-gray)]">
+              <th className="px-4 py-3 text-left font-semibold text-[var(--color-forest-ink)]">Button Color</th>
+              <th className="px-4 py-3 text-left font-semibold text-[var(--color-forest-ink)]">Label / Text</th>
+              <th className="px-4 py-3 text-left font-semibold text-[var(--color-forest-ink)]">Correct Action</th>
+              <th className="px-4 py-3 text-left font-semibold text-[var(--color-forest-ink)]">Mute Gesture</th>
+              <th className="px-4 py-3 text-left font-semibold text-[var(--color-forest-ink)]">Key Warning</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr className="border-b border-[var(--color-pencil-gray)]">
+              <td className="px-4 py-3"><span className="inline-block w-3 h-3 rounded-full bg-red-500 mr-1" /> Red</td>
+              <td className="px-4 py-3 text-[var(--color-forest-ink)]/70">"Hold"</td>
+              <td className="px-4 py-3 font-bold text-[var(--color-terracotta)]">Press and Hold</td>
+              <td className="px-4 py-3 text-[var(--color-forest-ink)]/70">Closed fist, hold steady</td>
+              <td className="px-4 py-3 text-xs text-[var(--color-forest-ink)]/60">Hold until the light changes — releasing early causes a strike</td>
+            </tr>
+            <tr className="border-b border-[var(--color-pencil-gray)]">
+              <td className="px-4 py-3"><span className="inline-block w-3 h-3 rounded-full bg-blue-500 mr-1" /> Blue</td>
+              <td className="px-4 py-3 text-[var(--color-forest-ink)]/70">"Press"</td>
+              <td className="px-4 py-3 font-bold text-[var(--color-forest-ink)]">Press and Release</td>
+              <td className="px-4 py-3 text-[var(--color-forest-ink)]/70">Point down, quick tap motion</td>
+              <td className="px-4 py-3 text-xs text-[var(--color-forest-ink)]/60">Do not hold — a press is NOT a hold</td>
+            </tr>
+            <tr className="border-b border-[var(--color-pencil-gray)]">
+              <td className="px-4 py-3"><span className="inline-block w-3 h-3 rounded-full bg-gray-400 mr-1" /> White</td>
+              <td className="px-4 py-3 text-[var(--color-forest-ink)]/70">"Abort" / "Stop"</td>
+              <td className="px-4 py-3 font-bold text-[var(--color-forest-ink)]">Press and Release Immediately</td>
+              <td className="px-4 py-3 text-[var(--color-forest-ink)]/70">Point down, single quick tap</td>
+              <td className="px-4 py-3 text-xs text-[var(--color-forest-ink)]/60">Some variants: press when timer has a specific digit</td>
+            </tr>
+            <tr>
+              <td className="px-4 py-3"><span className="inline-block w-3 h-3 rounded-full bg-yellow-400 mr-1" /> Yellow</td>
+              <td className="px-4 py-3 text-[var(--color-forest-ink)]/70">"Detonate" / No label</td>
+              <td className="px-4 py-3 font-bold text-[var(--color-bomb-red)]">DO NOT PRESS — Wait for instruction</td>
+              <td className="px-4 py-3 text-[var(--color-forest-ink)]/70">Open palm facing forward ✋</td>
+              <td className="px-4 py-3 text-xs text-[var(--color-forest-ink)]/60">Some labels mean "do not interact" — read carefully</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <GuideH2>Communication Flow for Button Modules</GuideH2>
+      <div className="my-4 grid gap-3 sm:grid-cols-3">
+        <div className="rounded-lg border border-[var(--color-pencil-gray)] bg-[var(--color-cream-paper)] p-4">
+          <p className="text-xs font-bold uppercase tracking-[0.12em] text-[var(--color-terracotta)]">1. Deaf Monkey</p>
+          <p className="mt-2 text-sm text-[var(--color-forest-ink)]/70">"Button is <strong>red</strong>. Label says <strong>'Hold'</strong>."</p>
+        </div>
+        <div className="rounded-lg border border-[var(--color-pencil-gray)] bg-[var(--color-cream-paper)] p-4">
+          <p className="text-xs font-bold uppercase tracking-[0.12em] text-[var(--color-terracotta)]">2. Mute Monkey</p>
+          <p className="mt-2 text-sm text-[var(--color-forest-ink)]/70">Checks manual: Red + Hold → <strong>Press and Hold</strong>. Gestures: closed fist.</p>
+        </div>
+        <div className="rounded-lg border border-[var(--color-pencil-gray)] bg-[var(--color-cream-paper)] p-4">
+          <p className="text-xs font-bold uppercase tracking-[0.12em] text-[var(--color-terracotta)]">3. Blind Monkey</p>
+          <p className="mt-2 text-sm text-[var(--color-forest-ink)]/70">"Holding button." Waits for light change, then <strong>releases</strong>.</p>
+        </div>
+      </div>
 
       <FAQSection faqs={faqs} />
       <RelatedGuides guides={relatedGuides} />

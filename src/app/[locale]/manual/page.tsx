@@ -9,9 +9,9 @@ interface Props {
 }
 
 export const metadata: Metadata = {
-  title: "BOMBANANA! Manual Guide",
+  title: "BOMBANANA! Manual Guide — Wire, Button, Switch & Symbol Rules",
   description:
-    "BOMBANANA! manual guide explaining module lookup, Mute Monkey reading flow, common manual mistakes, and when to use module pages.",
+    "Complete BOMBANANA! manual with wire rules, button logic, switch patterns, and symbol reference. Includes team communication flow and quick reference tables.",
   alternates: {
     canonical: "/manual",
     languages: {

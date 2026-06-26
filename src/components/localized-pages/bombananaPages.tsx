@@ -124,6 +124,81 @@ export const manualPage = {
         </p>
       ),
     },
+    {
+      title: "Quick Reference: Wire Module Rules",
+      body: (
+        <div className="overflow-x-auto">
+          <table className="w-full text-sm border-collapse">
+            <thead>
+              <tr className="border-b border-[var(--color-pencil-gray)] bg-[var(--color-whisper-gray)]">
+                <th className="px-3 py-2 text-left font-semibold">Wires</th>
+                <th className="px-3 py-2 text-left font-semibold">LED Color</th>
+                <th className="px-3 py-2 text-left font-semibold">Cut Wire #</th>
+                <th className="px-3 py-2 text-left font-semibold">Mute Gesture</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr className="border-b border-[var(--color-pencil-gray)]">
+                <td className="px-3 py-2">3</td>
+                <td className="px-3 py-2"><span className="inline-block w-3 h-3 rounded-full bg-red-500 mr-1 align-middle" /> Red</td>
+                <td className="px-3 py-2 font-bold">#3 (last wire)</td>
+                <td className="px-3 py-2">3 fingers</td>
+              </tr>
+              <tr className="border-b border-[var(--color-pencil-gray)]">
+                <td className="px-3 py-2">3</td>
+                <td className="px-3 py-2"><span className="inline-block w-3 h-3 rounded-full bg-blue-500 mr-1 align-middle" /> Blue</td>
+                <td className="px-3 py-2 font-bold">#2 (middle)</td>
+                <td className="px-3 py-2">2 fingers</td>
+              </tr>
+              <tr className="border-b border-[var(--color-pencil-gray)]">
+                <td className="px-3 py-2">3</td>
+                <td className="px-3 py-2"><span className="inline-block w-3 h-3 rounded-full bg-yellow-400 mr-1 align-middle" /> Yellow</td>
+                <td className="px-3 py-2 font-bold">#1 (first wire)</td>
+                <td className="px-3 py-2">1 finger</td>
+              </tr>
+              <tr className="border-b border-[var(--color-pencil-gray)]">
+                <td className="px-3 py-2">4</td>
+                <td className="px-3 py-2"><span className="inline-block w-3 h-3 rounded-full bg-red-500 mr-1 align-middle" /> Red</td>
+                <td className="px-3 py-2 font-bold">#4 (last wire)</td>
+                <td className="px-3 py-2">4 fingers</td>
+              </tr>
+              <tr>
+                <td className="px-3 py-2">4</td>
+                <td className="px-3 py-2"><span className="inline-block w-3 h-3 rounded-full bg-blue-500 mr-1 align-middle" /> Blue</td>
+                <td className="px-3 py-2 font-bold">#3 (third wire)</td>
+                <td className="px-3 py-2">3 fingers</td>
+              </tr>
+            </tbody>
+          </table>
+          <p className="mt-2 text-xs opacity-50">Deaf calls: count + colors (left→right) + LED color. Mute looks up rule, gestures the number. Blind confirms and cuts.</p>
+        </div>
+      ),
+    },
+    {
+      title: "Quick Reference: Button & Switch Rules",
+      body: (
+        <div className="space-y-4">
+          <p><strong>Button Module:</strong> Deaf reads button color + label text. Mute determines action from manual. Common mappings:</p>
+          <table className="w-full text-sm border-collapse">
+            <thead>
+              <tr className="border-b border-[var(--color-pencil-gray)] bg-[var(--color-whisper-gray)]">
+                <th className="px-3 py-2 text-left font-semibold">Color</th>
+                <th className="px-3 py-2 text-left font-semibold">Label</th>
+                <th className="px-3 py-2 text-left font-semibold">Action</th>
+                <th className="px-3 py-2 text-left font-semibold">Gesture</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td className="px-3 py-2"><span className="inline-block w-3 h-3 rounded-full bg-red-500 mr-1 align-middle" /> Red</td><td className="px-3 py-2">Hold</td><td className="px-3 py-2 font-bold">Press &amp; Hold</td><td className="px-3 py-2">Closed fist</td></tr>
+              <tr><td className="px-3 py-2"><span className="inline-block w-3 h-3 rounded-full bg-blue-500 mr-1 align-middle" /> Blue</td><td className="px-3 py-2">Press</td><td className="px-3 py-2 font-bold">Press &amp; Release</td><td className="px-3 py-2">Point down, tap</td></tr>
+              <tr><td className="px-3 py-2"><span className="inline-block w-3 h-3 rounded-full bg-gray-400 mr-1 align-middle" /> White</td><td className="px-3 py-2">Abort</td><td className="px-3 py-2 font-bold">Press Immediately</td><td className="px-3 py-2">Single quick tap</td></tr>
+            </tbody>
+          </table>
+          <p><strong>Switch Module:</strong> Deaf calls full board state before any flips. Mute determines sequence from manual. One flip at a time — verify after every move. <Link href={"/modules/switch-module" as never} className="underline">Full guide →</Link></p>
+          <p><strong>Symbols Module:</strong> Agree on one name per symbol before the round. Use position as backup. Never change names mid-run. <Link href={"/modules/symbols-module" as never} className="underline">Full guide →</Link></p>
+        </div>
+      ),
+    },
   ],
   faqs: [
     {

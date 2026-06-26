@@ -11,9 +11,9 @@ import CTASection from "@/components/sections/CTASection";
 import type { Locale } from "@/i18n/routing";
 
 export const metadata: Metadata = {
-  title: "BOMBANANA! Guide - Co-op Bomb Defusal Walkthrough",
+  title: "BOMBANANA! Guide — Free Manual, Walkthroughs & Co-Op Strategy",
   description:
-    "BOMBANANA! guide for co-op bomb defusal, monkey roles, bomb modules, communication, beginner routes, and walkthrough help.",
+    "Complete BOMBANANA! guide with wire, button, switch & symbol walkthroughs. Role guides, communication tips, demo download, and beginner checklist. Updated 2026.",
 };
 
 interface Props {

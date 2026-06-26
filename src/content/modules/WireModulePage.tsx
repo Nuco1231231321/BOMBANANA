@@ -3,6 +3,7 @@ import { PageHero } from "@/components/guide/PageHero";
 import { ArticleImage } from "@/components/guide/ArticleMedia";
 import { BlufBox, ActionTable, RelatedGuides, TipBox, WarningBox, GuideH2, GuideP, GuideList } from "@/components/guide/GuideBlocks";
 import { FAQSection } from "@/components/guide/FAQSection";
+import { ModuleHowToJsonLd, FAQPageJsonLd } from "@/components/layout/JsonLd";
 
 const faqs = [
   { question: "Is Wire the easiest module?", answer: "Usually yes, but it only stays easy if the team does not rush or guess. The Wire Module looks simple, so teams treat it like a warmup — that is exactly when they make the dumbest mistakes." },
@@ -31,9 +32,20 @@ const solveRhythm = [
   { label: "Cut", detail: "The Blind player acts only after confirmation." },
 ] as const;
 
+const wireHowToSteps = [
+  { name: "Count the wires", text: "The Deaf Monkey counts every visible wire on the module. Note how many wires and their colors from left to right. Never skip counting — guessing the count causes immediate mistakes." },
+  { name: "Identify the LED color", text: "The Deaf Monkey locates and announces the color of the LED indicator light on the wire module. This is the deciding clue. Common colors: red, blue, yellow." },
+  { name: "Mute looks up the rule", text: "Using the wire count and LED color, the Mute Monkey finds the matching rule in the bomb manual. The rule determines which numbered wire (1st, 2nd, 3rd, 4th) must be cut." },
+  { name: "Mute gestures the number", text: "The Mute Monkey holds up the corresponding number of fingers to indicate which wire to cut. Use large, clear gestures at chest-to-head height." },
+  { name: "Deaf confirms and relays", text: "The Deaf Monkey sees the gesture and speaks the instruction clearly: 'Cut wire number three.' The Blind Monkey repeats it back before acting." },
+  { name: "Blind cuts after confirmation", text: "The Blind Monkey confirms the instruction, positions the scissors on the correct wire, waits for final 'Confirmed,' and then cuts. Never cut before confirmation." },
+];
+
 export default function WireModulePage() {
   return (
     <>
+      <ModuleHowToJsonLd moduleName="Wire Module" steps={wireHowToSteps} totalTime="PT2M" imageUrl="https://bombanana.online/images/screenshots/ss_2c952b65fc5734ce79f252df9f55af35b590be4a.thumb.jpg" />
+      <FAQPageJsonLd questions={faqs} />
       <PageHero src="/images/screenshots/ss_2c952b65fc5734ce79f252df9f55af35b590be4a.thumb.jpg" alt="BOMBANANA! Wire Module — Read, Confirm, Cut" />
       
       <PageTitle highlight="Wire Module">Wire Module Guide: Read, Confirm, and Cut Safely</PageTitle>
@@ -92,6 +104,78 @@ export default function WireModulePage() {
       <GuideP>That format removes ambiguity before the Blind player commits.</GuideP>
 
       <TipBox title="Pro Tip: Speed Up the Read, Not the Cut">If your team wants to get faster, do not speed up the cut. Speed up the reading process by using a fixed order every time: count → clue → position → confirm → act. Let one player always own wire callouts so the language stays consistent.</TipBox>
+
+      <GuideH2>Wire Module Rules — Decision Table</GuideH2>
+      <GuideP>The Wire Module's correct answer depends on two things: <strong>how many wires are present</strong> and <strong>the color of the LED indicator light</strong> on the module. The Deaf Monkey must call out both pieces of information. Below is the complete decision table for the most common configurations.</GuideP>
+
+      <div className="my-6 overflow-x-auto rounded-xl border border-[var(--color-pencil-gray)] bg-[var(--color-cream-paper)]">
+        <table className="w-full text-sm">
+          <thead>
+            <tr className="border-b border-[var(--color-pencil-gray)] bg-[var(--color-whisper-gray)]">
+              <th className="px-4 py-3 text-left font-semibold text-[var(--color-forest-ink)]">Wire Count</th>
+              <th className="px-4 py-3 text-left font-semibold text-[var(--color-forest-ink)]">LED Color</th>
+              <th className="px-4 py-3 text-left font-semibold text-[var(--color-forest-ink)]">Wire Colors (Left → Right)</th>
+              <th className="px-4 py-3 text-left font-semibold text-[var(--color-forest-ink)]">Cut Wire #</th>
+              <th className="px-4 py-3 text-left font-semibold text-[var(--color-forest-ink)]">Mute Gesture</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr className="border-b border-[var(--color-pencil-gray)]">
+              <td className="px-4 py-3 font-medium text-[var(--color-forest-ink)]">3 Wires</td>
+              <td className="px-4 py-3"><span className="inline-block w-3 h-3 rounded-full bg-red-500 mr-1" /> Red</td>
+              <td className="px-4 py-3 text-[var(--color-forest-ink)]/70">Red, Green, Blue</td>
+              <td className="px-4 py-3 font-bold text-[var(--color-forest-ink)]">Wire #3 (Blue)</td>
+              <td className="px-4 py-3 text-[var(--color-forest-ink)]/70">Hold up 3 fingers</td>
+            </tr>
+            <tr className="border-b border-[var(--color-pencil-gray)]">
+              <td className="px-4 py-3 font-medium text-[var(--color-forest-ink)]">3 Wires</td>
+              <td className="px-4 py-3"><span className="inline-block w-3 h-3 rounded-full bg-blue-500 mr-1" /> Blue</td>
+              <td className="px-4 py-3 text-[var(--color-forest-ink)]/70">Yellow, Green, Blue</td>
+              <td className="px-4 py-3 font-bold text-[var(--color-forest-ink)]">Wire #2 (Green)</td>
+              <td className="px-4 py-3 text-[var(--color-forest-ink)]/70">Hold up 2 fingers</td>
+            </tr>
+            <tr className="border-b border-[var(--color-pencil-gray)]">
+              <td className="px-4 py-3 font-medium text-[var(--color-forest-ink)]">3 Wires</td>
+              <td className="px-4 py-3"><span className="inline-block w-3 h-3 rounded-full bg-yellow-400 mr-1" /> Yellow</td>
+              <td className="px-4 py-3 text-[var(--color-forest-ink)]/70">Blue, Yellow, Red</td>
+              <td className="px-4 py-3 font-bold text-[var(--color-forest-ink)]">Wire #1 (Blue)</td>
+              <td className="px-4 py-3 text-[var(--color-forest-ink)]/70">Hold up 1 finger</td>
+            </tr>
+            <tr className="border-b border-[var(--color-pencil-gray)]">
+              <td className="px-4 py-3 font-medium text-[var(--color-forest-ink)]">4 Wires</td>
+              <td className="px-4 py-3"><span className="inline-block w-3 h-3 rounded-full bg-red-500 mr-1" /> Red</td>
+              <td className="px-4 py-3 text-[var(--color-forest-ink)]/70">Blue, Red, Yellow, Green</td>
+              <td className="px-4 py-3 font-bold text-[var(--color-forest-ink)]">Wire #4 (Green)</td>
+              <td className="px-4 py-3 text-[var(--color-forest-ink)]/70">Hold up 4 fingers</td>
+            </tr>
+            <tr>
+              <td className="px-4 py-3 font-medium text-[var(--color-forest-ink)]">4 Wires</td>
+              <td className="px-4 py-3"><span className="inline-block w-3 h-3 rounded-full bg-blue-500 mr-1" /> Blue</td>
+              <td className="px-4 py-3 text-[var(--color-forest-ink)]/70">Green, Red, Yellow, Blue</td>
+              <td className="px-4 py-3 font-bold text-[var(--color-forest-ink)]">Wire #3 (Yellow)</td>
+              <td className="px-4 py-3 text-[var(--color-forest-ink)]/70">Hold up 3 fingers</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p className="mb-4 text-xs text-[var(--color-forest-ink)]/50">Note: Wire configurations may vary based on game version and difficulty. Always verify LED color and wire count before making the final call.</p>
+
+      <GuideH2>Communication Flow for Wire Modules</GuideH2>
+      <GuideP>The Wire Module follows a strict communication chain. Each role has a specific job:</GuideP>
+      <div className="my-4 grid gap-3 sm:grid-cols-3">
+        <div className="rounded-lg border border-[var(--color-pencil-gray)] bg-[var(--color-cream-paper)] p-4">
+          <p className="text-xs font-bold uppercase tracking-[0.12em] text-[var(--color-terracotta)]">1. Deaf Monkey</p>
+          <p className="mt-2 text-sm text-[var(--color-forest-ink)]/70">"Four wires. Left to right: green, red, yellow, blue. LED is <strong>blue</strong>."</p>
+        </div>
+        <div className="rounded-lg border border-[var(--color-pencil-gray)] bg-[var(--color-cream-paper)] p-4">
+          <p className="text-xs font-bold uppercase tracking-[0.12em] text-[var(--color-terracotta)]">2. Mute Monkey</p>
+          <p className="mt-2 text-sm text-[var(--color-forest-ink)]/70">Looks up: 4 wires + blue LED → Cut wire #3. Holds up <strong>3 fingers</strong>.</p>
+        </div>
+        <div className="rounded-lg border border-[var(--color-pencil-gray)] bg-[var(--color-cream-paper)] p-4">
+          <p className="text-xs font-bold uppercase tracking-[0.12em] text-[var(--color-terracotta)]">3. Blind Monkey</p>
+          <p className="mt-2 text-sm text-[var(--color-forest-ink)]/70">"Cutting wire three." Waits for "Confirmed." Then <strong>cuts</strong>.</p>
+        </div>
+      </div>
 
       <FAQSection faqs={faqs} />
       <RelatedGuides guides={relatedGuides} />

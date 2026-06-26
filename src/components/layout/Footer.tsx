@@ -39,6 +39,7 @@ const RESOURCE_LINKS = [
 const LEGAL_LINKS = [
   { href: "/about", label: "About" },
   { href: "/privacy", label: "Privacy" },
+  { href: "/terms", label: "Terms" },
   { href: "/contact", label: "Contact" },
 ] as const;
 

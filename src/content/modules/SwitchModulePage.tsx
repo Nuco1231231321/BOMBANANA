@@ -3,6 +3,7 @@ import { PageHero } from "@/components/guide/PageHero";
 import { ArticleImage } from "@/components/guide/ArticleMedia";
 import { BlufBox, ActionTable, RelatedGuides, TipBox, WarningBox, GuideH2, GuideP, GuideList } from "@/components/guide/GuideBlocks";
 import { FAQSection } from "@/components/guide/FAQSection";
+import { ModuleHowToJsonLd, FAQPageJsonLd } from "@/components/layout/JsonLd";
 
 const faqs = [
   { question: "Is the Switch Module a memory puzzle?", answer: "Yes, in part. It rewards players who can track state across multiple steps. If nobody records the starting position, later calls become unreliable." },
@@ -26,9 +27,18 @@ const relatedGuides = [
   { title: "Team Callouts", description: "Standard phrases that keep the whole team synchronized.", href: "/communication/team-callouts" },
 ];
 
+const switchHowToSteps = [
+  { name: "Record the starting state", text: "The Deaf Monkey calls out every switch position exactly as it appears before any action. 'Starting state: up, down, up, down.' This baseline is essential — without it, later calls become guesswork." },
+  { name: "Identify the rule sequence", text: "The Mute Monkey determines from the manual whether the puzzle wants a specific sequence or a specific final state. The rule depends on the digit string and light colors displayed on the module." },
+  { name: "Flip one switch at a time", text: "The Mute gestures which switch to flip next. Only ONE switch changes at a time. After each flip, the Deaf verifies the new board state and confirms before proceeding." },
+  { name: "Verify after every flip", text: "After each switch change, the team must confirm the board matches the intended state. If the state is lost, stop guessing and rebuild from the last confirmed configuration." },
+];
+
 export default function SwitchModulePage() {
   return (
     <>
+      <ModuleHowToJsonLd moduleName="Switch Module" steps={switchHowToSteps} totalTime="PT3M" imageUrl="https://bombanana.online/images/screenshots/ss_24c16a36e29f2309b796e7b2b284386c43948e69.thumb.jpg" />
+      <FAQPageJsonLd questions={faqs} />
       <PageHero src="/images/screenshots/ss_24c16a36e29f2309b796e7b2b284386c43948e69.thumb.jpg" alt="BOMBANANA! Switch Module — Track, Then Flip" />
       
       <PageTitle highlight="Switch Module">Switch Module Guide: Track State, Flip in Order</PageTitle>

@@ -5,7 +5,7 @@ import { TaglineBadge } from "@/components/ui/TaglineBadge";
 import { Puzzle, Bomb, BookOpenCheck } from "lucide-react";
 
 export const metadata = {
-  title: "BOMBANANA! Bomb Modules Guide — Wire, Button, Switch, and Symbol Puzzles",
+  title: "BOMBANANA! Bomb Modules Guide — Wire, Button, Switch & Symbols",
   description: "Complete BOMBANANA! bomb modules guide covering wire, button, switch, and symbol puzzles. Rules, panic effects, and co-op defusal strategies.",
 };
 

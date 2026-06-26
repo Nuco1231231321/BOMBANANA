@@ -3,6 +3,7 @@ import { PageHero } from "@/components/guide/PageHero";
 import { ArticleImage } from "@/components/guide/ArticleMedia";
 import { BlufBox, RelatedGuides, TipBox, WarningBox, GuideH2, GuideH3, GuideP, GuideList } from "@/components/guide/GuideBlocks";
 import { FAQSection } from "@/components/guide/FAQSection";
+import { ModuleHowToJsonLd, FAQPageJsonLd } from "@/components/layout/JsonLd";
 
 const faqs = [
   { question: "Why is Symbols hard in co-op?", answer: "Because the puzzle depends on shared visual language, not just personal recognition. One player says 'the star thing,' another says 'the fork,' and the team wastes time reconciling words. The difficulty is linguistic, not just visual." },
@@ -18,9 +19,19 @@ const relatedGuides = [
   { title: "Team Callouts", description: "Standardized phrases for clear communication.", href: "/communication/team-callouts" },
 ];
 
+const symbolsHowToSteps = [
+  { name: "Agree on symbol names", text: "Before the timer starts, the entire team must agree on exactly one name for each symbol type. Practice the names together. Write them down if needed. Never change names mid-run." },
+  { name: "Deaf identifies the symbols", text: "The Deaf Monkey reads out each visible symbol using the team's agreed names. Use position as backup: 'Top-left is the star, bottom-right is the trident.'" },
+  { name: "Mute looks up the order", text: "Using the symbol group and any visible clue, the Mute Monkey finds the correct order in the manual. The rule maps symbol groups to a specific sequence of actions." },
+  { name: "Mute gestures the sequence", text: "The Mute communicates the order one symbol at a time using gestures or pointing. For multi-symbol sequences, handle one at a time — never gesture the full sequence at once." },
+  { name: "Deaf relays and Blind confirms", text: "The Deaf speaks each step clearly. The Blind repeats the target symbol before acting. This back-and-forth prevents the most common Symbols mistake: two players thinking they're talking about the same symbol when they're not." },
+];
+
 export default function SymbolsModulePage() {
   return (
     <>
+      <ModuleHowToJsonLd moduleName="Symbols Module" steps={symbolsHowToSteps} totalTime="PT3M" imageUrl="https://bombanana.online/images/screenshots/ss_71217070b739545c452accf9e600c6ca72832e64.thumb.jpg" />
+      <FAQPageJsonLd questions={faqs} />
       <PageHero src="/images/screenshots/ss_71217070b739545c452accf9e600c6ca72832e64.thumb.jpg" alt="BOMBANANA! Symbols Module — Match Glyphs, Clean Callouts" />
       
       <PageTitle highlight="Symbols Module">Symbols Module Guide: Match Glyphs, Clean Callouts</PageTitle>
@@ -64,6 +75,83 @@ export default function SymbolsModulePage() {
       <GuideP>This kind of language keeps the whole team synchronized.</GuideP>
 
       <TipBox title="Pro Tip: Build a Shared Symbol Dictionary">Create a shared symbol dictionary with your team and stick to it. If a symbol has a nickname, make sure everyone agrees on the nickname before the round starts. When a symbol feels ambiguous, it is better to pause and standardize the description than to guess and create confusion.</TipBox>
+
+      <GuideH2>Symbol Module Rules — Reference Table</GuideH2>
+      <GuideP>The Symbols Module challenges teams with visual matching. Symbols are organized into groups. The Mute Monkey's manual contains the mapping between symbol groups and the required order. Every team should establish <strong>consistent names</strong> for each symbol before the timer starts.</GuideP>
+
+      <div className="my-6 overflow-x-auto rounded-xl border border-[var(--color-pencil-gray)] bg-[var(--color-cream-paper)]">
+        <table className="w-full text-sm">
+          <thead>
+            <tr className="border-b border-[var(--color-pencil-gray)] bg-[var(--color-whisper-gray)]">
+              <th className="px-4 py-3 text-left font-semibold text-[var(--color-forest-ink)]">Symbol Shape</th>
+              <th className="px-4 py-3 text-left font-semibold text-[var(--color-forest-ink)]">Suggested Team Name</th>
+              <th className="px-4 py-3 text-left font-semibold text-[var(--color-forest-ink)]">Alternative Names</th>
+              <th className="px-4 py-3 text-left font-semibold text-[var(--color-forest-ink)]">Confusion Risk</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr className="border-b border-[var(--color-pencil-gray)]">
+              <td className="px-4 py-3 font-medium text-[var(--color-forest-ink)]">⚡ Lightning / Zigzag</td>
+              <td className="px-4 py-3"><strong>Squiggly</strong></td>
+              <td className="px-4 py-3 text-[var(--color-forest-ink)]/70">Zigzag, bolt, snake, wave</td>
+              <td className="px-4 py-3 text-xs text-[var(--color-bomb-red)]">⚠ High — too many nicknames</td>
+            </tr>
+            <tr className="border-b border-[var(--color-pencil-gray)]">
+              <td className="px-4 py-3 font-medium text-[var(--color-forest-ink)]">★ Star / Asterisk</td>
+              <td className="px-4 py-3"><strong>Star</strong></td>
+              <td className="px-4 py-3 text-[var(--color-forest-ink)]/70">Asterisk, sparkle, sun, burst</td>
+              <td className="px-4 py-3 text-xs text-[var(--color-forest-ink)]/60">Low — "star" is widely understood</td>
+            </tr>
+            <tr className="border-b border-[var(--color-pencil-gray)]">
+              <td className="px-4 py-3 font-medium text-[var(--color-forest-ink)]">◎ Circle-with-dot / Target</td>
+              <td className="px-4 py-3"><strong>Target</strong></td>
+              <td className="px-4 py-3 text-[var(--color-forest-ink)]/70">Bullseye, dot-circle, ring, onion</td>
+              <td className="px-4 py-3 text-xs text-[var(--color-bomb-red)]">⚠ Medium — "circle" alone loses detail</td>
+            </tr>
+            <tr className="border-b border-[var(--color-pencil-gray)]">
+              <td className="px-4 py-3 font-medium text-[var(--color-forest-ink)]">Ψ Trident / Fork</td>
+              <td className="px-4 py-3"><strong>Trident</strong></td>
+              <td className="px-4 py-3 text-[var(--color-forest-ink)]/70">Fork, pitchfork, psi, three-prong</td>
+              <td className="px-4 py-3 text-xs text-[var(--color-forest-ink)]/60">Medium — "fork" is common but ambiguous</td>
+            </tr>
+            <tr className="border-b border-[var(--color-pencil-gray)]">
+              <td className="px-4 py-3 font-medium text-[var(--color-forest-ink)]">♢ Diamond / Rhombus</td>
+              <td className="px-4 py-3"><strong>Diamond</strong></td>
+              <td className="px-4 py-3 text-[var(--color-forest-ink)]/70">Rhombus, kite, tilted-square</td>
+              <td className="px-4 py-3 text-xs text-[var(--color-forest-ink)]/60">Medium — don't confuse with square</td>
+            </tr>
+            <tr>
+              <td className="px-4 py-3 font-medium text-[var(--color-forest-ink)]">☥ Ankh / Cross-loop</td>
+              <td className="px-4 py-3"><strong>Loop-cross</strong></td>
+              <td className="px-4 py-3 text-[var(--color-forest-ink)]/70">Ankh, lollipop, circle-cross, handle</td>
+              <td className="px-4 py-3 text-xs text-[var(--color-bomb-red)]">⚠ High — no universal name exists</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <GuideH2>Symbol Naming Protocol</GuideH2>
+      <GuideP>Before the timer starts, your team MUST agree on exactly one name per symbol type. The protocol:</GuideP>
+      <div className="my-4 grid gap-3 sm:grid-cols-2">
+        <div className="rounded-lg border border-[var(--color-pencil-gray)] bg-[var(--color-cream-paper)] p-4">
+          <p className="text-sm font-bold text-[var(--color-forest-ink)]">✅ DO</p>
+          <ul className="mt-2 space-y-1.5 text-sm text-[var(--color-forest-ink)]/70">
+            <li>• Use the SAME name every time</li>
+            <li>• Practice names before starting</li>
+            <li>• Write names down if needed</li>
+            <li>• Use position as backup: "top-left is star"</li>
+          </ul>
+        </div>
+        <div className="rounded-lg border border-[var(--color-pencil-gray)] bg-[var(--color-cream-paper)] p-4">
+          <p className="text-sm font-bold text-[var(--color-bomb-red)]">❌ DON'T</p>
+          <ul className="mt-2 space-y-1.5 text-sm text-[var(--color-forest-ink)]/70">
+            <li>• Change names mid-run</li>
+            <li>• Use "that one" or "the weird thing"</li>
+            <li>• Assume your teammate uses the same name</li>
+            <li>• Describe by color only (colors may repeat)</li>
+          </ul>
+        </div>
+      </div>
 
       <FAQSection faqs={faqs} />
       <RelatedGuides guides={relatedGuides} />

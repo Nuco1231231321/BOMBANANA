@@ -101,6 +101,10 @@ export default function RootLayout({
           name="google-adsense-account"
           content="ca-pub-3114396640600943"
         />
+        <meta
+          name="yandex-verification"
+          content="15622d6d05dc0eca"
+        />
         {/* Google Consent Mode v2 — defaults deny until user opts in */}
         <Script
           id="google-consent-mode"

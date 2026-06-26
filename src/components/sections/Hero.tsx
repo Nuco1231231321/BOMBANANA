@@ -1,7 +1,7 @@
-import { Banana, Users, Zap } from "lucide-react";
+import { Banana, BookOpen, Gauge, Users, Zap } from "lucide-react";
 import { Link } from "@/i18n/navigation";
 import { Button } from "@/components/ui/Button";
-import { HighlightedWord, TaglineBadge } from "@/components/ui/TaglineBadge";
+import { TaglineBadge } from "@/components/ui/TaglineBadge";
 import type { Locale } from "@/i18n/routing";
 
 interface HeroProps {
@@ -26,83 +26,122 @@ export default function Hero({ locale = "en" }: HeroProps) {
   void locale;
 
   return (
-    <section className="relative overflow-hidden pt-32 pb-20 md:pt-40 md:pb-28">
+    <section className="relative overflow-hidden pt-28 pb-16 md:pt-36 md:pb-24">
       <div
-        className="absolute inset-0 pointer-events-none opacity-[0.035]"
+        className="absolute inset-0 pointer-events-none opacity-[0.08]"
         aria-hidden="true"
         style={{
           backgroundImage:
-            "radial-gradient(circle at 20% 50%, var(--color-forest-ink) 1px, transparent 1px), radial-gradient(circle at 80% 20%, var(--color-forest-ink) 1px, transparent 1px)",
-          backgroundSize: "60px 60px, 40px 40px",
+            "linear-gradient(var(--color-forest-ink) 1px, transparent 1px), linear-gradient(90deg, var(--color-forest-ink) 1px, transparent 1px)",
+          backgroundSize: "48px 48px",
         }}
+      />
+      <div
+        className="absolute inset-x-0 top-0 h-[520px] bg-[linear-gradient(135deg,rgba(255,233,92,0.38),rgba(168,229,229,0.28)_46%,rgba(246,208,255,0.2))]"
+        aria-hidden="true"
       />
 
       <div className="container-page relative z-10">
-        <div className="mx-auto flex max-w-[720px] flex-col items-center text-center">
-          <TaglineBadge icon={<Banana className="h-3.5 w-3.5" />}>
-            The Ultimate Game Guide
-          </TaglineBadge>
+        <div className="grid items-center gap-10 lg:grid-cols-[minmax(0,0.94fr)_minmax(420px,1.06fr)]">
+          <div className="max-w-[650px]">
+            <TaglineBadge
+              icon={<Gauge className="h-3.5 w-3.5" />}
+              className="border border-[var(--color-forest-ink)]/10 bg-[var(--color-panel-cream)]/90 shadow-[var(--shadow-subtle)]"
+            >
+              3-player co-op field guide
+            </TaglineBadge>
 
-          <h1 className="mt-6 font-[family-name:var(--font-bricolage-grotesque)] text-[clamp(2.5rem,6vw,4.5rem)] font-extrabold leading-[1.05] tracking-[0.04em] text-[var(--color-forest-ink)] text-balance">
-            BOMBANANA! <HighlightedWord>Bomb</HighlightedWord>
-            <br />
-            Defusal Guide
-          </h1>
+            <h1 className="mt-6 font-[family-name:var(--font-bricolage-grotesque)] text-[clamp(3rem,6.4vw,6.2rem)] font-extrabold leading-[0.88] text-[var(--color-forest-ink)] text-balance">
+              BOMBANANA!
+              <span className="mt-3 block max-w-[560px] text-[clamp(2.25rem,4.8vw,4.5rem)] leading-[0.95]">
+                Bomb Defusal Guide
+              </span>
+            </h1>
 
-          <p className="mt-6 max-w-[580px] text-[clamp(1rem,2vw,1.25rem)] leading-[1.6] text-[var(--color-forest-ink)] opacity-70 text-balance">
-            The complete guide to BOMBANANA!, a chaotic 3-player co-op bomb defusal
-            game. Learn every role, master every module, and keep your friendships
-            intact.
-          </p>
+            <p className="mt-6 max-w-[580px] text-[clamp(1rem,1.7vw,1.2rem)] leading-[1.75] text-[var(--color-forest-ink)]/72 text-balance">
+              The complete guide to BOMBANANA!, a chaotic 3-player co-op bomb defusal
+              game. Learn every role, master every module, and keep your friendships
+              intact.
+            </p>
 
-          <div className="mt-8 flex flex-col items-center gap-3 sm:flex-row">
-            <Button href="/modules" variant="primary" size="lg" arrow>
-              Open Module Guides
-            </Button>
-            <Button href="/manual" variant="outline" size="lg">
-              Manual Guide
-            </Button>
+            <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+              <Button href="/modules" variant="primary" size="lg" arrow>
+                Open Module Guides
+              </Button>
+              <Button
+                href="/manual"
+                variant="outline"
+                size="lg"
+                className="bg-[var(--color-panel-cream)]/80"
+              >
+                Manual Guide
+              </Button>
+            </div>
+
+            <nav
+              aria-label="Most searched help"
+              className="mt-7 max-w-[680px] rounded-xl border border-[var(--color-forest-ink)]/12 bg-[var(--color-panel-cream)]/88 p-4 shadow-[var(--shadow-card)] backdrop-blur"
+            >
+              <p className="mb-3 flex items-center gap-2 font-[family-name:var(--font-roboto-mono)] text-xs font-bold uppercase tracking-[0.12em] text-[var(--color-terracotta)]">
+                <BookOpen className="h-3.5 w-3.5" />
+                Most searched help
+              </p>
+              <div className="flex flex-wrap gap-2">
+                {searchedLinks.map((link) => (
+                  <Link
+                    key={link.href}
+                    href={link.href as never}
+                    className="inline-flex min-h-10 items-center rounded-lg border border-[var(--color-forest-ink)]/12 bg-white/70 px-3 py-2 text-sm font-semibold leading-tight text-[var(--color-forest-ink)] no-underline transition-all hover:-translate-y-0.5 hover:border-[var(--color-forest-ink)] hover:bg-[var(--color-banana-yellow)]/45"
+                  >
+                    {link.label}
+                  </Link>
+                ))}
+              </div>
+            </nav>
           </div>
 
-          <nav
-            aria-label="Most searched help"
-            className="mt-5 w-full max-w-[640px] rounded-lg border border-[var(--color-pencil-gray)] bg-[var(--color-cream-paper)]/75 p-3 text-left"
-          >
-            <p className="mb-2 font-[family-name:var(--font-roboto-mono)] text-xs font-bold uppercase tracking-[0.12em] text-[var(--color-terracotta)]">
-              Most searched help
-            </p>
-            <div className="flex flex-wrap gap-2">
-              {searchedLinks.map((link) => (
-                <Link
-                  key={link.href}
-                  href={link.href as never}
-                  className="inline-flex min-h-10 items-center rounded-md border border-[var(--color-pencil-gray)] bg-[var(--color-cream-paper)] px-3 py-2 text-sm font-semibold leading-tight text-[var(--color-forest-ink)] transition-colors hover:border-[var(--color-banana-yellow)]"
-                >
-                  {link.label}
-                </Link>
-              ))}
-            </div>
-          </nav>
-
-          <div className="mt-12 flex flex-wrap items-center justify-center gap-6 border-t border-[var(--color-pencil-gray)] pt-8 sm:gap-10">
-            {stats.map((stat) => {
-              const Icon = stat.icon;
-              return (
-                <div key={stat.label} className="flex items-center gap-2.5">
-                  <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-[var(--color-banana-yellow)]/40">
-                    <Icon className="h-4 w-4 text-[var(--color-forest-ink)]" />
-                  </span>
-                  <div className="text-left">
-                    <div className="text-sm font-semibold text-[var(--color-forest-ink)]">
-                      {stat.value}
-                    </div>
-                    <div className="text-xs text-[var(--color-forest-ink)] opacity-50">
-                      {stat.label}
-                    </div>
-                  </div>
+          <div className="relative lg:pt-6">
+            <div className="absolute -left-4 top-10 hidden h-28 w-28 rotate-[-8deg] rounded-xl border border-[var(--color-forest-ink)]/15 bg-[var(--color-banana-yellow)] shadow-[var(--shadow-card)] lg:block" />
+            <div className="relative overflow-hidden rounded-2xl border border-[var(--color-forest-ink)]/15 bg-[var(--color-surface-dark)] p-2 shadow-[0_28px_80px_-46px_rgba(26,51,0,0.65)]">
+              <div className="relative aspect-[16/10] overflow-hidden rounded-xl">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src="/images/screenshots/ss_858b009c283bfaac07f526309cb8a68c0c284278.full.jpg"
+                  alt="BOMBANANA! co-op bomb defusal gameplay"
+                  className="h-full w-full object-cover"
+                />
+                <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(0,0,0,0.02),rgba(0,0,0,0.5))]" />
+                <div className="absolute bottom-4 left-4 right-4 grid gap-2 sm:grid-cols-3">
+                  {stats.map((stat) => {
+                    const Icon = stat.icon;
+                    return (
+                      <div
+                        key={stat.label}
+                        className="rounded-lg border border-white/14 bg-[var(--color-panel-cream)]/90 p-3 text-[var(--color-forest-ink)] shadow-[var(--shadow-subtle)] backdrop-blur"
+                      >
+                        <div className="flex items-center gap-2">
+                          <Icon className="h-4 w-4" />
+                          <span className="text-lg font-extrabold leading-none">
+                            {stat.value}
+                          </span>
+                        </div>
+                        <p className="mt-1 text-xs font-medium leading-tight opacity-65">
+                          {stat.label}
+                        </p>
+                      </div>
+                    );
+                  })}
                 </div>
-              );
-            })}
+              </div>
+            </div>
+            <div className="absolute -right-2 -top-1 hidden rounded-xl border border-[var(--color-forest-ink)]/15 bg-[var(--color-panel-cream)] px-4 py-3 shadow-[var(--shadow-card)] md:block">
+              <p className="font-[family-name:var(--font-roboto-mono)] text-[11px] font-bold uppercase tracking-[0.12em] text-[var(--color-terracotta)]">
+                Defusal status
+              </p>
+              <p className="mt-1 text-sm font-bold text-[var(--color-forest-ink)]">
+                Manual ready
+              </p>
+            </div>
           </div>
         </div>
       </div>

@@ -56,10 +56,10 @@ export default function Header({ locale }: HeaderProps) {
     >
       <nav
         className={cn(
-          "flex h-14 w-full max-w-[1200px] items-center px-4",
-          "rounded-2xl border border-[var(--color-pencil-gray)] bg-[var(--color-cream-paper)]",
+          "flex h-14 w-full max-w-[1200px] items-center px-3 sm:px-4",
+          "rounded-2xl border border-[var(--color-forest-ink)]/10 bg-[var(--color-panel-cream)]/86 backdrop-blur-xl",
           "shadow-[var(--shadow-nav)] transition-all duration-300",
-          scrolled && "h-12 shadow-[var(--shadow-subtle-2)]"
+          scrolled && "h-12 bg-[var(--color-panel-cream)]/94 shadow-[var(--shadow-subtle-2)]"
         )}
       >
         <Link
@@ -68,7 +68,7 @@ export default function Header({ locale }: HeaderProps) {
           className="group mr-4 flex shrink-0 items-center gap-2"
           aria-label="BOMBANANA! Guide Home"
         >
-          <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-[var(--color-banana-yellow)] text-[var(--color-forest-ink)] transition-transform group-hover:scale-110">
+          <span className="flex h-8 w-8 items-center justify-center rounded-lg border border-[var(--color-forest-ink)]/10 bg-[var(--color-banana-yellow)] text-[var(--color-forest-ink)] shadow-[var(--shadow-subtle)] transition-transform group-hover:scale-110">
             <Banana className="h-5 w-5" />
           </span>
           <span className="hidden text-[15px] font-bold tracking-tight text-[var(--color-forest-ink)] sm:block">
@@ -77,20 +77,26 @@ export default function Header({ locale }: HeaderProps) {
         </Link>
 
         <div className="hidden flex-1 items-center justify-center gap-1 lg:flex">
-          {NAV_ITEMS.map((item) => (
-            <Link
-              key={item.key}
-              href={item.href as never}
-              locale={item.translated ? activePathLocale : undefined}
-              className={cn(
-                "rounded-md px-3 py-1.5 text-sm font-medium",
-                "text-[var(--color-forest-ink)] opacity-70",
-                "transition-all duration-200 hover:bg-[var(--color-whisper-gray)] hover:opacity-100"
-              )}
-            >
-              {nav(item.key)}
-            </Link>
-          ))}
+          {NAV_ITEMS.map((item) => {
+            const isActive =
+              pathname === item.href || (item.href !== "/" && pathname.startsWith(`${item.href}/`));
+
+            return (
+              <Link
+                key={item.key}
+                href={item.href as never}
+                locale={item.translated ? activePathLocale : undefined}
+                className={cn(
+                  "rounded-lg px-3 py-1.5 text-sm font-semibold",
+                  "text-[var(--color-forest-ink)]/68",
+                  "transition-all duration-200 hover:bg-[var(--color-banana-yellow)]/35 hover:text-[var(--color-forest-ink)]",
+                  isActive && "bg-[var(--color-forest-ink)] text-[var(--color-cream-paper)] hover:bg-[var(--color-forest-ink)] hover:text-[var(--color-cream-paper)]"
+                )}
+              >
+                {nav(item.key)}
+              </Link>
+            );
+          })}
         </div>
 
         <div className="ml-auto flex items-center gap-2">
@@ -98,9 +104,9 @@ export default function Header({ locale }: HeaderProps) {
             href={switchHref as never}
             locale={switchLocale}
             className={cn(
-              "hidden items-center gap-1.5 rounded-md px-2.5 py-1.5 sm:flex",
-              "text-xs font-medium text-[var(--color-forest-ink)] opacity-60",
-              "transition-all duration-200 hover:bg-[var(--color-whisper-gray)] hover:opacity-100"
+              "hidden items-center gap-1.5 rounded-lg px-2.5 py-1.5 sm:flex",
+              "text-xs font-semibold text-[var(--color-forest-ink)]/58",
+              "transition-all duration-200 hover:bg-[var(--color-banana-yellow)]/30 hover:text-[var(--color-forest-ink)]"
             )}
             aria-label={common("switchLanguage")}
           >
@@ -112,9 +118,9 @@ export default function Header({ locale }: HeaderProps) {
             href={"/beginners" as never}
             locale={activePathLocale}
             className={cn(
-              "hidden items-center gap-1.5 rounded-md px-4 py-1.5 sm:inline-flex",
+              "hidden items-center gap-1.5 rounded-lg px-4 py-1.5 sm:inline-flex",
               "bg-[var(--color-forest-ink)] text-[var(--color-cream-paper)]",
-              "text-sm font-medium shadow-[var(--shadow-subtle)] transition-opacity hover:opacity-90"
+              "text-sm font-bold shadow-[var(--shadow-subtle)] transition-all hover:-translate-y-0.5 hover:bg-[var(--color-terracotta)]"
             )}
           >
             {common("start")}
@@ -123,7 +129,7 @@ export default function Header({ locale }: HeaderProps) {
 
           <button
             onClick={() => setMobileOpen(!mobileOpen)}
-            className="flex h-9 w-9 items-center justify-center rounded-md transition-colors hover:bg-[var(--color-whisper-gray)] lg:hidden"
+            className="flex h-9 w-9 items-center justify-center rounded-lg transition-colors hover:bg-[var(--color-banana-yellow)]/30 lg:hidden"
             aria-label={mobileOpen ? "Close menu" : "Open menu"}
           >
             {mobileOpen ? (
@@ -137,7 +143,7 @@ export default function Header({ locale }: HeaderProps) {
 
       <div
         className={cn(
-          "fixed inset-0 top-[72px] z-40 flex flex-col items-center justify-start gap-2 bg-[var(--color-cream-paper)] pt-12 lg:hidden",
+          "fixed inset-0 top-[72px] z-40 flex flex-col items-center justify-start gap-2 bg-[var(--color-panel-cream)]/96 pt-12 backdrop-blur lg:hidden",
           "transition-all duration-300 ease-in-out",
           mobileOpen
             ? "translate-y-0 opacity-100"

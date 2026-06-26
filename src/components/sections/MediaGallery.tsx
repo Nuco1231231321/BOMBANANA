@@ -61,16 +61,19 @@ export default function MediaGallery({
   return (
     <>
       {/* ── Section Header ── */}
-      <div className="text-center mb-10">
-        <TaglineBadge icon={<Camera className="w-3 h-3" />}>
+      <div className="mx-auto mb-10 max-w-[720px] text-center">
+        <TaglineBadge
+          icon={<Camera className="w-3 h-3" />}
+          className="border border-[var(--color-forest-ink)]/10 bg-[var(--color-banana-yellow)]/75"
+        >
           MEDIA GALLERY
         </TaglineBadge>
         <h2
-          className="mt-4 font-[family-name:var(--font-bricolage-grotesque)] font-extrabold text-[clamp(1.75rem,3.5vw,2.75rem)] leading-[1.05] tracking-[0.04em] text-[var(--color-forest-ink)] text-balance"
+          className="mt-4 font-[family-name:var(--font-bricolage-grotesque)] text-[clamp(2.25rem,4.4vw,4rem)] font-extrabold leading-[0.98] text-[var(--color-forest-ink)] text-balance"
         >
           {title}
         </h2>
-        <p className="mt-3 text-[var(--color-forest-ink)] opacity-60 text-base max-w-[520px] mx-auto text-balance">
+        <p className="mx-auto mt-3 max-w-[560px] text-base leading-[1.7] text-[var(--color-forest-ink)]/66 text-balance">
           {subtitle}
         </p>
 
@@ -85,10 +88,10 @@ export default function MediaGallery({
               key={tab.key}
               onClick={() => setFilter(tab.key)}
               className={cn(
-                "px-4 py-1.5 rounded-full text-sm font-medium transition-all duration-200",
+                "rounded-full px-4 py-1.5 text-sm font-semibold transition-all duration-200",
                 filter === tab.key
                   ? "bg-[var(--color-forest-ink)] text-[var(--color-cream-paper)]"
-                  : "bg-[var(--color-whisper-gray)] text-[var(--color-forest-ink)] opacity-60 hover:opacity-100"
+                  : "bg-[var(--color-warm-paper)] text-[var(--color-forest-ink)]/62 hover:text-[var(--color-forest-ink)]"
               )}
             >
               {tab.label}
@@ -104,9 +107,9 @@ export default function MediaGallery({
             key={item.id}
             onClick={() => openLightbox(index)}
             className={cn(
-              "group relative overflow-hidden rounded-xl border border-[var(--color-pencil-gray)]",
-              "bg-[var(--color-cream-paper)]",
-              "hover:shadow-[var(--shadow-card)] hover:-translate-y-0.5",
+              "group relative overflow-hidden rounded-xl border border-[var(--color-forest-ink)]/12",
+              "bg-[var(--color-cream-paper)] shadow-[var(--shadow-card)]",
+              "hover:-translate-y-1",
               "transition-all duration-300 text-left cursor-pointer",
               "focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--color-banana-yellow)]"
             )}

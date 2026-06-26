@@ -13,6 +13,8 @@
   --color-banana-yellow: #ffe95c;
   --color-banana-gold: #f5c518;
   --color-cream-paper: #fcfaf5;
+  --color-warm-paper: #f4efe3;
+  --color-panel-cream: #fffdf6;
   --color-pencil-gray: #b6b6b6;
   --color-whisper-gray: #e8e8e8;
   --color-sticky-note-teal: #a8e5e5;
@@ -97,11 +99,13 @@
   /* ═══════════════════════════════════════
      SHADOWS
      ═══════════════════════════════════════ */
-  --shadow-subtle: rgba(0, 0, 0, 0.05) 0px 1px 2px 0px;
+  --shadow-subtle: rgba(26, 51, 0, 0.06) 0px 1px 2px 0px;
   --shadow-subtle-2: rgba(0, 0, 0, 0.1) 0px 1px 3px 0px,
     rgba(0, 0, 0, 0.1) 0px 1px 2px -1px;
-  --shadow-card: rgba(0, 0, 0, 0.04) 0px 2px 8px 0px;
-  --shadow-nav: rgba(255, 225, 53, 0.15) 0px 4px 24px 0px;
+  --shadow-card: rgba(26, 51, 0, 0.09) 0px 16px 40px -24px,
+    rgba(26, 51, 0, 0.08) 0px 4px 18px -12px;
+  --shadow-nav: rgba(26, 51, 0, 0.09) 0px 18px 50px -28px,
+    rgba(26, 51, 0, 0.06) 0px 4px 18px -10px;
 }
 
 /* ═══════════════════════════════════════
@@ -115,7 +119,9 @@
   }
 
   body {
-    background-color: var(--color-cream-paper);
+    background:
+      linear-gradient(180deg, rgba(252, 250, 245, 0.96), rgba(244, 239, 227, 0.86)),
+      var(--color-cream-paper);
     color: var(--color-forest-ink);
     font-family: var(--font-inter);
     font-size: var(--text-body);

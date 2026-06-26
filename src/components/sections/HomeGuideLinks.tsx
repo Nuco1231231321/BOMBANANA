@@ -63,16 +63,16 @@ const utilityLinks = [
 
 export default function HomeGuideLinks() {
   return (
-    <section className="py-16 md:py-24">
+    <section className="bg-[var(--color-warm-paper)] py-16 md:py-24">
       <div className="container-page">
-        <div className="mb-10 max-w-[680px]">
+        <div className="mb-10 max-w-[720px]">
           <p className="font-[family-name:var(--font-roboto-mono)] text-xs font-bold uppercase tracking-[0.12em] text-[var(--color-terracotta)]">
             Field manual routes
           </p>
-          <h2 className="mt-3 font-[family-name:var(--font-bricolage-grotesque)] text-[clamp(2rem,4vw,3.25rem)] font-extrabold leading-[1.05] tracking-[0.04em] text-[var(--color-forest-ink)]">
+          <h2 className="mt-3 font-[family-name:var(--font-bricolage-grotesque)] text-[clamp(2.35rem,4.8vw,4.75rem)] font-extrabold leading-[0.95] text-[var(--color-forest-ink)]">
             Jump to the next fix
           </h2>
-          <p className="mt-4 text-lg leading-[1.6] text-[var(--color-forest-ink)] opacity-65">
+          <p className="mt-4 text-lg leading-[1.7] text-[var(--color-forest-ink)]/66">
             Use these routes when your team needs a quick next page instead of reading
             a long landing page.
           </p>
@@ -86,10 +86,10 @@ export default function HomeGuideLinks() {
                 <nav
                   key={group.title}
                   aria-label={group.title}
-                  className="rounded-xl border border-[var(--color-pencil-gray)] bg-[var(--color-cream-paper)] p-5"
+                  className="rounded-xl border border-[var(--color-forest-ink)]/10 bg-[var(--color-panel-cream)] p-5 shadow-[var(--shadow-card)]"
                 >
                   <div className="mb-4 flex items-center gap-3">
-                    <span className="flex h-10 w-10 items-center justify-center rounded-md bg-[var(--color-banana-yellow)]/45 text-[var(--color-forest-ink)]">
+                    <span className="flex h-10 w-10 items-center justify-center rounded-lg border border-[var(--color-forest-ink)]/10 bg-[var(--color-banana-yellow)]/70 text-[var(--color-forest-ink)]">
                       <Icon className="h-5 w-5" />
                     </span>
                     <h3 className="text-lg font-bold text-[var(--color-forest-ink)]">
@@ -101,7 +101,7 @@ export default function HomeGuideLinks() {
                       <li key={link.href}>
                         <Link
                           href={link.href as never}
-                          className="group flex items-center justify-between border-b border-[var(--color-whisper-gray)] py-2 text-sm font-medium text-[var(--color-forest-ink)] no-underline last:border-b-0 hover:text-[var(--color-terracotta)]"
+                          className="group flex items-center justify-between rounded-lg border-b border-[var(--color-whisper-gray)] px-2 py-2 text-sm font-semibold text-[var(--color-forest-ink)]/75 no-underline last:border-b-0 hover:bg-[var(--color-banana-yellow)]/24 hover:text-[var(--color-forest-ink)]"
                         >
                           <span>{link.label}</span>
                           <span
@@ -119,8 +119,8 @@ export default function HomeGuideLinks() {
             })}
           </div>
 
-          <aside className="rounded-xl border border-[var(--color-forest-ink)] bg-[var(--color-sticky-note-mint)]/55 p-5">
-            <h3 className="text-lg font-bold text-[var(--color-forest-ink)]">
+          <aside className="rounded-xl border border-[var(--color-forest-ink)]/12 bg-[var(--color-forest-ink)] p-5 text-[var(--color-cream-paper)] shadow-[var(--shadow-card)]">
+            <h3 className="text-lg font-bold text-[var(--color-cream-paper)]">
               Useful Before Launch
             </h3>
             <div className="mt-4 grid gap-3">
@@ -130,7 +130,7 @@ export default function HomeGuideLinks() {
                   <Link
                     key={link.href}
                     href={link.href as never}
-                    className="flex items-center gap-3 rounded-md border border-[var(--color-forest-ink)]/20 bg-[var(--color-cream-paper)] px-3 py-3 text-sm font-semibold text-[var(--color-forest-ink)] no-underline transition-colors hover:border-[var(--color-forest-ink)]"
+                    className="flex items-center gap-3 rounded-lg border border-[var(--color-cream-paper)]/12 bg-[var(--color-cream-paper)]/8 px-3 py-3 text-sm font-semibold text-[var(--color-cream-paper)] no-underline transition-colors hover:border-[var(--color-banana-yellow)] hover:bg-[var(--color-banana-yellow)]/12"
                   >
                     <Icon className="h-4 w-4" />
                     {link.label}

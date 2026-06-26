@@ -29,7 +29,7 @@ export default async function HomePage({ params }: Props) {
       <main>
         <Hero locale={locale} />
         <RoleOverview locale={locale} />
-        <section className="bg-[var(--color-cream-paper)] py-16 md:py-24">
+        <section className="bg-[var(--color-panel-cream)] py-16 md:py-24">
           <div className="container-page">
             <MediaGallery />
           </div>

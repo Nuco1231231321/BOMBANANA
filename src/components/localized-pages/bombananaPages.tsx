@@ -5,6 +5,7 @@ const steamDemoUrl = "https://store.steampowered.com/app/4747510/BOMBANANA_Demo/
 
 export const manualPage = {
   locale: "en",
+  path: "/manual",
   eyebrow: "Manual flow",
   title: "BOMBANANA! Manual Guide",
   intro:
@@ -231,6 +232,7 @@ export const manualPage = {
 
 export const demoPage = {
   locale: "en",
+  path: "/demo",
   eyebrow: "Steam demo",
   title: "BOMBANANA! Demo Download Guide",
   intro:
@@ -326,6 +328,7 @@ export const demoPage = {
 
 export const releaseDatePage = {
   locale: "en",
+  path: "/release-date",
   eyebrow: "Release status",
   title: "BOMBANANA! Release Date, Price, and Platforms",
   intro:
@@ -425,6 +428,7 @@ export const releaseDatePage = {
 
 export const ptHowToPlayPage = {
   locale: "pt",
+  path: "/como-jogar-bombanana",
   eyebrow: "Guia em português",
   title: "Como jogar BOMBANANA!",
   intro:

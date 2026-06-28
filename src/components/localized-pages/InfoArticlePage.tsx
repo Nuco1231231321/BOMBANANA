@@ -6,6 +6,7 @@ import { PageHero } from "@/components/guide/PageHero";
 import { FAQSection } from "@/components/guide/FAQSection";
 import { Link } from "@/i18n/navigation";
 import type { Locale } from "@/i18n/routing";
+import { buildArticleJsonLd, buildBreadcrumbJsonLd, buildBreadcrumbs } from "@/lib/seo";
 
 export interface InfoTable {
   headers: string[];
@@ -31,6 +32,7 @@ export interface ArticleSection {
 
 export interface InfoArticlePageProps {
   locale: Locale;
+  path: string;
   eyebrow: string;
   title: string;
   intro: string;
@@ -54,6 +56,7 @@ export interface InfoArticlePageProps {
 
 export default function InfoArticlePage({
   locale,
+  path,
   eyebrow,
   title,
   intro,
@@ -68,9 +71,32 @@ export default function InfoArticlePage({
   relatedLinks,
 }: InfoArticlePageProps) {
   const pagePathLocale = locale === "pt" ? locale : undefined;
+  const breadcrumbs = buildBreadcrumbs(locale, [
+    { label: "Home", href: "/" },
+    { label: title, href: path },
+  ]);
+  const meta = {
+    title,
+    description: intro,
+    updated,
+  };
 
   return (
-    <ContentLayout locale={locale} prose={false} contentClassName="max-w-[920px]">
+    <ContentLayout
+      locale={locale}
+      prose={false}
+      contentClassName="max-w-[920px]"
+      breadcrumbs={breadcrumbs}
+      jsonLd={
+        <>
+          {buildArticleJsonLd({ meta, locale, path, imageUrl: hero.src })}
+          {buildBreadcrumbJsonLd(locale, [
+            { label: "Home", href: "/" },
+            { label: title, href: path },
+          ])}
+        </>
+      }
+    >
       <PageHero src={hero.src} alt={hero.alt} />
       <header className="mb-8 border-b border-[var(--color-pencil-gray)] pb-8">
         <p className="mb-3 font-[family-name:var(--font-roboto-mono)] text-xs font-bold uppercase tracking-[0.16em] text-[var(--color-terracotta)]">
@@ -110,7 +136,33 @@ export default function InfoArticlePage({
         </div>
       </header>
 
-      <section className="my-8 rounded-xl border border-[var(--color-banana-yellow)] bg-[var(--color-banana-yellow)]/10 p-5">
+      <nav
+        aria-label="On this page"
+        className="mb-8 rounded-xl border border-[var(--color-pencil-gray)] bg-[var(--color-cream-paper)] p-4"
+      >
+        <h2 className="mb-3 text-sm font-bold uppercase tracking-[0.12em] text-[var(--color-terracotta)]">
+          On this page
+        </h2>
+        <div className="flex flex-wrap gap-2">
+          <a href="#direct-answer" className="rounded-md border border-[var(--color-pencil-gray)] bg-[var(--color-whisper-gray)] px-3 py-2 text-sm font-semibold text-[var(--color-forest-ink)] transition-colors hover:border-[var(--color-banana-yellow)]">
+            Direct answer
+          </a>
+          {sections.map((section) => {
+            const id = section.title.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
+            return (
+              <a
+                key={section.title}
+                href={`#${id}`}
+                className="rounded-md border border-[var(--color-pencil-gray)] bg-[var(--color-whisper-gray)] px-3 py-2 text-sm font-semibold text-[var(--color-forest-ink)] transition-colors hover:border-[var(--color-banana-yellow)]"
+              >
+                {section.title}
+              </a>
+            );
+          })}
+        </div>
+      </nav>
+
+      <section id="direct-answer" className="my-8 rounded-xl border border-[var(--color-banana-yellow)] bg-[var(--color-banana-yellow)]/10 p-5">
         <h2 className="mb-2 text-xs font-bold uppercase tracking-[0.12em] text-[var(--color-forest-ink)]">
           {quickAnswerTitle}
         </h2>
@@ -122,7 +174,11 @@ export default function InfoArticlePage({
       <ArticleTable table={table} />
 
       {sections.map((section) => (
-        <section key={section.title} className="mt-10">
+        <section
+          key={section.title}
+          id={section.title.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "")}
+          className="mt-10 scroll-mt-32"
+        >
           <h2 className="mb-4 text-2xl font-bold leading-tight text-[var(--color-forest-ink)]">
             {section.title}
           </h2>

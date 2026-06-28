@@ -2,6 +2,7 @@ import { notFound } from "next/navigation";
 import ContentLayout from "@/components/layout/ContentLayout";
 import { getContentComponent, getRegistrySlugs } from "@/content/registry";
 import type { Metadata } from "next";
+import { buildArticleJsonLd, buildBreadcrumbJsonLd, buildBreadcrumbs } from "@/lib/seo";
 
 interface Props { params: Promise<{ slug: string }>; }
 
@@ -26,8 +27,29 @@ export default async function ModulePage({ params }: Props) {
   const { slug } = await params;
   const Component = getContentComponent("modules", slug);
   if (!Component) notFound();
+  const meta = META[slug] ?? { title: "Module Guide", description: "BOMBANANA! module guide." };
+  const path = `/modules/${slug}`;
+
   return (
-    <ContentLayout prose={false} contentClassName="max-w-[860px]">
+    <ContentLayout
+      prose={false}
+      contentClassName="max-w-[860px]"
+      breadcrumbs={buildBreadcrumbs("en", [
+        { label: "Home", href: "/" },
+        { label: "Modules", href: "/modules" },
+        { label: meta.title, href: path },
+      ])}
+      jsonLd={
+        <>
+          {buildArticleJsonLd({ meta, locale: "en", path })}
+          {buildBreadcrumbJsonLd("en", [
+            { label: "Home", href: "/" },
+            { label: "Modules", href: "/modules" },
+            { label: meta.title, href: path },
+          ])}
+        </>
+      }
+    >
       <Component />
     </ContentLayout>
   );

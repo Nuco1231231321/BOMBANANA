@@ -1,7 +1,7 @@
 import { PageTitle } from "@/components/guide/PageTitle";
 import { PageHero } from "@/components/guide/PageHero";
 import { ArticleImage } from "@/components/guide/ArticleMedia";
-import { BlufBox, ActionTable, RelatedGuides, TipBox, WarningBox, GuideH2, GuideP, GuideList } from "@/components/guide/GuideBlocks";
+import { BlufBox, ActionTable, RelatedGuides, TipBox, WarningBox, GuideH2, GuideP, GuideList, PageJumpLinks } from "@/components/guide/GuideBlocks";
 import { FAQSection } from "@/components/guide/FAQSection";
 import { ModuleHowToJsonLd, FAQPageJsonLd } from "@/components/layout/JsonLd";
 
@@ -42,6 +42,20 @@ export default function SwitchModulePage() {
       <PageHero src="/images/screenshots/ss_24c16a36e29f2309b796e7b2b284386c43948e69.thumb.jpg" alt="BOMBANANA! Switch Module — Track, Then Flip" />
       
       <PageTitle highlight="Switch Module">Switch Module Guide: Track State, Flip in Order</PageTitle>
+      <p className="mb-4 text-base leading-7 text-[var(--color-forest-ink)]/72">
+        The Switch Module is a state-tracking puzzle: record the starting board, flip one switch at a time, and verify the new state after every move.
+      </p>
+      <PageJumpLinks
+        links={[
+          { href: "#switch-fast-answer", label: "Fast answer" },
+          { href: "#switch-recognize", label: "How to recognize it" },
+          { href: "#switch-mistakes", label: "Common mistakes" },
+          { href: "#switch-callout", label: "Callout example" },
+        ]}
+      />
+      <section id="switch-fast-answer" aria-label="Switch module fast answer">
+        <BlufBox title="Fast Answer"><strong>For most Switch Module searches, the right pattern is:</strong> record the starting switch positions, identify whether the puzzle wants a sequence or an end state, flip one switch, then verify before the next move. The mistake is almost never “not fast enough”; it is losing the board state.</BlufBox>
+      </section>
 <BlufBox title="At a Glance"><strong>Switch modules are about order, memory, and confirmation.</strong> A good team treats them like a live checklist rather than a casual toggle puzzle. The danger is not just flipping a switch — it is losing track of what the board looked like before the last move. The puzzle rewards teams that record what they saw first and update the state after every action.</BlufBox>
 
       <GuideH2>How the Switch Module Works</GuideH2>
@@ -49,6 +63,7 @@ export default function SwitchModulePage() {
 
       <ArticleImage src="/images/screenshots/ss_71217070b739545c452accf9e600c6ca72832e64.thumb.jpg" alt="Switch module tracking" caption="Before any action, answer: How many switches? What is the initial position of each? Are we following a sequence?" />
 
+      <div id="switch-recognize" />
       <GuideH2>How to Recognize It</GuideH2>
       <GuideP>Look for a board with multiple switches and a visible on/off or up/down state. The current arrangement matters more than the switches themselves, because the starting layout often determines the right next step. Before any action, the team should ask:</GuideP>
       <GuideList items={["How many switches are there?", "What is the initial position of each one?", "Are we following a sequence?", "Has anyone repeated the current state yet?"]} />
@@ -56,6 +71,7 @@ export default function SwitchModulePage() {
 
       <ActionTable rows={actionRows} />
 
+      <div id="switch-mistakes" />
       <GuideH2>Common Mistakes</GuideH2>
       <WarningBox title="Forgetting the first state"><strong>If nobody records the starting position, later calls become unreliable.</strong> The module turns into a memory fight instead of a puzzle. One person must call out the full board before any actions begin.</WarningBox>
       <GuideList items={[
@@ -64,6 +80,7 @@ export default function SwitchModulePage() {
         "<strong>Treating it like a simple toggle:</strong> This module is not just 'on or off.' It is about where the board was, where it is now, and where it needs to go next.",
       ]} />
 
+      <div id="switch-callout" />
       <GuideH2>Team Callout Example</GuideH2>
       <GuideP>A good Switch Module sequence should sound like this:</GuideP>
       <div className="my-4 p-4 rounded-lg bg-[var(--color-whisper-gray)] font-mono text-sm text-[var(--color-forest-ink)]/80">

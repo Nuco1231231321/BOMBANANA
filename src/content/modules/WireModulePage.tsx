@@ -1,7 +1,7 @@
 import { PageTitle } from "@/components/guide/PageTitle";
 import { PageHero } from "@/components/guide/PageHero";
 import { ArticleImage } from "@/components/guide/ArticleMedia";
-import { BlufBox, ActionTable, RelatedGuides, TipBox, WarningBox, GuideH2, GuideP, GuideList } from "@/components/guide/GuideBlocks";
+import { BlufBox, ActionTable, RelatedGuides, TipBox, WarningBox, GuideH2, GuideP, GuideList, PageJumpLinks } from "@/components/guide/GuideBlocks";
 import { FAQSection } from "@/components/guide/FAQSection";
 import { ModuleHowToJsonLd, FAQPageJsonLd } from "@/components/layout/JsonLd";
 
@@ -49,6 +49,20 @@ export default function WireModulePage() {
       <PageHero src="/images/screenshots/ss_2c952b65fc5734ce79f252df9f55af35b590be4a.thumb.jpg" alt="BOMBANANA! Wire Module — Read, Confirm, Cut" />
       
       <PageTitle highlight="Wire Module">Wire Module Guide: Read, Confirm, and Cut Safely</PageTitle>
+      <p className="mb-4 text-base leading-7 text-[var(--color-forest-ink)]/72">
+        The Wire Module answer pattern is simple: count the wires, read the deciding clue, name the exact wire position, then cut only after confirmation.
+      </p>
+      <PageJumpLinks
+        links={[
+          { href: "#wire-fast-answer", label: "Fast answer" },
+          { href: "#wire-recognize", label: "How to recognize it" },
+          { href: "#wire-mistakes", label: "Common mistakes" },
+          { href: "#wire-callout", label: "Callout example" },
+        ]}
+      />
+      <section id="wire-fast-answer" aria-label="Wire module fast answer">
+        <BlufBox title="Fast Answer"><strong>For most Wire Module searches, the useful workflow is:</strong> count every wire, read the clue that changes the rule, identify the exact wire position, and confirm before the Blind player cuts. Google and players both need the same thing here: one exact action, not a vague color guess.</BlufBox>
+      </section>
       <section
         aria-label="Wire module fast solve rhythm"
         className="mb-8 rounded-lg border border-[var(--color-pencil-gray)] bg-[var(--color-cream-paper)] p-4"
@@ -72,6 +86,7 @@ export default function WireModulePage() {
 
       <ArticleImage src="/images/screenshots/ss_68f3c44625be8227496c6c017bfe847ed3c83e3d.thumb.jpg" alt="Wire module close-up" caption="Before anyone gives a command, the team must answer: How many wires? What are the colors left to right? Which wire is the target?" />
 
+      <div id="wire-recognize" />
       <GuideH2>How to Recognize It</GuideH2>
       <GuideP>The Wire Module presents one or more wires in a compact bomb panel. The important thing is not just what color the wires are, but how many there are and where each one sits in the sequence. Before anyone gives a command, the team should answer:</GuideP>
       <GuideList items={[
@@ -84,6 +99,7 @@ export default function WireModulePage() {
 
       <ActionTable rows={actionRows} />
 
+      <div id="wire-mistakes" />
       <GuideH2>Common Mistakes</GuideH2>
       <WarningBox title="Cutting by color only"><strong>This fails when more than one wire shares the same color</strong> or when color is not the deciding factor. Color should support the solution, not replace it. 'The second blue one' is safer than 'the blue one.'</WarningBox>
       <GuideList items={[
@@ -92,6 +108,7 @@ export default function WireModulePage() {
         "<strong>Vague callouts:</strong> 'Cut that one' is not a real instruction. Good teams use numbered positions and repeat them before execution.",
       ]} />
 
+      <div id="wire-callout" />
       <GuideH2>Team Callout Example</GuideH2>
       <GuideP>A clean Wire Module callout sequence should sound like this:</GuideP>
       <div className="my-4 p-4 rounded-lg bg-[var(--color-whisper-gray)] font-mono text-sm text-[var(--color-forest-ink)]/80">

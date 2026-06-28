@@ -6,12 +6,11 @@ import type { ContentMeta } from "@/lib/content";
 
 interface ArticleJsonLdProps {
   meta: ContentMeta;
-  slug: string;
-  section: string;
+  path: string;
   imageUrl?: string;
 }
 
-export function ArticleJsonLd({ meta, slug, section, imageUrl }: ArticleJsonLdProps) {
+export function ArticleJsonLd({ meta, path, imageUrl }: ArticleJsonLdProps) {
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "Article",
@@ -22,7 +21,7 @@ export function ArticleJsonLd({ meta, slug, section, imageUrl }: ArticleJsonLdPr
     dateModified: meta.updated || meta.date,
     author: { "@type": "Organization", name: "BOMBANANA! Guide" },
     publisher: { "@type": "Organization", name: "BOMBANANA! Guide" },
-    mainEntityOfPage: { "@type": "WebPage", "@id": `https://bombanana.online/${section}/${slug}` },
+    mainEntityOfPage: { "@type": "WebPage", "@id": `https://bombanana.online${path}` },
   };
 
   return (

@@ -58,6 +58,41 @@ export function SearchAnswerPanel({ title, answer, intentRows, jumpLinks }: Sear
   );
 }
 
+interface PageJumpLink {
+  href: string;
+  label: string;
+}
+
+export function PageJumpLinks({
+  title = "On this page",
+  links,
+}: {
+  title?: string;
+  links: PageJumpLink[];
+}) {
+  return (
+    <nav
+      aria-label={title}
+      className="my-8 rounded-xl border border-[var(--color-pencil-gray)] bg-[var(--color-cream-paper)] p-4"
+    >
+      <h2 className="mb-3 text-sm font-bold uppercase tracking-[0.12em] text-[var(--color-terracotta)]">
+        {title}
+      </h2>
+      <div className="flex flex-wrap gap-2">
+        {links.map((link) => (
+          <a
+            key={link.href}
+            href={link.href}
+            className="rounded-md border border-[var(--color-pencil-gray)] bg-[var(--color-whisper-gray)] px-3 py-2 text-sm font-semibold text-[var(--color-forest-ink)] transition-colors hover:border-[var(--color-banana-yellow)]"
+          >
+            {link.label}
+          </a>
+        ))}
+      </div>
+    </nav>
+  );
+}
+
 /* ═══════════════════════════════════════
    Status Panel — Key Facts grid
    ═══════════════════════════════════════ */

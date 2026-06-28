@@ -14,6 +14,9 @@ export const metadata: Metadata = {
   title: "BOMBANANA! Guide — Free Manual, Walkthroughs & Co-Op Strategy",
   description:
     "Complete BOMBANANA! guide with wire, button, switch & symbol walkthroughs. Role guides, communication tips, demo download, and beginner checklist. Updated 2026.",
+  alternates: {
+    canonical: "/",
+  },
 };
 
 interface Props {

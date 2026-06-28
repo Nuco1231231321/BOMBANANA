@@ -2,6 +2,7 @@ import { notFound } from "next/navigation";
 import ContentLayout from "@/components/layout/ContentLayout";
 import { getContentComponent, getRegistrySlugs } from "@/content/registry";
 import type { Metadata } from "next";
+import { buildArticleJsonLd, buildBreadcrumbJsonLd, buildBreadcrumbs } from "@/lib/seo";
 
 interface Props { params: Promise<{ slug: string }>; }
 
@@ -24,8 +25,29 @@ export default async function BeginnerSubPage({ params }: Props) {
   const { slug } = await params;
   const Component = getContentComponent("beginners", slug);
   if (!Component) notFound();
+  const meta = META[slug] ?? { title: "Beginner's Guide", description: "BOMBANANA! beginner guide." };
+  const path = `/beginners/${slug}`;
+
   return (
-    <ContentLayout prose={false} contentClassName="max-w-[860px]">
+    <ContentLayout
+      prose={false}
+      contentClassName="max-w-[860px]"
+      breadcrumbs={buildBreadcrumbs("en", [
+        { label: "Home", href: "/" },
+        { label: "Beginners", href: "/beginners" },
+        { label: meta.title, href: path },
+      ])}
+      jsonLd={
+        <>
+          {buildArticleJsonLd({ meta, locale: "en", path })}
+          {buildBreadcrumbJsonLd("en", [
+            { label: "Home", href: "/" },
+            { label: "Beginners", href: "/beginners" },
+            { label: meta.title, href: path },
+          ])}
+        </>
+      }
+    >
       <Component />
     </ContentLayout>
   );
